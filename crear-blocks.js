@@ -32,9 +32,10 @@ function blocks(level) {
 
 blocks(level)
 
-function avanzar() {
-	do {
+function clearBlocks() {
+
+	while (boxes.length > 0) {
+
 		boxes[0].remove()
 	}
-	while (boxes[0] != null)
 }

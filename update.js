@@ -121,11 +121,7 @@ function perder(ball, $ball) {
 	else {
 		if (confirm('Volver a empezar?')) {
 
-			do {
-
-				boxes[0].remove()
-			}
-			while (boxes[0] != undefined)
+			clearBlocks()
 
 			nave.style.left = containerRect.width / 2 - naveRect.width / 2 + 'px'
 			nave.style.top = containerRect.bottom - 40 + 'px'
