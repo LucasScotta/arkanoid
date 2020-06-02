@@ -1,0 +1,32 @@
+.box {
+	width: 60px;
+	height: 20px;
+	background-color: red;
+}
+
+canvas {
+	position: absolute;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	display: inline-block;
+	width: 700px;
+	height: 700px;
+	box-sizing: border-box;
+}
+
+#nave {
+	background-color: red;
+}
+
+.ball {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: pink;
+}
