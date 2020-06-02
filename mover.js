@@ -9,11 +9,11 @@ let navePoss = parseInt(nave.style.left)
 document.onmousemove = function mover(event) {
 
 	event.preventDefault()
-	if(!pause) {
+
 	mouse.x = event.x
 	mouse.y = event.y
 	mouse.b = true
-	}
+
 }
 
 function moverNave(x, y) {
