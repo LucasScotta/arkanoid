@@ -107,12 +107,20 @@ const ballProto = {
 
 		ballDirY *= -1
 	},
-	mover: function ($ball, ball) {
+	mover: function () {
 
-		ball.pos.x += ballDirX
-		ball.pos.y += ballDirY
-		$ball.style.left = `${ball.pos.x}px`
-		$ball.style.top = `${ball.pos.y}px`
+		this.pos.x += ballDirX
+		this.pos.y += ballDirY
+		this.$el.style.left = `${this.pos.x}px`
+		this.$el.style.top = `${this.pos.y}px`
+	},
+	rebotarVerticalmente: function () {
+
+		ballDirY *= -1
+	},
+	rebotarHorizontalmente: function () {
+
+		ballDirX *= -1
 	},
 }
 
