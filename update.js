@@ -38,29 +38,15 @@ function updateBall(ball, $ball) {
 // Bola golpeando las cajas:
 	for (let box of boxes) {
 
-		const boxRect = box.getBoundingClientRect()
-
-// De arriba Y abajo
-		if (ballArr ===  boxRect.bottom
-		&&	ballDer >	 boxRect.left
-		&&	ballIzq <	 boxRect.right
-		||	ballAba ===	 boxRect.top
-		&&	ballDer >	 boxRect.left
-		&&	ballIzq <	 boxRect.right) {
-
-			ballDirY *= -1
+		if (ball.estaTocandoDeArribaYAbajo(box)) {
+// Si esta tocando de arriba o abajo rebota verticalmente
+			ball.rebotarVerticalmente()
 			return box.remove()
 		}
 
-// De los costados
-		if (ballDer === boxRect.left
-		&&	ballArr <=  boxRect.bottom
-		&&	ballAba >=	boxRect.top
-		||	ballIzq === boxRect.right
-		&&	ballArr <=	boxRect.bottom
-		&&	ballAba >=	boxRect.top) {
+		if (ball.estaTocandoDeIzquierdaYDerecha(box)) {
 
-			ballDirX *= -1
+			ball.rebotarHorizontalmente()
 			return box.remove()
 		}
 	}

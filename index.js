@@ -2,16 +2,21 @@
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
 const $balls = document.getElementsByClassName('ball')
 const balls = [
-	{
+	initBall({
+		$el : $balls[0],
 		pos: {
 			x: 0,
 			y: 0,
+		},
+		size : {
+			w: 15,
+			h: 15,
 		},
 		vel: {
 			r: 5,
 			a: Math.PI,
 		},
-	},
+	}),
 ]
 
 const nave = document.getElementById('nave')
