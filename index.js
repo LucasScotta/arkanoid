@@ -66,7 +66,7 @@ let color = 'pink'
 let pause = false
 let start = 0
 let lifes = 3
-let level = 6
+let level = 2
 
 ///////////////////////////////////////////////////////////////////////////////
 // Tipos de bloques

@@ -8,11 +8,16 @@ function update() {
 	}
 }
 
+function ballIzquierda() {
+
+	return ball.pos.x
+}
+
 function updateBall(ball, $ball) {
 
-	naveAncho = naveRect.width
 	const ballRect = $ball.getBoundingClientRect()
-	naveRect       = nave.getBoundingClientRect()
+	const naveRect = nave.getBoundingClientRect()
+	naveAncho = naveRect.width
 	const ballIzq  = ball.pos.x
 	const ballDer  = ball.pos.x + ballRect.width
 	const ballAba  = ball.pos.y + ballRect.height
