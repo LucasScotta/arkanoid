@@ -58,30 +58,21 @@ function updateBall(ball, $ball) {
 
 //Rebotes de bola contra la nave:
 //1 => ----[--]
-	if (ballAba === naveRect.top
-	&&	ballIzq <=	naveRect.right
-	&&	ballDer >	naveRect.right - naveRect.width / 3) {
+	if (ball.estaTocandoIzquierda(nave)) {
 
-		ballDirX  =  1
-		ballDirY *= -1
+		ball.rebotarDerecha()
 	}
 
 //2 => [--]----
-	if (ballAba === naveRect.top
-	&&	ballDer >=  naveRect.left
-	&&	ballIzq <   naveRect.left + naveRect.width / 3) {
+	if (ball.estaTocandoDerecha(nave)) {
 
-		ballDirX  = -1
-		ballDirY *= -1
+		ball.rebotarIzquierda()
 	}
 
 //3 --[--]--
-	if (ballAba === naveRect.top
-	&&	ballDer <=	naveRect.right - naveRect.width / 3
-	&&	ballIzq >=	naveRect.left  + naveRect.width / 3) {
+	if (ball.estaTocandoMedio(nave)) {
 
-		ballDirX = vel.r * Math.cos(vel.a)
-		ballDirY = vel.r * Math.sin(vel.a)
+		ball.rebotarMedio()
 	}
 
 	if (boxes.length === 0) {
@@ -90,10 +81,8 @@ function updateBall(ball, $ball) {
 	}
 
 //mover la bola
-	ball.pos.x += ballDirX
-	ball.pos.y += ballDirY
-	$ball.style.left = `${ball.pos.x}px`
-	$ball.style.top = `${ball.pos.y}px`
+	ball.mover()
+	
 }
 
 function perder(ball, $ball) {
