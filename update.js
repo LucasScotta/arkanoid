@@ -81,7 +81,7 @@ function updateBall(ball, $ball) {
 	}
 
 //mover la bola
-	ball.mover()
+	ball.mover($ball, ball)
 	
 }
 

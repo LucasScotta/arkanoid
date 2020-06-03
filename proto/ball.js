@@ -98,7 +98,7 @@ const ballProto = {
 
 		ballDirY *= -1
 	},
-	mover: function () {
+	mover: function ($ball, ball) {
 
 		ball.pos.x += ballDirX
 		ball.pos.y += ballDirY
