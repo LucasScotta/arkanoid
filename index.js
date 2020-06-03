@@ -8,10 +8,6 @@ const balls = [
 			x: 0,
 			y: 0,
 		},
-		size : {
-			w: 15,
-			h: 15,
-		},
 		vel: {
 			r: 5,
 			a: Math.PI,
