@@ -13,19 +13,16 @@ const ballProto = {
 		&&	l <	  boxRect.right
 		||	b === boxRect.top
 		&&	r >	  boxRect.left
-		&&	l <	  boxRect.right) {
-
-			return true
-		}
+		&&	l <	  boxRect.right) return true
 		else return false
 	},
 	
 	estaTocandoDeIzquierdaYDerecha: function ($box) {
 
-		const l = this.pos.x
-		const r = this.pos.x + this.size.w
-		const b = this.pos.y + this.size.h
 		const t = this.pos.y
+		const b = this.pos.y + this.size.h
+		const r = this.pos.x + this.size.w
+		const l = this.pos.x
 		const boxRect = $box.getBoundingClientRect()
 
 		if (r === boxRect.left
