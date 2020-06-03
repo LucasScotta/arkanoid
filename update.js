@@ -8,24 +8,8 @@ function update() {
 	}
 }
 
-function ballIzquierda() {
-
-	return ball.pos.x
-}
-
 function updateBall(ball, $ball) {
 
-	const ballRect = $ball.getBoundingClientRect()
-	const naveRect = nave.getBoundingClientRect()
-	naveAncho = naveRect.width
-	const ballIzq  = ball.pos.x
-	const ballDer  = ball.pos.x + ballRect.width
-	const ballAba  = ball.pos.y + ballRect.height
-	const ballArr  = ball.pos.y
-	const bordeIzq = containerRect.left   + contBorde
-	const bordeDer = containerRect.right  - contBorde
-	const bordeAba = containerRect.bottom - contBorde
-	const bordeArr = containerRect.top    + contBorde
 	if (mouse.b) {
 
 		moverNave(mouse.x, mouse.y)
