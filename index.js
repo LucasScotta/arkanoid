@@ -64,25 +64,6 @@ let lifes = 3
 let level = 6
 
 ///////////////////////////////////////////////////////////////////////////////
-// Tipos de bloques
-const bloques = {
-	normal: {tipo: 1},
-	multiplicador: {tipo: 2, caracter: 'Ⓜ'},
-	goma: {tipo: 3, caracter: 'Ⓖ'},
-	disparo: {tipo: 4, caracter: 'Ⓓ'},
-	agrandador: {tipo: 5, caracter: 'Ⓐ'},
-	achichador: {tipo: 6, caracter: '①'}, 
-}
-
-//Tipos de powerUps
-const powerUps = [
-	bloques.normal,
-	bloques.multiplicador,
-	bloques.goma,
-	bloques.disparo,
-	bloques.agrandador,
-	bloques.achichador,
-]
 
 const newBall = {
 	pos : {
