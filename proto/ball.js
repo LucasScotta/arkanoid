@@ -20,13 +20,12 @@ const ballProto = {
 		const t = this.pos.y
 		const boxRect  = $box.getBoundingClientRect()
 
-		if (t === boxRect.bottom
+		return t === boxRect.bottom
 		&&	r >	  boxRect.left
 		&&	l <	  boxRect.right
 		||	b === boxRect.top
 		&&	r >	  boxRect.left
-		&&	l <	  boxRect.right) return true
-		else return false
+		&&	l <	  boxRect.right
 	},
 	
 	estaTocandoDeIzquierdaYDerecha: function ($box) {
@@ -37,14 +36,34 @@ const ballProto = {
 		const l = this.pos.x
 		const boxRect = $box.getBoundingClientRect()
 
-		if (r === boxRect.left
+		return r === boxRect.left
 		&&	t <=  boxRect.bottom
 		&&	b >=  boxRect.top
 		||	l === boxRect.right
 		&&	t <=  boxRect.bottom
-		&&	b >=  boxRect.top) return true
-		else return false
+		&&	b >=  boxRect.top
+	},
+	/**
+	 * retorna si la bola golpea el borde del mapa
+	 *
+	 * @param {} rect 
+	 */
+	tocaBordeCostados: function (rect, borde) {
+		const r = this.pos.x + this.size.w
+		const l = this.pos.x
 
+		return r >= rect.right - borde
+		||	l <= rect.left + borde
+	},
+	tocaBordeSuperior: function (rect, borde) {
+		const t = this.pos.y
+
+		return t <= rect.top + borde
+	},
+	tocaBordeInferior: function (rect, borde) {
+		const b = this.pos.y + this.size.h
+
+		return b >= rect.bottom - borde
 	},
 	estaTocandoIzquierda: function (nave) {
 
@@ -54,30 +73,9 @@ const ballProto = {
 		const l = this.pos.x
 		const naveRect = nave.getBoundingClientRect()
 
-		if (b === naveRect.top
+		return b === naveRect.top
 		&&	l <=  naveRect.right
-		&&	r >	  naveRect.right - naveRect.width / 3) return true
-		else return false
-	},
-	tocaBordeCostados: function (rect, borde) {
-		const r = this.pos.x + this.size.w
-		const l = this.pos.x
-
-		if (r >= rect.right - borde
-		||	l <= rect.left + borde) return true
-		else return false
-	},
-	tocaBordeSuperior: function (rect, borde) {
-		const t = this.pos.y
-
-		if (t <= rect.top + borde) return true
-		else return false
-	},
-	tocaBordeInferior: function (rect, borde) {
-		const b = this.pos.y + this.size.h
-
-		if (b >= rect.bottom - borde) return true
-		else return false
+		&&	r >	  naveRect.right - naveRect.width / 3
 	},
 	estaTocandoDerecha: function (nave) {
 
@@ -87,10 +85,9 @@ const ballProto = {
 		const l = this.pos.x
 		const naveRect = nave.getBoundingClientRect()
 
-		if (b === naveRect.top
+		return b === naveRect.top
 		&&	r >=  naveRect.left
-		&&	l <   naveRect.left + naveRect.width / 3) return true
-		else return false
+		&&	l <   naveRect.left + naveRect.width / 3
 	},
 	estaTocandoMedio: function (nave) {
 
@@ -100,10 +97,9 @@ const ballProto = {
 		const l = this.pos.x
 		const naveRect = nave.getBoundingClientRect()
 
-		if (b === naveRect.top
+		return b === naveRect.top
 		&&	r <=  naveRect.right - naveRect.width / 3
-		&&	l >=  naveRect.left  + naveRect.width / 3) return true
-		else return false
+		&&	l >=  naveRect.left  + naveRect.width / 3
 	},
 	rebotarDerecha: function () {
 
