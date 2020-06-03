@@ -33,12 +33,19 @@ function updateBall(ball, $ball) {
 	}
 
 // Bola golpeando contra los bordes
-	if (ballDer >= bordeDer
-	||	ballIzq <= bordeIzq) ballDirX *= -1
+	if (ball.tocaBordeCostados(containerRect, contBorde)) {
 
-	if (ballArr <= bordeArr) ballDirY *= -1
+		ball.rebotarHorizontalmente()
+	}
 
-	if (ballAba >= bordeAba) return perder(ball, $ball)
+	if (ball.tocaBordeSuperior(containerRect, contBorde)) {
+
+		ball.rebotarVerticalmente()
+	}
+
+	if (ball.tocaBordeInferior(containerRect, contBorde)) {
+		return perder(ball, $ball)
+	}
 
 // Bola golpeando las cajas:
 	for (let box of boxes) {

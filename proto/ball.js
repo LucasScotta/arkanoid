@@ -37,34 +37,46 @@ const ballProto = {
 		else return false
 
 	},
-	rebotarVerticalmente: function () {
-
-		ballDirY *= -1
-	},
-	rebotarHorizontalmente: function () {
-
-		ballDirX *= -1
-	},
 	estaTocandoIzquierda: function (nave) {
 
-		const l = this.pos.x
-		const r = this.pos.x + this.size.w
-		const b = this.pos.y + this.size.h
 		const t = this.pos.y
-		const NaveRect = nave.getBoundingClientRect()
+		const b = this.pos.y + this.size.h
+		const r = this.pos.x + this.size.w
+		const l = this.pos.x
+		const naveRect = nave.getBoundingClientRect()
 
 		if (b === naveRect.top
 		&&	l <=  naveRect.right
 		&&	r >	  naveRect.right - naveRect.width / 3) return true
 		else return false
 	},
+	tocaBordeCostados: function (rect, borde) {
+		const r = this.pos.x + this.size.w
+		const l = this.pos.x
+
+		if (r >= rect.right - borde
+		||	l <= rect.left + borde) return true
+		else return false
+	},
+	tocaBordeSuperior: function (rect, borde) {
+		const t = this.pos.y
+
+		if (t <= rect.top + borde) return true
+		else return false
+	},
+	tocaBordeInferior: function (rect, borde) {
+		const b = this.pos.y + this.size.h
+
+		if (b >= rect.bottom - borde) return true
+		else return false
+	},
 	estaTocandoDerecha: function (nave) {
 
-		const l = this.pos.x
-		const r = this.pos.x + this.size.w
-		const b = this.pos.y + this.size.h
 		const t = this.pos.y
-		const NaveRect = nave.getBoundingClientRect()
+		const b = this.pos.y + this.size.h
+		const r = this.pos.x + this.size.w
+		const l = this.pos.x
+		const naveRect = nave.getBoundingClientRect()
 
 		if (b === naveRect.top
 		&&	r >=  naveRect.left
@@ -73,15 +85,15 @@ const ballProto = {
 	},
 	estaTocandoMedio: function (nave) {
 
-		const l = this.pos.x
-		const r = this.pos.x + this.size.w
-		const b = this.pos.y + this.size.h
 		const t = this.pos.y
-		const NaveRect = nave.getBoundingClientRect()
+		const b = this.pos.y + this.size.h
+		const r = this.pos.x + this.size.w
+		const l = this.pos.x
+		const naveRect = nave.getBoundingClientRect()
 
 		if (b === naveRect.top
-		&&	r <=	naveRect.right - naveRect.width / 3
-		&&	l >=	naveRect.left  + naveRect.width / 3) return true
+		&&	r <=  naveRect.right - naveRect.width / 3
+		&&	l >=  naveRect.left  + naveRect.width / 3) return true
 		else return false
 	},
 	rebotarDerecha: function () {
