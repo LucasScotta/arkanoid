@@ -1,5 +1,17 @@
+'use non-strict';
+
+function hasUseStrict() {
+
+	'use strict';
+
+	return this === undefined
+}
+
 const ballProto = {
-	__proto__: proto2,
+	size : {
+			w: 15,
+			h: 15,
+		},
 	estaTocandoDeArribaYAbajo: function ($box) {
 
 		const l = this.pos.x
@@ -122,10 +134,6 @@ const ballProto = {
 
 		ballDirX *= -1
 	},
-}
-
-function proto2() {
-
 }
 
 function initBall(ball) {
