@@ -1,6 +1,5 @@
 /////////////
-$nave.style.left = container.getBoundingClientRect().width / 2 - $nave.getBoundingClientRect().width / 2 + 'px'
-$nave.style.top = container.getBoundingClientRect().bottom - 40 + 'px'
+nave.pintarNaveInicio()
 balls[0].pos.x = $nave.getBoundingClientRect().left + $nave.getBoundingClientRect().width / 2
 balls[0].pos.y = $nave.getBoundingClientRect().top - $balls[0].getBoundingClientRect().height - 1
 const cont = container.getBoundingClientRect()
@@ -19,7 +18,7 @@ document.onmousemove = function mover(event) {
 function moverNave(x, y) {
 
 	navePoss = parseInt($nave.style.left)
-	nave.mover(cont, contBorde, x, y, naveRect, $nave)
+	nave.mover(cont, contBorde, x, y, naveRect)
 }
 
 // 

@@ -1,11 +1,12 @@
 const nave = {
+	$el: $nave,
 	size: {
 		w: 100,
 		h: 15,
 	},
 	pos: {
-		x: 0,
-		y: 0,
+		x: container.getBoundingClientRect().width / 2 - $nave.getBoundingClientRect().width / 2,
+		y: container.getBoundingClientRect().bottom - 40,
 	},
 	/**
 	 * Alarga la nave al agarrar el powerUp 'alargar'
@@ -24,7 +25,7 @@ const nave = {
 	/**
 	 * Mueve la nave al mover el mouse
 	 */
-	mover: function (cont, contBorde, x, y, naveRect, $nave) {
+	mover: function (cont, contBorde, x, y) {
 		if (x <= cont.right
 		&&	x >= cont.left
 		&&	y <= cont.bottom
@@ -33,24 +34,24 @@ const nave = {
 		&&	level < 7) {
 			if (ballDirX === 0 && ballDirY === 0) {
 
-				if (x <= cont.left + contBorde + naveRect.width / 2) {
+				if (x <= cont.left + contBorde + this.size.w / 2) {
 
 					if(x <= cont.left + contBorde + $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = cont.left + contBorde
 					else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
 
-					$nave.style.left = cont.left + contBorde + 'px'
+					this.$el.style.left = cont.left + contBorde + 'px'
 				}
-				else if (x >= cont.right - contBorde - naveRect.width / 2) {
+				else if (x >= cont.right - contBorde - this.size.w / 2) {
 
 					if (x >= cont.right - contBorde - $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = cont.right - contBorde - $balls[0].getBoundingClientRect().width
 					else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
 
-					$nave.style.left = cont.right - contBorde - naveRect.width + 'px'
+					this.$el.style.left = cont.right - contBorde - this.size.w + 'px'
 				}
 				else {
 
 					balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
-					$nave.style.left = x - naveRect.width / 2 + 'px'
+					this.$el.style.left = x - this.size.w / 2 + 'px'
 				}
 			}
 			else {
@@ -58,17 +59,17 @@ const nave = {
 				if (x >= cont.right -  contBorde - this.size.w / 2) {
 
 					x = cont.right - this.size.w - contBorde
-					$nave.style.left = `${x}px`
+					this.$el.style.left = `${x}px`
 				}
 				else if (x <= cont.left + this.size.w / 2 + contBorde) {
 
 					x = cont.left + contBorde
-					$nave.style.left = `${x}px`
+					this.$el.style.left = `${x}px`
 				}
 				else {
 
 					x -= this.size.w / 2
-					$nave.style.left = `${x}px`
+					this.$el.style.left = `${x}px`
 				}
 			}
 		}
@@ -80,4 +81,12 @@ const nave = {
 
 		return this.size.w = 100
 	},
+	/**
+	 * Pinta la nave al inicio del juego, despues de ganar y al perder una vida
+	 */
+	 pintarNaveInicio: function () {
+	 	
+	 	this.$el.style.left = `${this.pos.x}px`
+	 	this.$el.style.top = `${this.pos.y}px`
+	 }
 }
