@@ -79,6 +79,7 @@ function updateBall(ball, $ball) {
 function perder(ball, $ball) {
 
 	ballRect = $ball.getBoundingClientRect()
+	naveRect = nave.getBoundingClientRect()
 	ballDirX = 0
 	ballDirY = 0
 	lifes -= 1
