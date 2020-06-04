@@ -3,6 +3,10 @@ const nave = {
 		w: 100,
 		h: 15,
 	},
+	pos: {
+		x: 0,
+		y: 0,
+	},
 	/**
 	 * Alarga la nave al agarrar el powerUp 'alargar'
 	 */
