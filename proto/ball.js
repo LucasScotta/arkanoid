@@ -99,7 +99,7 @@ const ballProto = {
 		const l = this.pos.x
 		const naveRect = $nave.getBoundingClientRect()
 
-		return  b === naveRect.top
+		return  b === nave.pos.y
 			&&	r >=  naveRect.left
 			&&	l <   naveRect.left + nave.size.w / 3
 	},
@@ -114,7 +114,7 @@ const ballProto = {
 		const l = this.pos.x
 		const naveRect = $nave.getBoundingClientRect()
 
-		return  b === naveRect.top
+		return  b === nave.pos.y
 			&&	r <=  naveRect.right - nave.size.w / 3
 			&&	l >=  naveRect.left  + nave.size.w / 3
 	},

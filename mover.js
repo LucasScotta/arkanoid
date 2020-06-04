@@ -1,9 +1,7 @@
 /////////////
 nave.pintarNaveInicio()
-balls[0].pos.x = $nave.getBoundingClientRect().left + $nave.getBoundingClientRect().width / 2
-balls[0].pos.y = $nave.getBoundingClientRect().top - $balls[0].getBoundingClientRect().height - 1
-const cont = container.getBoundingClientRect()
-let navePoss = parseInt($nave.style.left)
+balls[0].pos.x = nave.pos.x + nave.size.w / 2
+balls[0].pos.y = nave.pos.y - nave.size.h - 1
 
 document.onmousemove = function mover(event) {
 
