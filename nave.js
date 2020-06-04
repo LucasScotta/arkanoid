@@ -5,10 +5,10 @@ const nave = {
 	},
 	alargar: function () {
 
-		return this.w += 50
+		return this.size.w += 50
 	},
 	achicar: function () {
 
-		return this.w -= 50
+		return this.size.w -= 50
 	}
 }
