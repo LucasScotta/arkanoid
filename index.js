@@ -19,11 +19,9 @@ const $nave = document.getElementById('nave')
 $nave.style.width = `100px`
 $nave.style.height = `15px`
 let naveRect = $nave.getBoundingClientRect()
-
+const naveWidth = parseInt($nave.style.width)
 const container = document.getElementById('container')
-container.style.border = `10px solid black`
-const contBorde = parseInt(container.style.border)
-const containerRect = container.getBoundingClientRect()
+const mapBorder = game.size.b
 
 const boxes = document.getElementsByClassName('box')
 

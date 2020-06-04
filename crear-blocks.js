@@ -14,16 +14,16 @@ function blocks(level) {
 			divBlock[i][j] = document.createElement('div')
 			container.appendChild(divBlock[i][j])
 
-			divBlock[i][j].right = containerRect.right
+			divBlock[i][j].right = game.size.w
 			divBlock[i][j].classList.add('box')
-			container.children[divN].style.left = contX + 'px'
-			container.children[divN].style.top = contY + 'px'
-			contX += 100
+			container.children[divN].style.left = mapX + 'px'
+			container.children[divN].style.top = mapY + 'px'
+			mapX += 100
 			divN += 1
 
 			if (j === 6) {
-				contY += 55
-				contX -= containerRect.width
+				mapY += 55
+				mapX -= game.size.w
 			}
 		}
 	}

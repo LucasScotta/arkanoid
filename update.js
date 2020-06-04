@@ -17,18 +17,18 @@ function updateBall(ball, $ball) {
 	}
 
 // Bola golpeando contra los bordes
-	if (ball.tocaBordeCostados(containerRect, contBorde)) {
+	if (ball.tocaBordeCostados()) {
 
 		ball.rebotarHorizontalmente()
 	}
 
-	if (ball.tocaBordeSuperior(containerRect, contBorde)) {
+	if (ball.tocaBordeSuperior()) {
 
 		ball.rebotarVerticalmente()
 	}
 
-	if (ball.tocaBordeInferior(containerRect, contBorde)) {
-		return game.perder()
+	if (ball.tocaBordeInferior()) {
+		return game.perder(ball, $ball)
 	}
 
 // Bola golpeando las cajas:

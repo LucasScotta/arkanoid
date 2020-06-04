@@ -43,32 +43,40 @@ const ballProto = {
 	 * retorna si la bola golpea algun borde de costado del mapa
 	 */
 	tocaBordeCostados: function (rect, borde) {
+
+		const mapRight = game.pos.x + game.size.w
+		const mapLeft = game.pos.x
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
 
-		return  r >= rect.right - borde
-			||	l <= rect.left + borde
+		return  r >= mapRight - mapBorder
+			||	l <= mapLeft + mapBorder
 	},
 	/**
 	 * retorna si la bola golpea de el borde superior del mapa
 	 */
 	tocaBordeSuperior: function (rect, borde) {
+
+		const mapTop = game.pos.y
 		const t = this.pos.y
 
-		return t <= rect.top + borde
+		return t <= mapTop + mapBorder
 	},
 	/**
 	 * retorna si la bola golpea en el borde inferior del mapa
 	 */
 	tocaBordeInferior: function (rect, borde) {
+
+		const mapBottom = game.pos.y + game.size.h
 		const b = this.pos.y + this.size.h
 
-		return b >= rect.bottom - borde
+		return b >= mapBottom - mapBorder
 	},
 	/**
 	 * retorna si la bola golpea la division izquierda de la nave
 	 */
 	estaTocandoIzquierda: function ($nave) {
+
 
 		const t = this.pos.y
 		const b = this.pos.y + this.size.h
@@ -76,7 +84,7 @@ const ballProto = {
 		const l = this.pos.x
 		const naveRect = $nave.getBoundingClientRect()
 
-		return  b === naveRect.top
+		return  b === nave.pos.y
 			&&	l <=  naveRect.right
 			&&	r >	  naveRect.right - nave.size.w / 3
 	},
@@ -162,15 +170,21 @@ const ballProto = {
 	 * pasar de nivel, o al perder todas las vidas y reiniciar el juego del nivel 1.
 	 * Comienza el juego
 	 */
-	arrancar: function (x, y, cont, contBorde, naveRect) {
+	arrancar: function (x, y) {
+
+		const mapTop = game.pos.y
+		const mapRight = game.pos.x + game.size.w
+		const mapBottom = game.pos.y + game.size.h
+		const mapLeft = game.pos.x
+		const naveWidth = nave.size.w
 
 		if (game.config.ballDirY === 0 && game.config.ballDirX === 0
-		&&	x <= cont.bottom - contBorde
-		&& 	x >= cont.top + contBorde
-		&&  y <= cont.right - contBorde
-		&&	y >= cont.left + contBorde) {
+		&&	x <= mapRight - mapBorder
+		&& 	x >= mapTop + mapBorder
+		&&  y <= mapBottom - mapBorder
+		&&	y >= mapTop + mapBorder) {
 
-			if (balls[0].pos.x <= naveRect.left + nave.size.w / 2) {
+			if (balls[0].pos.x <= naveRect.left + naveWidth / 2) {
 
 				game.config.ballDirX = -1
 				game.config.ballDirY = -1

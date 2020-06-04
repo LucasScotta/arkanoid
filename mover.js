@@ -17,8 +17,7 @@ document.onmousemove = function mover(event) {
 
 function moverNave(x, y) {
 
-	navePoss = parseInt($nave.style.left)
-	nave.mover(cont, contBorde, x, y, naveRect)
+	nave.mover(x, y)
 }
 
 // 
@@ -27,7 +26,7 @@ document.onclick = function(event) {
 
 	const x = event.x
 	const y = event.y
-	balls[0].arrancar(x, y, cont, contBorde, naveRect)
+	balls[0].arrancar(x, y)
 }
 
 document.onkeydown = function tecla(event) {
