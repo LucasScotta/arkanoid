@@ -22,7 +22,6 @@ let naveRect = $nave.getBoundingClientRect()
 let naveLeft = parseInt($nave.style.left)
 let naveWidth = parseInt($nave.style.width)
 let naveTop = parseInt($nave.style.top)
-let naveAncho = naveRect.width
 
 const container = document.getElementById('container')
 container.style.border = `10px solid black`

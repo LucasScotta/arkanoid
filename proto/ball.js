@@ -78,7 +78,7 @@ const ballProto = {
 
 		return  b === naveRect.top
 			&&	l <=  naveRect.right
-			&&	r >	  naveRect.right - naveRect.width / 3
+			&&	r >	  naveRect.right - nave.size.w / 3
 	},
 	/**
 	 * retorna si la bola golpea la division derecha de la nave
@@ -93,7 +93,7 @@ const ballProto = {
 
 		return  b === naveRect.top
 			&&	r >=  naveRect.left
-			&&	l <   naveRect.left + naveRect.width / 3
+			&&	l <   naveRect.left + nave.size.w / 3
 	},
 	/**
 	 * retorna si la bola golpea la division del medio de la nave
@@ -107,8 +107,8 @@ const ballProto = {
 		const naveRect = $nave.getBoundingClientRect()
 
 		return  b === naveRect.top
-			&&	r <=  naveRect.right - naveRect.width / 3
-			&&	l >=  naveRect.left  + naveRect.width / 3
+			&&	r <=  naveRect.right - nave.size.w / 3
+			&&	l >=  naveRect.left  + nave.size.w / 3
 	},
 	/**
 	 * Cambia la direccion de la bola en Y contrariamente y en X hacia la derecha
@@ -170,7 +170,7 @@ const ballProto = {
 		&&  y <= cont.right - contBorde
 		&&	y >= cont.left + contBorde) {
 
-			if (balls[0].pos.x <= naveRect.left + naveRect.width / 2) {
+			if (balls[0].pos.x <= naveRect.left + nave.size.w / 2) {
 
 				ballDirX = -1
 				ballDirY = -1

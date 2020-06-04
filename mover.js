@@ -42,7 +42,7 @@ document.onkeydown = function tecla(event) {
 
 	if (event.code === "Space" && ballDirX === 0 && ballDirY === 0) {
 
-		if (balls[0].pos.x <= naveRect.left + naveRect.width / 2) {
+		if (balls[0].pos.x <= naveRect.left + nave.size.w / 2) {
 
 			ballDirX = -1
 			ballDirY = -1
@@ -58,7 +58,7 @@ document.onkeydown = function tecla(event) {
 
 		if (event.key === 'd' || event.key === 'D') {
 
-			if (navePoss >= cont.right - contBorde - naveRect.width) navePoss = cont.right - contBorde - naveRect.width
+			if (navePoss >= cont.right - contBorde - nave.size.w) navePoss = cont.right - contBorde - nave.size.w
 			else navePoss += 20
 
 			$nave.style.left = `${navePoss}px`

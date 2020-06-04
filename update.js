@@ -85,7 +85,7 @@ function perder(ball, $ball) {
 	lifes -= 1
 	if (lifes > 0) {
 
-		ball.pos.x = naveRect.left + naveRect.width / 2
+		ball.pos.x = naveRect.left + nave.size.w / 2
 		ball.pos.y = naveRect.top - ballRect.height - 1
 		console.log(`Te queda(n) ${lifes} vidas.`)
 	}
@@ -95,13 +95,13 @@ function perder(ball, $ball) {
 
 			clearBlocks()
 
-			$nave.style.left = containerRect.width / 2 - naveRect.width / 2 + 'px'
+			$nave.style.left = containerRect.width / 2 - nave.size.w / 2 + 'px'
 			$nave.style.top = containerRect.bottom - 40 + 'px'
 			lifes = 3
 			ballDirX = 0
 			ballDirY = 0
 			naveRect = $nave.getBoundingClientRect()
-			ball.pos.x = naveRect.left + naveRect.width / 2
+			ball.pos.x = naveRect.left + nave.size.w / 2
 			ball.pos.y = naveRect.top - ballRect.height - 1
 
 			level = 1
