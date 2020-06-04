@@ -134,8 +134,7 @@ const ballProto = {
 		ballDirY *= -1
 	},
 	/**
-	 * Esta funcion hace que la bola se mueva por el mapa sumandole la direccion a
-	 * la bola
+	 * Esta funcion hace que la bola se mueva por el mapa sumandole la direccion
 	 */
 	mover: function () {
 
@@ -158,6 +157,11 @@ const ballProto = {
 
 		ballDirX *= -1
 	},
+	/**
+	 * Funciona unicamente antes de comenzar el nivel, al empezar el juego, al
+	 * pasar de nivel, o al perder todas las vidas y reiniciar el juego del nivel 1.
+	 * Comienza el juego
+	 */
 	arrancar: function (x, y, cont, contBorde, naveRect) {
 
 		if (ballDirY === 0 && ballDirX === 0
