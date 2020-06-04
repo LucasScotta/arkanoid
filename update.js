@@ -136,11 +136,4 @@ function loop() {
 }
 
 let time = 5
-// let timer = 
 setInterval(loop, time)
-// function aumentarVelocidad() {
-
-// 	time -= 2
-// 	clearInterval(timer)
-// 	timer = setInterval(loop, time)
-// }
