@@ -19,17 +19,7 @@ document.onmousemove = function mover(event) {
 function moverNave(x, y) {
 
 	navePoss = parseInt($nave.style.left)
-	$bola = $balls[0]
-
-	if (x <= cont.right
-	&&	x >= cont.left
-	&&	y <= cont.bottom
-	&&	y >= cont.top
-	&&	lifes > 0
-	&&	level < 7) {
-
-		nave.mover(cont, contBorde, $bola, x, y, naveRect, $nave)
-	}
+	nave.mover(cont, contBorde, x, y, naveRect, $nave)
 }
 
 // 
