@@ -34,6 +34,6 @@ document.onkeydown = function tecla(event) {
 
 		if (event.key === 'p') {
 
-		pause = !pause
+		game.config.pause = !game.config.pause
 	}
 }

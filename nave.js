@@ -37,9 +37,9 @@ const nave = {
 		&&	x >= cont.left
 		&&	y <= cont.bottom
 		&&	y >= cont.top
-		&&	lifes > 0
-		&&	level < 7) {
-			if (ballDirX === 0 && ballDirY === 0) {
+		&&	game.config.lifes > 0
+		&&	game.config.level < 7) {
+			if (game.config.ballDirX === 0 && game.config.ballDirY === 0) {
 
 				if (x <= cont.left + contBorde + this.size.w / 2) {
 

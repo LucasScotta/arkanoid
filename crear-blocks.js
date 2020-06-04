@@ -29,7 +29,7 @@ function blocks(level) {
 	}
 }
 
-blocks(level)
+blocks(game.config.level)
 
 function clearBlocks() {
 

@@ -19,9 +19,6 @@ const $nave = document.getElementById('nave')
 $nave.style.width = `100px`
 $nave.style.height = `15px`
 let naveRect = $nave.getBoundingClientRect()
-let naveLeft = parseInt($nave.style.left)
-let naveWidth = parseInt($nave.style.width)
-let naveTop = parseInt($nave.style.top)
 
 const container = document.getElementById('container')
 container.style.border = `10px solid black`
@@ -50,17 +47,10 @@ const vel = {
   a: Math.PI * 1.5,
 }
 
-let dirX
-let dirY
-let ballDirX = 0
-let ballDirY = 0
 ///////////////////////////////////////////////////////////////////////////////
 // Config juego
 
 let pause = false
-let start = 0
-let lifes = 3
-let level = 6
 
 ///////////////////////////////////////////////////////////////////////////////
 

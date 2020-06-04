@@ -28,7 +28,7 @@ function updateBall(ball, $ball) {
 	}
 
 	if (ball.tocaBordeInferior(containerRect, contBorde)) {
-		return perder(ball, $ball)
+		return game.perder()
 	}
 
 // Bola golpeando las cajas:
@@ -76,64 +76,29 @@ function updateBall(ball, $ball) {
 	
 }
 
-function perder(ball, $ball) {
-
-	ballRect = $ball.getBoundingClientRect()
-	naveRect = $nave.getBoundingClientRect()
-	ballDirX = 0
-	ballDirY = 0
-	lifes -= 1
-	if (lifes > 0) {
-
-		ball.pos.x = naveRect.left + nave.size.w / 2
-		ball.pos.y = naveRect.top - ballRect.height - 1
-		console.log(`Te queda(n) ${lifes} vidas.`)
-	}
-
-	else {
-		if (confirm('Volver a empezar?')) {
-
-			clearBlocks()
-
-			$nave.style.left = containerRect.width / 2 - nave.size.w / 2 + 'px'
-			$nave.style.top = containerRect.bottom - 40 + 'px'
-			lifes = 3
-			ballDirX = 0
-			ballDirY = 0
-			naveRect = $nave.getBoundingClientRect()
-			ball.pos.x = naveRect.left + nave.size.w / 2
-			ball.pos.y = naveRect.top - ballRect.height - 1
-
-			level = 1
-			blocks(level)
-		}
-		else console.log('exit')
-	}
-}
-
 function ganar(ball, $ball) {
 
 	ballRect = $ball.getBoundingClientRect()
-	level += 1
+	game.config.level += 1
 
-	if (level <= 6) {
+	if (game.config.level <= 6) {
 
 	ball.pos.x = $nave.getBoundingClientRect().left + $nave.getBoundingClientRect().width / 2
 	ball.pos.y = $nave.getBoundingClientRect().top  - ballRect.height - 1
-	ballDirY = 0
-	ballDirX = 0
-	blocks(level)
-	console.log(`Pasaste al nivel: ${level}`)
+	game.config.ballDirY = 0
+	game.config.ballDirX = 0
+	blocks(game.config.level)
+	console.log(`Pasaste al nivel: ${game.config.level}`)
 	}
-	if (level === 7) {
-		level += 1
+	if (game.config.level === 7) {
+		game.config.level += 1
 		console.log(`Felicitaciones, terminaste un juego en desarrollo... Manco asqueroso`)
 	}
 }
 
 function loop() {
 
-	if (!pause) update()
+	if (!game.config.pause) update()
 }
 
 let time = 5

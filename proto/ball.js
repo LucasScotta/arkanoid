@@ -115,31 +115,31 @@ const ballProto = {
 	 */
 	rebotarDerecha: function () {
 
-		ballDirY *= -1
-		ballDirX  = 1
+		game.config.ballDirY *= -1
+		game.config.ballDirX  = 1
 	},
 	/**
 	 * Cambia la direccion de la bola en Y contrariamente y en X hacia la izquierda
 	 */
 	rebotarIzquierda: function () {
 
-		ballDirY *= -1
-		ballDirX  = -1
+		game.config.ballDirY *= -1
+		game.config.ballDirX  = -1
 	},
 	/**
 	 * Cambia la direccion de la bola en Y contrariamente
 	 */
 	rebotarMedio: function () {
 
-		ballDirY *= -1
+		game.config.ballDirY *= -1
 	},
 	/**
 	 * Esta funcion hace que la bola se mueva por el mapa sumandole la direccion
 	 */
 	mover: function () {
 
-		this.pos.x += ballDirX
-		this.pos.y += ballDirY
+		this.pos.x += game.config.ballDirX
+		this.pos.y += game.config.ballDirY
 		this.$el.style.left = `${this.pos.x}px`
 		this.$el.style.top = `${this.pos.y}px`
 	},
@@ -148,14 +148,14 @@ const ballProto = {
 	 */
 	rebotarVerticalmente: function () {
 
-		ballDirY *= -1
+		game.config.ballDirY *= -1
 	},
 	/**
 	 * Da vuelta la direccion de la bola en X
 	 */
 	rebotarHorizontalmente: function () {
 
-		ballDirX *= -1
+		game.config.ballDirX *= -1
 	},
 	/**
 	 * Funciona unicamente antes de comenzar el nivel, al empezar el juego, al
@@ -164,7 +164,7 @@ const ballProto = {
 	 */
 	arrancar: function (x, y, cont, contBorde, naveRect) {
 
-		if (ballDirY === 0 && ballDirX === 0
+		if (game.config.ballDirY === 0 && game.config.ballDirX === 0
 		&&	x <= cont.bottom - contBorde
 		&& 	x >= cont.top + contBorde
 		&&  y <= cont.right - contBorde
@@ -172,13 +172,13 @@ const ballProto = {
 
 			if (balls[0].pos.x <= naveRect.left + nave.size.w / 2) {
 
-				ballDirX = -1
-				ballDirY = -1
+				game.config.ballDirX = -1
+				game.config.ballDirY = -1
 			}
 			else {
 
-				ballDirX = 1
-				ballDirY = -1
+				game.config.ballDirX = 1
+				game.config.ballDirY = -1
 			}
 		}
 	},
