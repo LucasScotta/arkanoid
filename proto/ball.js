@@ -1,12 +1,3 @@
-'use non-strict';
-
-function hasUseStrict() {
-
-	'use strict';
-
-	return this === undefined
-}
-
 const ballProto = {
 	size : {
 			w: 15,
