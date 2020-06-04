@@ -7,7 +7,7 @@ const bloques = {
 	achichador: {tipo: 6, caracter: '①'}, 
 } 
 
-const powerUps: [
+const powerUps = [
 	bloques.normal,
 	bloques.multiplicador,
 	bloques.goma,
