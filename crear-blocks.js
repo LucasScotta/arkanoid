@@ -1,8 +1,8 @@
 function blocks(level) {
 
 	const divBlock = []
-	let contX = containerRect.left + 20
-	let contY = containerRect.top + 15
+	let mapX = game.pos.x + 20
+	let mapY = game.pos.y + 15
 	let divN = 2
 
 	for (let i = -1; i < level; i += 1) {
