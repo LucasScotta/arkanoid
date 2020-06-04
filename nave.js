@@ -30,7 +30,8 @@ const nave = {
 		return this.size.w = 100
 	},
 	/**
-	 * Mueve la nave al mover el mouse
+	 * Mueve la nave al mover el mouse y guarda las coordenadas de la misma en X/Y de este
+	 * mismo objeto
 	 */
 	mover: function (x, y) {
 
