@@ -36,41 +36,4 @@ document.onkeydown = function tecla(event) {
 
 		pause = !pause
 	}
-	return
-
-	navePoss = parseInt($nave.style.left)
-
-	if (event.code === "Space" && ballDirX === 0 && ballDirY === 0) {
-
-		if (balls[0].pos.x <= naveRect.left + nave.size.w / 2) {
-
-			ballDirX = -1
-			ballDirY = -1
-		}
-		else {
-
-			ballDirX = 1
-			ballDirY = -1
-		}
-	}
-
-	if (ballDirX != 0 && ballDirY != 0) {
-
-		if (event.key === 'd' || event.key === 'D') {
-
-			if (navePoss >= cont.right - contBorde - nave.size.w) navePoss = cont.right - contBorde - nave.size.w
-			else navePoss += 20
-
-			$nave.style.left = `${navePoss}px`
-		}
-
-		if (event.key === 'a' || event.key === 'A') {
-
-			if (navePoss <= cont.left + contBorde) navePoss = cont.left + contBorde
-			else navePoss -= 20
-
-		}
-		$nave.style.left = `${navePoss}px`
-	}
-
 }

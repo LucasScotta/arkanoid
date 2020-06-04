@@ -23,6 +23,13 @@ const nave = {
 		return this.size.w -= 50
 	},
 	/**
+	 * Reinicia los powerUps de la nave
+	 */
+	reiniciar: function () {
+
+		return this.size.w = 100
+	},
+	/**
 	 * Mueve la nave al mover el mouse
 	 */
 	mover: function (cont, contBorde, x, y) {
@@ -75,18 +82,11 @@ const nave = {
 		}
 	},
 	/**
-	 * Reinicia los powerUps de la nave
-	 */
-	reiniciar: function () {
-
-		return this.size.w = 100
-	},
-	/**
 	 * Pinta la nave al inicio del juego, despues de ganar y al perder una vida
 	 */
 	 pintarNaveInicio: function () {
 	 	
 	 	this.$el.style.left = `${this.pos.x}px`
 	 	this.$el.style.top = `${this.pos.y}px`
-	 }
+	 },
 }
