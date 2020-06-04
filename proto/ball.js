@@ -65,37 +65,37 @@ const ballProto = {
 
 		return b >= rect.bottom - borde
 	},
-	estaTocandoIzquierda: function (nave) {
+	estaTocandoIzquierda: function ($nave) {
 
 		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
-		const naveRect = nave.getBoundingClientRect()
+		const naveRect = $nave.getBoundingClientRect()
 
 		return b === naveRect.top
 		&&	l <=  naveRect.right
 		&&	r >	  naveRect.right - naveRect.width / 3
 	},
-	estaTocandoDerecha: function (nave) {
+	estaTocandoDerecha: function ($nave) {
 
 		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
-		const naveRect = nave.getBoundingClientRect()
+		const naveRect = $nave.getBoundingClientRect()
 
 		return b === naveRect.top
 		&&	r >=  naveRect.left
 		&&	l <   naveRect.left + naveRect.width / 3
 	},
-	estaTocandoMedio: function (nave) {
+	estaTocandoMedio: function ($nave) {
 
 		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
-		const naveRect = nave.getBoundingClientRect()
+		const naveRect = $nave.getBoundingClientRect()
 
 		return b === naveRect.top
 		&&	r <=  naveRect.right - naveRect.width / 3

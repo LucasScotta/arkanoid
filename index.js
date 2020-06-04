@@ -15,13 +15,13 @@ const balls = [
 	}),
 ]
 
-const nave = document.getElementById('nave')
-nave.style.width = `100px`
-nave.style.height = `15px`
-let naveRect = nave.getBoundingClientRect()
-let naveLeft = parseInt(nave.style.left)
-let naveWidth = parseInt(nave.style.width)
-let naveTop = parseInt(nave.style.top)
+const $nave = document.getElementById('nave')
+$nave.style.width = `100px`
+$nave.style.height = `15px`
+let naveRect = $nave.getBoundingClientRect()
+let naveLeft = parseInt($nave.style.left)
+let naveWidth = parseInt($nave.style.width)
+let naveTop = parseInt($nave.style.top)
 let naveAncho = naveRect.width
 
 const container = document.getElementById('container')
@@ -67,8 +67,8 @@ let level = 6
 
 const newBall = {
 	pos : {
-		x: nave.getBoundingClientRect().left + nave.getBoundingClientRect().width / 2,
-		y: nave.getBoundingClientRect().top,
+		x: $nave.getBoundingClientRect().left + $nave.getBoundingClientRect().width / 2,
+		y: $nave.getBoundingClientRect().top,
 	},
 	vel: {
 		r: 1,

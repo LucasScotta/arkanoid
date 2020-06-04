@@ -1,10 +1,10 @@
 /////////////
-nave.style.left = container.getBoundingClientRect().width / 2 - nave.getBoundingClientRect().width / 2 + 'px'
-nave.style.top = container.getBoundingClientRect().bottom - 40 + 'px'
-balls[0].pos.x = nave.getBoundingClientRect().left + nave.getBoundingClientRect().width / 2
-balls[0].pos.y = nave.getBoundingClientRect().top - $balls[0].getBoundingClientRect().height - 1
+$nave.style.left = container.getBoundingClientRect().width / 2 - $nave.getBoundingClientRect().width / 2 + 'px'
+$nave.style.top = container.getBoundingClientRect().bottom - 40 + 'px'
+balls[0].pos.x = $nave.getBoundingClientRect().left + $nave.getBoundingClientRect().width / 2
+balls[0].pos.y = $nave.getBoundingClientRect().top - $balls[0].getBoundingClientRect().height - 1
 const cont = container.getBoundingClientRect()
-let navePoss = parseInt(nave.style.left)
+let navePoss = parseInt($nave.style.left)
 
 document.onmousemove = function mover(event) {
 
@@ -18,7 +18,7 @@ document.onmousemove = function mover(event) {
 
 function moverNave(x, y) {
 
-	navePoss = parseInt(nave.style.left)
+	navePoss = parseInt($nave.style.left)
 	if (x <= cont.right
 	&&	x >= cont.left
 	&&	y <= cont.bottom
@@ -33,19 +33,19 @@ function moverNave(x, y) {
 				if(x <= cont.left + contBorde + $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = cont.left + contBorde
 				else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
 
-				nave.style.left = cont.left + contBorde + 'px'
+				$nave.style.left = cont.left + contBorde + 'px'
 			}
 			else if (x >= cont.right - contBorde - naveRect.width / 2) {
 
 				if (x >= cont.right - contBorde - $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = cont.right - contBorde - $balls[0].getBoundingClientRect().width
 				else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
 
-				nave.style.left = cont.right - contBorde - naveRect.width + 'px'
+				$nave.style.left = cont.right - contBorde - naveRect.width + 'px'
 			}
 			else {
 
 				balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
-				nave.style.left = x - naveRect.width / 2 + 'px'
+				$nave.style.left = x - naveRect.width / 2 + 'px'
 			}
 		}
 		else {
@@ -53,17 +53,17 @@ function moverNave(x, y) {
 			if (x >= cont.right -  contBorde - naveAncho / 2) {
 
 				x = cont.right - naveAncho - contBorde
-				nave.style.left = `${x}px`
+				$nave.style.left = `${x}px`
 			}
 			else if (x <= cont.left + naveAncho / 2 + contBorde) {
 
 				x = cont.left + contBorde
-				nave.style.left = `${x}px`
+				$nave.style.left = `${x}px`
 			}
 			else {
 
 				x -= naveAncho / 2
-				nave.style.left = `${x}px`
+				$nave.style.left = `${x}px`
 			}
 		}
 	}
@@ -103,7 +103,7 @@ document.onkeydown = function tecla(event) {
 	}
 	return
 
-	navePoss = parseInt(nave.style.left)
+	navePoss = parseInt($nave.style.left)
 
 	if (event.code === "Space" && ballDirX === 0 && ballDirY === 0) {
 
@@ -126,7 +126,7 @@ document.onkeydown = function tecla(event) {
 			if (navePoss >= cont.right - contBorde - naveRect.width) navePoss = cont.right - contBorde - naveRect.width
 			else navePoss += 20
 
-			nave.style.left = `${navePoss}px`
+			$nave.style.left = `${navePoss}px`
 		}
 
 		if (event.key === 'a' || event.key === 'A') {
@@ -135,7 +135,7 @@ document.onkeydown = function tecla(event) {
 			else navePoss -= 20
 
 		}
-		nave.style.left = `${navePoss}px`
+		$nave.style.left = `${navePoss}px`
 	}
 
 }

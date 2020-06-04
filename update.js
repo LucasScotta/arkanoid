@@ -47,21 +47,21 @@ function updateBall(ball, $ball) {
 		}
 	}
 
-//Rebotes de bola contra la nave:
+//Rebotes de bola contra la $nave:
 //1 => ----[--]
-	if (ball.estaTocandoIzquierda(nave)) {
+	if (ball.estaTocandoIzquierda($nave)) {
 
 		ball.rebotarDerecha()
 	}
 
 //2 => [--]----
-	if (ball.estaTocandoDerecha(nave)) {
+	if (ball.estaTocandoDerecha($nave)) {
 
 		ball.rebotarIzquierda()
 	}
 
 //3 --[--]--
-	if (ball.estaTocandoMedio(nave)) {
+	if (ball.estaTocandoMedio($nave)) {
 
 		ball.rebotarMedio()
 	}
@@ -79,7 +79,7 @@ function updateBall(ball, $ball) {
 function perder(ball, $ball) {
 
 	ballRect = $ball.getBoundingClientRect()
-	naveRect = nave.getBoundingClientRect()
+	naveRect = $nave.getBoundingClientRect()
 	ballDirX = 0
 	ballDirY = 0
 	lifes -= 1
@@ -95,12 +95,12 @@ function perder(ball, $ball) {
 
 			clearBlocks()
 
-			nave.style.left = containerRect.width / 2 - naveRect.width / 2 + 'px'
-			nave.style.top = containerRect.bottom - 40 + 'px'
+			$nave.style.left = containerRect.width / 2 - naveRect.width / 2 + 'px'
+			$nave.style.top = containerRect.bottom - 40 + 'px'
 			lifes = 3
 			ballDirX = 0
 			ballDirY = 0
-			naveRect = nave.getBoundingClientRect()
+			naveRect = $nave.getBoundingClientRect()
 			ball.pos.x = naveRect.left + naveRect.width / 2
 			ball.pos.y = naveRect.top - ballRect.height - 1
 
@@ -118,8 +118,8 @@ function ganar(ball, $ball) {
 
 	if (level <= 6) {
 
-	ball.pos.x = nave.getBoundingClientRect().left + nave.getBoundingClientRect().width / 2
-	ball.pos.y = nave.getBoundingClientRect().top  - ballRect.height - 1
+	ball.pos.x = $nave.getBoundingClientRect().left + $nave.getBoundingClientRect().width / 2
+	ball.pos.y = $nave.getBoundingClientRect().top  - ballRect.height - 1
 	ballDirY = 0
 	ballDirX = 0
 	blocks(level)
