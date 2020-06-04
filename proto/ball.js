@@ -167,6 +167,26 @@ const ballProto = {
 
 		ballDirX *= -1
 	},
+	arrancar: function (x, y, cont, contBorde, naveRect) {
+
+		if (ballDirY === 0 && ballDirX === 0
+		&&	x <= cont.bottom - contBorde
+		&& 	x >= cont.top + contBorde
+		&&  y <= cont.right - contBorde
+		&&	y >= cont.left + contBorde) {
+
+			if (balls[0].pos.x <= naveRect.left + naveRect.width / 2) {
+
+				ballDirX = -1
+				ballDirY = -1
+			}
+			else {
+
+				ballDirX = 1
+				ballDirY = -1
+			}
+		}
+	},
 }
 
 function initBall(ball) {

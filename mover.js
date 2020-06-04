@@ -28,24 +28,7 @@ document.onclick = function(event) {
 
 	const x = event.x
 	const y = event.y
-
-	if (ballDirY === 0 && ballDirX === 0
-	&&	x <= cont.bottom - contBorde
-	&& 	x >= cont.top + contBorde
-	&&  y <= cont.right - contBorde
-	&&	y >= cont.left + contBorde) {
-
-		if (balls[0].pos.x <= naveRect.left + naveRect.width / 2) {
-
-			ballDirX = -1
-			ballDirY = -1
-		}
-		else {
-
-			ballDirX = 1
-			ballDirY = -1
-		}
-	}
+	balls[0].arrancar(x, y, cont, contBorde, naveRect)
 }
 
 document.onkeydown = function tecla(event) {
