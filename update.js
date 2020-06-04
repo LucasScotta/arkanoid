@@ -47,13 +47,13 @@ function updateBall(ball, $ball) {
 
 //Rebotes de bola contra la $nave:
 //1 => ----[--]
-	if (ball.estaTocandoIzquierda($nave)) {
+	if (ball.estaTocandoDerecha($nave)) {
 
 		ball.rebotarDerecha()
 	}
 
 //2 => [--]----
-	if (ball.estaTocandoDerecha($nave)) {
+	if (ball.estaTocandoIzquierda($nave)) {
 
 		ball.rebotarIzquierda()
 	}
@@ -76,13 +76,12 @@ function updateBall(ball, $ball) {
 
 function ganar(ball, $ball) {
 
-	ballRect = $ball.getBoundingClientRect()
 	game.config.level += 1
 
 	if (game.config.level <= 6) {
 
-	ball.pos.x = $nave.getBoundingClientRect().left + $nave.getBoundingClientRect().width / 2
-	ball.pos.y = $nave.getBoundingClientRect().top  - ballRect.height - 1
+	ball.pos.x = nave.pos.x + nave.size.w / 2
+	ball.pos.y = nave.pos.y - ballRect.height - 1
 	game.config.ballDirY = 0
 	game.config.ballDirX = 0
 	blocks(game.config.level)

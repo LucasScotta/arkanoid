@@ -75,9 +75,10 @@ const ballProto = {
 	/**
 	 * retorna si la bola golpea la division izquierda de la nave
 	 */
-	estaTocandoIzquierda: function ($nave) {
+	estaTocandoDerecha: function ($nave) {
 
-
+		const naveWidth = nave.size.w
+		const naveRight = nave.pos.x + naveWidth
 		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
@@ -91,7 +92,7 @@ const ballProto = {
 	/**
 	 * retorna si la bola golpea la division derecha de la nave
 	 */
-	estaTocandoDerecha: function ($nave) {
+	estaTocandoIzquierda: function ($nave) {
 
 		const t = this.pos.y
 		const b = this.pos.y + this.size.h
