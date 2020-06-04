@@ -3,7 +3,7 @@
 const $balls = document.getElementsByClassName('ball')
 const balls = [
 	initBall({
-		$el : $balls[0],
+		$el: $balls[0],
 		pos: {
 			x: 0,
 			y: 0,
