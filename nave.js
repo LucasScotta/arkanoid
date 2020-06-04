@@ -1,4 +1,4 @@
-const nave = {
+const naves = {
 	size: {
 		w: 100,
 		h: 15,
@@ -10,5 +10,12 @@ const nave = {
 	achicar: function () {
 
 		return this.size.w -= 50
-	}
+	},
+	mover: function () {
+
+	},
+	reiniciar: function () {
+
+		return this.size.w = 100
+	},
 }
