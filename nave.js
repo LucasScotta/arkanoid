@@ -1,4 +1,4 @@
-const naves = {
+const nave = {
 	size: {
 		w: 100,
 		h: 15,
