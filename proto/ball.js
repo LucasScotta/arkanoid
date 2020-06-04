@@ -83,41 +83,43 @@ const ballProto = {
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
-		const naveRect = $nave.getBoundingClientRect()
 
 		return  b === nave.pos.y
-			&&	l <=  naveRect.right
-			&&	r >	  naveRect.right - nave.size.w / 3
+			&&	l <=  naveRight
+			&&	r >	  naveRight - nave.size.w / 3
 	},
 	/**
 	 * retorna si la bola golpea la division derecha de la nave
 	 */
 	estaTocandoIzquierda: function ($nave) {
 
+		const naveLeft = nave.pos.x
+		const naveWidth = nave.size.w
 		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
-		const naveRect = $nave.getBoundingClientRect()
 
 		return  b === nave.pos.y
-			&&	r >=  naveRect.left
-			&&	l <   naveRect.left + nave.size.w / 3
+			&&	r >=  naveLeft
+			&&	l <   naveLeft + naveWidth / 3
 	},
 	/**
 	 * retorna si la bola golpea la division del medio de la nave
 	 */
 	estaTocandoMedio: function ($nave) {
 
+		const naveRight = nave.pos.x + nave.size.w
+		const naveLeft  = nave.pos.x
+		const naveWidth = nave.size.w
 		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
-		const naveRect = $nave.getBoundingClientRect()
 
 		return  b === nave.pos.y
-			&&	r <=  naveRect.right - nave.size.w / 3
-			&&	l >=  naveRect.left  + nave.size.w / 3
+			&&	r <=  naveRight - naveWidth / 3
+			&&	l >=  naveLeft  + naveWidth / 3
 	},
 	/**
 	 * Cambia la direccion de la bola en Y contrariamente y en X hacia la derecha
@@ -178,6 +180,7 @@ const ballProto = {
 		const mapBottom = game.pos.y + game.size.h
 		const mapLeft = game.pos.x
 		const naveWidth = nave.size.w
+		const naveLeft = nave.pos.x
 
 		if (game.config.ballDirY === 0 && game.config.ballDirX === 0
 		&&	x <= mapRight - mapBorder
@@ -185,7 +188,7 @@ const ballProto = {
 		&&  y <= mapBottom - mapBorder
 		&&	y >= mapTop + mapBorder) {
 
-			if (balls[0].pos.x <= naveRect.left + naveWidth / 2) {
+			if (balls[0].pos.x <= naveLeft + naveWidth / 2) {
 
 				game.config.ballDirX = -1
 				game.config.ballDirY = -1

@@ -76,16 +76,19 @@ const nave = {
 				if (x >= mapRight -  mapBorder - this.size.w / 2) {
 
 					x = mapRight - this.size.w - mapBorder
+					this.pos.x = x
 					this.$el.style.left = `${x}px`
 				}
 				else if (x <= mapLeft + this.size.w / 2 + mapBorder) {
 
 					x = mapLeft + mapBorder
+					this.pos.x = x
 					this.$el.style.left = `${x}px`
 				}
 				else {
 
 					x -= this.size.w / 2
+					this.pos.x = x
 					this.$el.style.left = `${x}px`
 				}
 			}

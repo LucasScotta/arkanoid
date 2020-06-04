@@ -18,7 +18,6 @@ const balls = [
 const $nave = document.getElementById('nave')
 $nave.style.width = `100px`
 $nave.style.height = `15px`
-let naveRect = $nave.getBoundingClientRect()
 const naveWidth = parseInt($nave.style.width)
 const container = document.getElementById('container')
 const mapBorder = game.size.b
