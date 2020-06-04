@@ -17,13 +17,21 @@ const powerUps = [
 ]
 
 const boxProto = {
-	
+	size: {
+		w: 60,
+		h: 20,
+	},
 }
 
 function initBox(box) {
 
 	box.__proto__ = boxProto
 	return box
+}
+
+function borrarBox(box) {
+
+	return box.remove()
 }
 
 function randomPowerUp () {

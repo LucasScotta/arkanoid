@@ -37,13 +37,13 @@ function updateBall(ball, $ball) {
 		if (ball.estaTocandoDeArribaYAbajo(box)) {
 // Si esta tocando de arriba o abajo rebota verticalmente
 			ball.rebotarVerticalmente()
-			return box.remove()
+			return borrarBox(box)
 		}
 
 		if (ball.estaTocandoDeIzquierdaYDerecha(box)) {
 
 			ball.rebotarHorizontalmente()
-			return box.remove()
+			return borrarBox(box)
 		}
 	}
 
