@@ -19,6 +19,8 @@ document.onmousemove = function mover(event) {
 function moverNave(x, y) {
 
 	navePoss = parseInt($nave.style.left)
+	$bola = $balls[0]
+
 	if (x <= cont.right
 	&&	x >= cont.left
 	&&	y <= cont.bottom
@@ -26,46 +28,7 @@ function moverNave(x, y) {
 	&&	lifes > 0
 	&&	level < 7) {
 
-		if (ballDirX === 0 && ballDirY === 0) {
-
-			if (x <= cont.left + contBorde + naveRect.width / 2) {
-
-				if(x <= cont.left + contBorde + $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = cont.left + contBorde
-				else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
-
-				$nave.style.left = cont.left + contBorde + 'px'
-			}
-			else if (x >= cont.right - contBorde - naveRect.width / 2) {
-
-				if (x >= cont.right - contBorde - $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = cont.right - contBorde - $balls[0].getBoundingClientRect().width
-				else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
-
-				$nave.style.left = cont.right - contBorde - naveRect.width + 'px'
-			}
-			else {
-
-				balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
-				$nave.style.left = x - naveRect.width / 2 + 'px'
-			}
-		}
-		else {
-
-			if (x >= cont.right -  contBorde - naveAncho / 2) {
-
-				x = cont.right - naveAncho - contBorde
-				$nave.style.left = `${x}px`
-			}
-			else if (x <= cont.left + naveAncho / 2 + contBorde) {
-
-				x = cont.left + contBorde
-				$nave.style.left = `${x}px`
-			}
-			else {
-
-				x -= naveAncho / 2
-				$nave.style.left = `${x}px`
-			}
-		}
+		nave.mover(cont, contBorde, $bola, x, y, naveRect, $nave)
 	}
 }
 
