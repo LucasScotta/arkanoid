@@ -53,6 +53,7 @@ const nave = {
 					if(x <= mapLeft + mapBorder + $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = mapLeft + mapBorder
 					else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
 
+					this.pos.x = mapLeft + mapBorder
 					this.$el.style.left = mapLeft + mapBorder + 'px'
 				}
 				else if (x >= mapRight - mapBorder - this.size.w / 2) {
@@ -60,11 +61,13 @@ const nave = {
 					if (x >= mapRight - mapBorder - $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = mapRight - mapBorder - $balls[0].getBoundingClientRect().width
 					else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
 
+					this.pos.x = mapRight - mapBorder - this.size.w
 					this.$el.style.left = mapRight - mapBorder - this.size.w + 'px'
 				}
 				else {
 
 					balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
+					this.pos.x = x - this.size.w / 2
 					this.$el.style.left = x - this.size.w / 2 + 'px'
 				}
 			}

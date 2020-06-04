@@ -1,5 +1,3 @@
-console.log('inicio update')
-
 function update() {
 
 	for (let i = 0; i < balls.length; i += 1) {

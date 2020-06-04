@@ -46,21 +46,3 @@ const vel = {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// Config juego
-
-let pause = false
-
-///////////////////////////////////////////////////////////////////////////////
-
-const newBall = {
-	pos : {
-		x: $nave.getBoundingClientRect().left + $nave.getBoundingClientRect().width / 2,
-		y: $nave.getBoundingClientRect().top,
-	},
-	vel: {
-		r: 1,
-		a: Math.PI * 1.6,
-	},
-}
-
-console.log('fin index')

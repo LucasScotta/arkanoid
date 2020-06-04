@@ -3,6 +3,7 @@ function blocks(level) {
 	const divBlock = []
 	let mapX = game.pos.x + 20
 	let mapY = game.pos.y + 15
+	widthMap = game.size.w
 	let divN = 2
 
 	for (let i = -1; i < level; i += 1) {
@@ -14,7 +15,7 @@ function blocks(level) {
 			divBlock[i][j] = document.createElement('div')
 			container.appendChild(divBlock[i][j])
 
-			divBlock[i][j].right = game.size.w
+			divBlock[i][j].right = widthMap
 			divBlock[i][j].classList.add('box')
 			container.children[divN].style.left = mapX + 'px'
 			container.children[divN].style.top = mapY + 'px'
@@ -23,7 +24,7 @@ function blocks(level) {
 
 			if (j === 6) {
 				mapY += 55
-				mapX -= game.size.w
+				mapX -= widthMap
 			}
 		}
 	}
