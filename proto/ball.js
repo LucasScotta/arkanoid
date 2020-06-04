@@ -12,6 +12,9 @@ const ballProto = {
 			w: 15,
 			h: 15,
 		},
+	/**
+	 * retorna si la bola golpea de arriba o abajo en una caja
+	 */
 	estaTocandoDeArribaYAbajo: function ($box) {
 
 		const l = this.pos.x
@@ -27,7 +30,9 @@ const ballProto = {
 		&&	r >	  boxRect.left
 		&&	l <	  boxRect.right
 	},
-	
+	/**
+	 * retorna si la bola golpea de costado en una caja
+	 */
 	estaTocandoDeIzquierdaYDerecha: function ($box) {
 
 		const t = this.pos.y
@@ -44,9 +49,7 @@ const ballProto = {
 		&&	b >=  boxRect.top
 	},
 	/**
-	 * retorna si la bola golpea el borde del mapa
-	 *
-	 * @param {} rect 
+	 * retorna si la bola golpea algun borde de costado del mapa
 	 */
 	tocaBordeCostados: function (rect, borde) {
 		const r = this.pos.x + this.size.w
@@ -55,16 +58,25 @@ const ballProto = {
 		return r >= rect.right - borde
 		||	l <= rect.left + borde
 	},
+	/**
+	 * retorna si la bola golpea de el borde superior del mapa
+	 */
 	tocaBordeSuperior: function (rect, borde) {
 		const t = this.pos.y
 
 		return t <= rect.top + borde
 	},
+	/**
+	 * retorna si la bola golpea en el borde inferior del mapa
+	 */
 	tocaBordeInferior: function (rect, borde) {
 		const b = this.pos.y + this.size.h
 
 		return b >= rect.bottom - borde
 	},
+	/**
+	 * retorna si la bola golpea la division izquierda de la nave
+	 */
 	estaTocandoIzquierda: function ($nave) {
 
 		const t = this.pos.y
@@ -77,6 +89,9 @@ const ballProto = {
 		&&	l <=  naveRect.right
 		&&	r >	  naveRect.right - naveRect.width / 3
 	},
+	/**
+	 * retorna si la bola golpea la division derecha de la nave
+	 */
 	estaTocandoDerecha: function ($nave) {
 
 		const t = this.pos.y
@@ -89,6 +104,9 @@ const ballProto = {
 		&&	r >=  naveRect.left
 		&&	l <   naveRect.left + naveRect.width / 3
 	},
+	/**
+	 * retorna si la bola golpea la division del medio de la nave
+	 */
 	estaTocandoMedio: function ($nave) {
 
 		const t = this.pos.y
@@ -101,20 +119,33 @@ const ballProto = {
 		&&	r <=  naveRect.right - naveRect.width / 3
 		&&	l >=  naveRect.left  + naveRect.width / 3
 	},
+	/**
+	 * Cambia la direccion de la bola en Y contrariamente y en X hacia la derecha
+	 */
 	rebotarDerecha: function () {
 
 		ballDirY *= -1
 		ballDirX  = 1
 	},
+	/**
+	 * Cambia la direccion de la bola en Y contrariamente y en X hacia la izquierda
+	 */
 	rebotarIzquierda: function () {
 
 		ballDirY *= -1
 		ballDirX  = -1
 	},
+	/**
+	 * Cambia la direccion de la bola en Y contrariamente
+	 */
 	rebotarMedio: function () {
 
 		ballDirY *= -1
 	},
+	/**
+	 * Esta funcion hace que la bola se mueva por el mapa sumandole la direccion a
+	 * la bola
+	 */
 	mover: function () {
 
 		this.pos.x += ballDirX
@@ -122,10 +153,16 @@ const ballProto = {
 		this.$el.style.left = `${this.pos.x}px`
 		this.$el.style.top = `${this.pos.y}px`
 	},
+	/**
+	 * Da vuelta la direccion de la bola en Y
+	 */
 	rebotarVerticalmente: function () {
 
 		ballDirY *= -1
 	},
+	/**
+	 * Da vuelta la direccion de la bola en X
+	 */
 	rebotarHorizontalmente: function () {
 
 		ballDirX *= -1
