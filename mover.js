@@ -1,8 +1,6 @@
 /////////////
 nave.pintarNaveInicio()
-balls[0].pos.x = nave.pos.x + nave.size.w / 2
-balls[0].pos.y = nave.pos.y - nave.size.h - 1
-
+pintarBolaInicio()
 document.onmousemove = function mover(event) {
 
 	event.preventDefault()
@@ -33,4 +31,15 @@ document.onkeydown = function tecla(event) {
 
 		game.config.pause = !game.config.pause
 	}
+}
+
+function pintarBolaInicio() {
+
+	const ball = balls[0]
+	const $ball = $balls[0]
+	ball.pos.x = nave.pos.x + nave.size.w / 2
+	ball.pos.y = nave.pos.y - ball.size.h - 1
+
+	$ball.style.left = `${ball.pos.x}px`
+	$ball.style.top  = `${ball.pos.y}px`
 }
