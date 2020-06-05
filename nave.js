@@ -36,62 +36,36 @@ const nave = {
 	mover: function (x, y) {
 
 		const mapTop = game.pos.y
+		const mapBorder = game.size.b
 		const mapRight = game.pos.x + game.size.w
 		const mapBottom = game.pos.y + game.size.h
 		const mapLeft = game.pos.x
-		const mapBorder = game.size.b
+		const ballWidth = balls[0].size.w
 
-		if (x <= mapRight
-		&&	x >= mapLeft
-		&&	y <= mapBottom
-		&&	y >= mapTop
+		if (x <= mapRight  - mapBorder
+		&&	x >= mapLeft   + mapBorder
+		&&	y <= mapBottom - mapBorder
+		&&	y >= mapTop    + mapBorder
 		&&	game.config.lifes > 0
 		&&	game.config.level < 7) {
-			if (game.config.ballDirX === 0 && game.config.ballDirY === 0) {
 
-				if (x <= mapLeft + mapBorder + this.size.w / 2) {
+			if (x >= mapRight -  mapBorder - this.size.w / 2) {
 
-					if(x <= mapLeft + mapBorder + $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = mapLeft + mapBorder
-					else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
+				x = mapRight - this.size.w - mapBorder
+				this.pos.x = x
+				this.$el.style.left = `${x}px`
+			}
+			else if (x <= mapLeft + this.size.w / 2 + mapBorder) {
 
-					this.pos.x = mapLeft + mapBorder
-					this.$el.style.left = mapLeft + mapBorder + 'px'
-				}
-				else if (x >= mapRight - mapBorder - this.size.w / 2) {
-
-					if (x >= mapRight - mapBorder - $balls[0].getBoundingClientRect().width / 2) balls[0].pos.x = mapRight - mapBorder - $balls[0].getBoundingClientRect().width
-					else balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
-
-					this.pos.x = mapRight - mapBorder - this.size.w
-					this.$el.style.left = mapRight - mapBorder - this.size.w + 'px'
-				}
-				else {
-
-					balls[0].pos.x = x - $balls[0].getBoundingClientRect().width / 2
-					this.pos.x = x - this.size.w / 2
-					this.$el.style.left = x - this.size.w / 2 + 'px'
-				}
+				x = mapLeft + mapBorder
+				this.pos.x = x
+				this.$el.style.left = `${x}px`
 			}
 			else {
 
-				if (x >= mapRight -  mapBorder - this.size.w / 2) {
-
-					x = mapRight - this.size.w - mapBorder
-					this.pos.x = x
-					this.$el.style.left = `${x}px`
-				}
-				else if (x <= mapLeft + this.size.w / 2 + mapBorder) {
-
-					x = mapLeft + mapBorder
-					this.pos.x = x
-					this.$el.style.left = `${x}px`
-				}
-				else {
-
-					x -= this.size.w / 2
-					this.pos.x = x
-					this.$el.style.left = `${x}px`
-				}
+				x -= this.size.w / 2
+				this.pos.x = x
+				this.$el.style.left = `${x}px`
 			}
 		}
 	},
@@ -99,7 +73,9 @@ const nave = {
 	 * Pinta la nave al inicio del juego, despues de ganar y al perder una vida
 	 */
 	 pintarNaveInicio: function () {
-	 	
+
+	 	mouse.x = game.pos.x + game.size.b + game.size.w / 2
+	 	mouse.y = this.pos.y - 1
 	 	this.$el.style.left = `${this.pos.x}px`
 	 	this.$el.style.top = `${this.pos.y}px`
 	 },
