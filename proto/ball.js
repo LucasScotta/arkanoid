@@ -149,10 +149,47 @@ const ballProto = {
 	 */
 	mover: function () {
 
-		this.pos.x += game.config.ballDirX
-		this.pos.y += game.config.ballDirY
-		this.$el.style.left = `${this.pos.x}px`
-		this.$el.style.top = `${this.pos.y}px`
+		let x = mouse.x
+		let y = mouse.y
+		const mapWidth  = game.size.w
+		const mapHeight = game.size.h
+		const mapBorder = game.size.b
+		const mapLeft   = game.pos.x
+		const mapTop    = game.pos.y
+		const mapRight  = game.pos.x + mapWidth
+		const mapBottom = game.pos.y + mapHeight
+		const ballWidth = this.size.w
+
+		if (game.config.ballDirX === 0 && game.config.ballDirY === 0
+		&&  mouse.x >= mapLeft  + mapBorder
+		&&  mouse.x <= mapRight - mapBorder
+		&&  mouse.y >= mapTop   + mapBorder
+		&&  mouse.y <= mapBottom -mapBorder) {
+			if (x <= mapLeft + mapBorder) {
+
+				x = mapLeft + mapBorder
+				this.pos.x = x
+				this.$el.style.left = `${this.pos.x}px`
+			}
+			else if (x >= mapRight - mapBorder - ballWidth) {
+
+				x = mapRight - mapBorder - ballWidth
+				this.pos.x = x
+				this.$el.style.left = `${this.pos.x}px`
+			}
+			else {
+
+				this.pos.x = x
+				this.$el.style.left = `${this.pos.x}px`
+			}
+		}
+		else {
+
+			this.pos.x += game.config.ballDirX
+			this.pos.y += game.config.ballDirY
+			this.$el.style.left = `${this.pos.x}px`
+			this.$el.style.top = `${this.pos.y}px`
+		}
 	},
 	/**
 	 * Da vuelta la direccion de la bola en Y
@@ -188,15 +225,15 @@ const ballProto = {
 		&&  y <= mapBottom - mapBorder
 		&&	y >= mapTop + mapBorder) {
 
-			if (balls[0].pos.x <= naveLeft + naveWidth / 2) {
+			if (this.pos.x <= mapRight + mapBorder + naveWidth / 2) {
 
-				game.config.ballDirX = -1
 				game.config.ballDirY = -1
+				game.config.ballDirX = 1
 			}
 			else {
 
-				game.config.ballDirX = 1
 				game.config.ballDirY = -1
+				game.config.ballDirX = -1
 			}
 		}
 	},
