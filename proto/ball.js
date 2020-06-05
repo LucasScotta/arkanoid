@@ -161,10 +161,10 @@ const ballProto = {
 		const ballWidth = this.size.w
 
 		if (game.config.ballDirX === 0 && game.config.ballDirY === 0
-		&&  mouse.x >= mapLeft  + mapBorder
-		&&  mouse.x <= mapRight - mapBorder
-		&&  mouse.y >= mapTop   + mapBorder
-		&&  mouse.y <= mapBottom -mapBorder) {
+		&&  mouse.x >= mapLeft   + mapBorder
+		&&  mouse.x <= mapRight  - mapBorder
+		&&  mouse.y >= mapTop    + mapBorder
+		&&  mouse.y <= mapBottom - mapBorder) {
 			if (x <= mapLeft + mapBorder) {
 
 				x = mapLeft + mapBorder
@@ -212,12 +212,13 @@ const ballProto = {
 	 */
 	arrancar: function (x, y) {
 
-		const mapTop = game.pos.y
-		const mapRight = game.pos.x + game.size.w
+		const mapTop    = game.pos.y
+		const mapRight  = game.pos.x + game.size.w
 		const mapBottom = game.pos.y + game.size.h
-		const mapLeft = game.pos.x
+		const mapLeft   = game.pos.x
+		const mapBorder = game.size.b
 		const naveWidth = nave.size.w
-		const naveLeft = nave.pos.x
+		const naveLeft  = nave.pos.x
 
 		if (game.config.ballDirY === 0 && game.config.ballDirX === 0
 		&&	x <= mapRight - mapBorder
@@ -225,15 +226,15 @@ const ballProto = {
 		&&  y <= mapBottom - mapBorder
 		&&	y >= mapTop + mapBorder) {
 
-			if (this.pos.x <= mapRight + mapBorder + naveWidth / 2) {
+			if (this.pos.x <= mapLeft + mapBorder + naveWidth / 2) {
 
+				game.config.ballDirX = -1
 				game.config.ballDirY = -1
-				game.config.ballDirX = 1
 			}
 			else {
 
+				game.config.ballDirX =  1
 				game.config.ballDirY = -1
-				game.config.ballDirX = -1
 			}
 		}
 	},

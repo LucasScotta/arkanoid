@@ -45,9 +45,7 @@ const nave = {
 		if (x <= mapRight  - mapBorder
 		&&	x >= mapLeft   + mapBorder
 		&&	y <= mapBottom - mapBorder
-		&&	y >= mapTop    + mapBorder
-		&&	game.config.lifes > 0
-		&&	game.config.level < 7) {
+		&&	y >= mapTop    + mapBorder) {
 
 			if (x >= mapRight -  mapBorder - this.size.w / 2) {
 
@@ -80,3 +78,5 @@ const nave = {
 	 	this.$el.style.top = `${this.pos.y}px`
 	 },
 }
+
+const naveInicial = parseInt(nave.pos.x)

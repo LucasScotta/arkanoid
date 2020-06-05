@@ -67,31 +67,12 @@ function updateBall(ball, $ball) {
 
 	if (boxes.length === 0) {
 
-		return ganar(ball, $ball)
+		return game.ganar(ball, $ball)
 	}
 
 //mover la bola
 	ball.mover($ball, ball)
 	
-}
-
-function ganar(ball, $ball) {
-
-	game.config.level += 1
-
-	if (game.config.level <= 6) {
-
-	ball.pos.x = nave.pos.x + nave.size.w / 2
-	ball.pos.y = nave.pos.y - ballRect.height - 1
-	game.config.ballDirY = 0
-	game.config.ballDirX = 0
-	blocks(game.config.level)
-	console.log(`Pasaste al nivel: ${game.config.level}`)
-	}
-	if (game.config.level === 7) {
-		game.config.level += 1
-		console.log(`Felicitaciones, terminaste un juego en desarrollo... Manco asqueroso`)
-	}
 }
 
 function loop() {

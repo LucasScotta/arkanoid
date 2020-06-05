@@ -20,41 +20,57 @@ const game = {
 	 */
 	perder: function (ball, $ball) {
 
-
-		const naveLeft = nave.pos.x
-		const naveY = nave.pos.y
-		const naveWidth = nave.size
+		const naveLeft   = nave.pos.x
+		const naveY 	 = nave.pos.y
+		const naveWidth  = nave.size
+		const mapaX 	 = this.pos.x
+		const mapaY 	 = this.pos.y
+		const mapaWidth = this.size.w
+		const mapaHeight = this.size.h
+		const mapaBorder = this.size.b
 		ballRect = $ball.getBoundingClientRect()
 		this.config.ballDirX = 0
 		this.config.ballDirY = 0
 		this.config.lifes -= 1
+
 		if (this.config.lifes > 0) {
 
-			ball.pos.x = naveLeft + nave.size.w / 2
-			ball.pos.y = naveY - ball.size.w - 1
-			console.log(`Te queda(n) ${this.config.lifes} vidas.`)
+
+			ball.pos.x = ballInicial
+			ball.pos.y = nave.pos.y - ball.size.w - 1
+			nave.$el.style.left = `${nave.pos.x}px`
+			ball.$el.style.left = `${ball.pos.x}px`
+			ball.$el.style.top  = `${ball.pos.y}px`
+			console.log(`Perdiste una vida, quedan ${game.config.lifes}`)
 		}
-
 		else {
-			if (confirm('Volver a empezar?')) {
+			if (confirm('Reiniciar?')) {
 
-				clearBlocks()
-
-				nave.pos.x = this.size.w / 2 - nave.size.w / 2
-				nave.pos.y = this.size.h - 40
-				$nave.style.left = this.size.w / 2 - nave.size.w / 2 + 'px'
-				$nave.style.top = this.size.h - 40 + 'px'
-				this.config.lifes = 3
-				this.config.ballDirX = 0
-				this.config.ballDirY = 0
-				ball.pos.x = naveLeft + nave.size.w / 2
-				ball.pos.y = nave.pos.y - ballRect.height - 1
-				balls[0].pos.x = nave.pos.x + nave.size.w / 2
-				balls[0].pos.y = nave.pos.y - nave.size.h - 1
-				this.config.level = 1
-				blocks(this.config.level)
+				nave.pos.x = naveInicial
+				ball.pos.x = ballInicial
+				ball.pos.y = nave.pos.y - ball.size.w - 1
+				ball.$el.style.left = `${ball.pos.x}px`
+				ball.$el.style.top  = `${ball.pos.y}px`
 			}
-			else console.log('exit')
+		}
+	},
+	ganar: function (ball, $ball) {
+
+		this.config.level += 1
+
+		if (this.config.level <= 6) {
+
+			ball.pos.x = nave.pos.x + nave.size.w / 2
+			ball.pos.y = nave.pos.y - ball.size.w - 1
+			this.config.ballDirY = 0
+			this.config.ballDirX = 0
+			blocks(this.config.level)
+			console.log(`Pasaste al nivel: ${this.config.level}`)
+		}
+		if (this.config.level === 7) {
+			this.config.level += 1
+			console.log(`Felicitaciones, terminaste un juego en desarrollo... Manco asqueroso`)
+			return this.config.pause = true
 		}
 	}
 }

@@ -1,6 +1,7 @@
 /////////////
 nave.pintarNaveInicio()
 pintarBolaInicio()
+const ballInicial = parseInt(balls[0].pos.x)
 document.onmousemove = function mover(event) {
 
 	event.preventDefault()
