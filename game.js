@@ -49,6 +49,9 @@ const game = {
 
 				ball.pos.x = ballInicial
 				ball.pos.y = nave.pos.y - ball.size.w - 1
+				nave.pos.x = naveInicial
+				nave.$el.style.left = `${nave.pos.x}px`
+				nave.$el.style.top  = `${nave.pos.y}px`
 				ball.$el.style.left = `${ball.pos.x}px`
 				ball.$el.style.top  = `${ball.pos.y}px`
 			}
