@@ -45,7 +45,8 @@ const nave = {
 		if (x <= mapRight  - mapBorder
 		&&	x >= mapLeft   + mapBorder
 		&&	y <= mapBottom - mapBorder
-		&&	y >= mapTop    + mapBorder) {
+		&&	y >= mapTop    + mapBorder
+		&& game.config.level < 7) {
 
 			if (x >= mapRight -  mapBorder - this.size.w / 2) {
 
