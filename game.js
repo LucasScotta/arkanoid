@@ -12,7 +12,7 @@ const game = {
 		ballDirX: 0,
 		ballDirY: 0,
 		lifes: 3,
-		level: 5,
+		level: 1,
 		pause: false,
 	},
 	/**

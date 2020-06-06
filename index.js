@@ -21,7 +21,6 @@ $nave.style.height = `15px`
 const naveWidth = parseInt($nave.style.width)
 const container = document.getElementById('container')
 const mapBorder = game.size.b
-
 const boxes = document.getElementsByClassName('box')
 
 ///////////////////////////////////////////////////////////////////////////////
