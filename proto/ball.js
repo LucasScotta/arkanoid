@@ -6,38 +6,44 @@ const ballProto = {
 	/**
 	 * retorna si la bola golpea de arriba o abajo en una caja
 	 */
-	estaTocandoDeArribaYAbajo: function ($box) {
+	estaTocandoDeArribaYAbajo: function (box) {
 
 		const l = this.pos.x
 		const r = this.pos.x + this.size.w
 		const b = this.pos.y + this.size.h
 		const t = this.pos.y
-		const boxRect  = $box.getBoundingClientRect()
+		const bL = box.pos.x
+		const bR = box.pos.x + box.size.w
+		const bB = box.pos.y + box.size.h
+		const bT = box.pos.y
 
-		return  t === boxRect.bottom
-			&&	r >	  boxRect.left
-			&&	l <	  boxRect.right
-			||	b === boxRect.top
-			&&	r >	  boxRect.left
-			&&	l <	  boxRect.right
+		return  t === bB
+			&&	r >=  bL
+			&&	l <=  bR
+			||	b === bT
+			&&	r >=  bL
+			&&	l <=  bR
 	},
 	/**
 	 * retorna si la bola golpea de costado en una caja
 	 */
-	estaTocandoDeIzquierdaYDerecha: function ($box) {
+	estaTocandoDeIzquierdaYDerecha: function (box) {
 
 		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
-		const boxRect = $box.getBoundingClientRect()
+		const bL = box.pos.x
+		const bR = box.pos.x + box.size.w
+		const bB = box.pos.y + box.size.h
+		const bT = box.pos.y
 
-		return  r === boxRect.left
-			&&	t <=  boxRect.bottom
-			&&	b >=  boxRect.top
-			||	l === boxRect.right
-			&&	t <=  boxRect.bottom
-			&&	b >=  boxRect.top
+		return  r === bL
+			&&	t <=  bB
+			&&	b >=  bT
+			||	l === bR
+			&&	t <=  bB
+			&&	b >=  bT
 	},
 	/**
 	 * retorna si la bola golpea algun borde de costado del mapa

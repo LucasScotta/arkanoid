@@ -14,9 +14,9 @@ function rotarAntiHorario() {
 
 function rotar(angulo) {
 
-	for (let i = 0; i < boxes.length; i += 1) {
+	for (let i = 0; i < $boxes.length; i += 1) {
 
-		boxes[i].style.transform = `rotate(${angulo}deg)`
+		$boxes[i].style.transform = `rotate(${angulo}deg)`
 	}
 }
 

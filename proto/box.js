@@ -17,9 +17,15 @@ const powerUps = [
 ]
 
 const boxProto = {
-	size: {
-		w: 60,
-		h: 20,
+	borrar: function (box) {
+
+		boxes.splice(this.index, 1)
+
+		for (let i = 0; i < boxes.length; i += 1) {
+		
+			boxes[i].index = i
+		}
+		return this.$el.remove()
 	},
 }
 
@@ -27,11 +33,6 @@ function initBox(box) {
 
 	box.__proto__ = boxProto
 	return box
-}
-
-function borrarBox(box) {
-
-	return box.remove()
 }
 
 function randomPowerUp () {

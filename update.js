@@ -34,16 +34,14 @@ function updateBall(ball, $ball) {
 	for (let box of boxes) {
 
 		if (ball.estaTocandoDeArribaYAbajo(box)) {
-
 // Si esta tocando de arriba/abajo en una caja, rebota verticalmente
 			ball.rebotarVerticalmente()
-			return borrarBox(box)
+			return box.borrar()
 		}
-// Si esta tocando de derecha/izquierda en una caja, rebota horizontalmente (funciona a medias)
 		if (ball.estaTocandoDeIzquierdaYDerecha(box)) {
-
+// Si esta tocando de derecha/izquierda en una caja, rebota horizontalmente (funciona a medias)
 			ball.rebotarHorizontalmente()
-			return borrarBox(box)
+			return box.borrar()
 		}
 	}
 
@@ -66,7 +64,7 @@ function updateBall(ball, $ball) {
 		ball.rebotarMedio()
 	}
 
-	if (boxes.length === 0) {
+	if ($boxes.length === 0) {
 
 		return game.ganar(ball, $ball)
 	}
