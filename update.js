@@ -10,7 +10,8 @@ function updateBall(ball, $ball) {
 
 	if (mouse.b) {
 
-		moverNave(mouse.x, mouse.y)
+		nave.mover(mouse.x, mouse.y)
+		ball.moverInicio(mouse.x, mouse.y)
 		mouse.b = false
 	}
 

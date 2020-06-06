@@ -147,7 +147,23 @@ const ballProto = {
 	/**
 	 * Esta funcion hace que la bola se mueva por el mapa sumandole la direccion
 	 */
-	mover: function () {
+	mover: function (x, y) {
+
+		const mapWidth  = game.size.w
+		const mapHeight = game.size.h
+		const mapBorder = game.size.b
+		const mapLeft   = game.pos.x
+		const mapTop    = game.pos.y
+		const mapRight  = game.pos.x + mapWidth
+		const mapBottom = game.pos.y + mapHeight
+		const ballWidth = this.size.w
+
+			this.pos.x += game.config.ballDirX
+			this.pos.y += game.config.ballDirY
+			this.$el.style.left = `${this.pos.x}px`
+			this.$el.style.top = `${this.pos.y}px`
+	},
+	moverInicio: function () {
 
 		let x = mouse.x
 		let y = mouse.y
@@ -182,13 +198,6 @@ const ballProto = {
 				this.pos.x = x
 				this.$el.style.left = `${this.pos.x}px`
 			}
-		}
-		else {
-
-			this.pos.x += game.config.ballDirX
-			this.pos.y += game.config.ballDirY
-			this.$el.style.left = `${this.pos.x}px`
-			this.$el.style.top = `${this.pos.y}px`
 		}
 	},
 	/**

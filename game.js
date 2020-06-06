@@ -28,7 +28,6 @@ const game = {
 		const mapaWidth = this.size.w
 		const mapaHeight = this.size.h
 		const mapaBorder = this.size.b
-		ballRect = $ball.getBoundingClientRect()
 		this.config.ballDirX = 0
 		this.config.ballDirY = 0
 		this.config.lifes -= 1
@@ -38,7 +37,9 @@ const game = {
 
 			ball.pos.x = ballInicial
 			ball.pos.y = nave.pos.y - ball.size.w - 1
+			nave.pos.x = naveInicial
 			nave.$el.style.left = `${nave.pos.x}px`
+			nave.$el.style.top  = `${nave.pos.y}px`
 			ball.$el.style.left = `${ball.pos.x}px`
 			ball.$el.style.top  = `${ball.pos.y}px`
 			console.log(`Perdiste una vida, quedan ${game.config.lifes}`)
@@ -46,7 +47,6 @@ const game = {
 		else {
 			if (confirm('Reiniciar?')) {
 
-				nave.pos.x = naveInicial
 				ball.pos.x = ballInicial
 				ball.pos.y = nave.pos.y - ball.size.w - 1
 				ball.$el.style.left = `${ball.pos.x}px`

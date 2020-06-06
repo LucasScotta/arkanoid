@@ -12,11 +12,6 @@ document.onmousemove = function mover(event) {
 
 }
 
-function moverNave(x, y) {
-
-	nave.mover(x, y)
-}
-
 // 
 
 document.onclick = function(event) {
