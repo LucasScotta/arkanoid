@@ -62,15 +62,17 @@ const game = {
 
 			ball.pos.x = nave.pos.x + nave.size.w / 2
 			ball.pos.y = nave.pos.y - ball.size.w - 1
+			ball.$el.style.left = `${ball.pos.x}px`
+			ball.$el.style.top  = `${ball.pos.y}px`
 			this.config.ballDirY = 0
 			this.config.ballDirX = 0
 			blocks(this.config.level)
 			console.log(`Pasaste al nivel: ${this.config.level}`)
 		}
 		if (this.config.level === 7) {
+
 			this.config.level += 1
 			console.log(`Felicitaciones, terminaste un juego en desarrollo... Manco asqueroso`)
-			return this.config.pause = true
 		}
 	}
 }
