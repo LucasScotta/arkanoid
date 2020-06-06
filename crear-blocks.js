@@ -1,30 +1,42 @@
+let k
 function blocks(level) {
 
+	k = 0
 	const divBlock = []
-	let mapX = game.pos.x + 20
-	let mapY = game.pos.y + 15
 	widthMap = game.size.w
-	let divN = 2
+	let posX = game.pos.x + game.size.b * 2
+	let posY = game.pos.y + game.size.b * 2
 
-	for (let i = -1; i < level; i += 1) {
+	for (let i = 0; i < level + 3; i += 1) {
 
 		divBlock[i] = []
-
-		for (let j = 0; j < 7; j += 1) {
-
+		for (let j = 0; j <= 8; j += 1) {
 			divBlock[i][j] = document.createElement('div')
 			container.appendChild(divBlock[i][j])
-
-			divBlock[i][j].right = widthMap
 			divBlock[i][j].classList.add('box')
-			container.children[divN].style.left = mapX + 'px'
-			container.children[divN].style.top = mapY + 'px'
-			mapX += 100
-			divN += 1
+			const r = randomPowerUp()
+			boxes[k] = {
+				pos: {
+					x: posX,
+					y: posY,
+				},
+				size: {
+					w: 60,
+					h: 20,
+				},
+				$el: $boxes[k],
+				index: k,
+				power: r,
+			}
+			initBox(boxes[k])
+			boxes[k].$el.style.left = posX + 'px'
+			boxes[k].$el.style.top = posY + 'px'
+			posX += 75
+			k += 1
+			if (j === 8) {
 
-			if (j === 6) {
-				mapY += 55
-				mapX -= widthMap
+				posX = game.pos.x + game.size.b * 2
+				posY += 40
 			}
 		}
 	}
@@ -34,8 +46,10 @@ blocks(game.config.level)
 
 function clearBlocks() {
 
+	let i = 0
+	
 	while (boxes.length > 0) {
 
-		boxes[0].remove()
+		boxes[i].borrar()
 	}
 }
