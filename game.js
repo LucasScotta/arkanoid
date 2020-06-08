@@ -1,3 +1,4 @@
+/* globals nave, ballInicial, naveInicial, clearBlocks, blocks */
 const game = {
 	pos: {
 		x: 0,
@@ -18,16 +19,8 @@ const game = {
 	/**
 	 * El nombre lo dice todo
 	 */
-	perder: function (ball, $ball) {
+	perder: function (ball) {
 
-		const naveLeft   = nave.pos.x
-		const naveY 	 = nave.pos.y
-		const naveWidth  = nave.size
-		const mapaX 	 = this.pos.x
-		const mapaY 	 = this.pos.y
-		const mapaWidth = this.size.w
-		const mapaHeight = this.size.h
-		const mapaBorder = this.size.b
 		this.config.ballDirX = 0
 		this.config.ballDirY = 0
 		this.config.lifes -= 1
@@ -47,6 +40,9 @@ const game = {
 		else {
 			if (confirm('Reiniciar?')) {
 
+				this.config.level = 0
+				clearBlocks()
+				this.config.lifes = 3
 				ball.pos.x = ballInicial
 				ball.pos.y = nave.pos.y - ball.size.w - 1
 				nave.pos.x = naveInicial
@@ -57,7 +53,10 @@ const game = {
 			}
 		}
 	},
-	ganar: function (ball, $ball) {
+	/**
+	 * El nombre lo dice todo
+	 */
+	ganar: function (ball) {
 
 		this.config.level += 1
 

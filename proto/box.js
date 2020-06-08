@@ -1,3 +1,4 @@
+/* globals boxes */
 const bloques = {
 	normal: {tipo: 1},
 	multiplicador: {tipo: 2, caracter: 'Ⓜ'},
@@ -17,7 +18,7 @@ const powerUps = [
 ]
 
 const boxProto = {
-	borrar: function (box) {
+	borrar: function () {
 
 		boxes.splice(this.index, 1)
 
@@ -25,18 +26,24 @@ const boxProto = {
 		
 			boxes[i].index = i
 		}
+
 		return this.$el.remove()
 	},
 }
 
-function initBox(box) {
+window.initBox = function initBox(box) {
 
 	box.__proto__ = boxProto
 	return box
 }
 
-function randomPowerUp () {
+function randomOf(list) {
 
-	const ix = Math.floor(Math.random() * powerUps.length)
-	return powerUps[ix]
+	const ix = Math.floor(Math.random() * list.length)
+	return list[ix]
+}
+
+window.randomPowerUp = function randomPowerUp() {
+
+	return randomOf(powerUps)
 }

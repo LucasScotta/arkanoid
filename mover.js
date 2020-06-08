@@ -1,7 +1,8 @@
+/* globals nave, mouse, balls, game, $balls */
 /////////////
 nave.pintarNaveInicio()
 pintarBolaInicio()
-const ballInicial = parseInt(balls[0].pos.x)
+window.ballInicial = parseInt(balls[0].pos.x)
 document.onmousemove = function mover(event) {
 
 	event.preventDefault()
@@ -18,7 +19,7 @@ document.onclick = function(event) {
 
 	const x = event.x
 	const y = event.y
-	balls[0].arrancar(x, y)
+	balls[0].arrancar(x, y, game, nave)
 }
 
 document.onkeydown = function tecla(event) {

@@ -1,20 +1,18 @@
+/* globals game, container, boxes, randomPowerUp, initBox */
 let k
 function blocks(level) {
 
 	k = 0
-	const divBlock = []
-	widthMap = game.size.w
 	let posX = game.pos.x + game.size.b * 2
 	let posY = game.pos.y + game.size.b * 2
 
 	for (let i = 0; i < level + 3; i += 1) {
-
-		divBlock[i] = []
+		
 		for (let j = 0; j <= 8; j += 1) {
-			divBlock[i][j] = document.createElement('div')
-			container.appendChild(divBlock[i][j])
-			divBlock[i][j].classList.add('box')
-			const r = randomPowerUp()
+
+			const $el = document.createElement('div')
+			container.appendChild($el)
+			$el.classList.add('box')
 			boxes[k] = {
 				pos: {
 					x: posX,
@@ -24,9 +22,9 @@ function blocks(level) {
 					w: 60,
 					h: 20,
 				},
-				$el: $boxes[k],
+				$el,
 				index: k,
-				power: r,
+				power: randomPowerUp(),
 			}
 			initBox(boxes[k])
 			boxes[k].$el.style.left = posX + 'px'
@@ -44,7 +42,7 @@ function blocks(level) {
 
 blocks(game.config.level)
 
-function clearBlocks() {
+window.clearBlocks = function clearBlocks() {
 
 	let i = 0
 	

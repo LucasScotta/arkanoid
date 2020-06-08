@@ -1,3 +1,4 @@
+/* globals $boxes */
 let rotacion = 0
 
 function rotarHorario() {

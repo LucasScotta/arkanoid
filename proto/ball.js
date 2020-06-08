@@ -1,3 +1,4 @@
+/* globals mapBorder, game, mouse, boxes, nave, */
 const ballProto = {
 	size : {
 			w: 15,
@@ -48,7 +49,7 @@ const ballProto = {
 	/**
 	 * retorna si la bola golpea algun borde de costado del mapa
 	 */
-	tocaBordeCostados: function (rect, borde) {
+	tocaBordeCostados: function (game) {
 
 		const mapRight = game.pos.x + game.size.w
 		const mapLeft = game.pos.x
@@ -61,7 +62,7 @@ const ballProto = {
 	/**
 	 * retorna si la bola golpea de el borde superior del mapa
 	 */
-	tocaBordeSuperior: function (rect, borde) {
+	tocaBordeSuperior: function (game) {
 
 		const mapTop = game.pos.y
 		const t = this.pos.y
@@ -71,7 +72,7 @@ const ballProto = {
 	/**
 	 * retorna si la bola golpea en el borde inferior del mapa
 	 */
-	tocaBordeInferior: function (rect, borde) {
+	tocaBordeInferior: function (game) {
 
 		const mapBottom = game.pos.y + game.size.h
 		const b = this.pos.y + this.size.h
@@ -81,11 +82,10 @@ const ballProto = {
 	/**
 	 * retorna si la bola golpea la division izquierda de la nave
 	 */
-	estaTocandoDerecha: function ($nave) {
+	estaTocandoDerecha: function (nave) {
 
 		const naveWidth = nave.size.w
 		const naveRight = nave.pos.x + naveWidth
-		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
@@ -97,11 +97,10 @@ const ballProto = {
 	/**
 	 * retorna si la bola golpea la division derecha de la nave
 	 */
-	estaTocandoIzquierda: function ($nave) {
+	estaTocandoIzquierda: function (nave) {
 
 		const naveLeft = nave.pos.x
 		const naveWidth = nave.size.w
-		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
@@ -113,12 +112,11 @@ const ballProto = {
 	/**
 	 * retorna si la bola golpea la division del medio de la nave
 	 */
-	estaTocandoMedio: function ($nave) {
+	estaTocandoMedio: function (nave) {
 
 		const naveRight = nave.pos.x + nave.size.w
 		const naveLeft  = nave.pos.x
 		const naveWidth = nave.size.w
-		const t = this.pos.y
 		const b = this.pos.y + this.size.h
 		const r = this.pos.x + this.size.w
 		const l = this.pos.x
@@ -153,16 +151,7 @@ const ballProto = {
 	/**
 	 * Esta funcion hace que la bola se mueva por el mapa sumandole la direccion
 	 */
-	mover: function (x, y) {
-
-		const mapWidth  = game.size.w
-		const mapHeight = game.size.h
-		const mapBorder = game.size.b
-		const mapLeft   = game.pos.x
-		const mapTop    = game.pos.y
-		const mapRight  = game.pos.x + mapWidth
-		const mapBottom = game.pos.y + mapHeight
-		const ballWidth = this.size.w
+	mover: function () {
 
 			this.pos.x += game.config.ballDirX
 			this.pos.y += game.config.ballDirY
@@ -172,7 +161,6 @@ const ballProto = {
 	moverInicio: function () {
 
 		let x = mouse.x
-		let y = mouse.y
 		const mapWidth  = game.size.w
 		const mapHeight = game.size.h
 		const mapBorder = game.size.b
@@ -225,7 +213,7 @@ const ballProto = {
 	 * pasar de nivel, o al perder todas las vidas y reiniciar el juego del nivel 1.
 	 * Comienza el juego
 	 */
-	arrancar: function (x, y) {
+	arrancar: function (x, y, game, nave) {
 
 		const mapTop    = game.pos.y
 		const mapRight  = game.pos.x + game.size.w
@@ -233,7 +221,6 @@ const ballProto = {
 		const mapLeft   = game.pos.x
 		const mapBorder = game.size.b
 		const naveWidth = nave.size.w
-		const naveLeft  = nave.pos.x
 
 		if (game.config.ballDirY === 0 && game.config.ballDirX === 0
 		&&	x <= mapRight - mapBorder
@@ -253,9 +240,63 @@ const ballProto = {
 			}
 		}
 	},
+	update: function () {
+
+		// Bola golpeando contra los bordes
+		if (this.tocaBordeCostados(game)) {
+
+			this.rebotarHorizontalmente()
+		}
+
+		if (this.tocaBordeSuperior(game)) {
+
+			this.rebotarVerticalmente()
+		}
+
+		if (this.tocaBordeInferior(game)) {
+			return game.perder(this, this.$el)
+		}
+
+		// Bola golpeando las cajas:
+		for (let box of boxes) {
+
+			if (this.estaTocandoDeArribaYAbajo(box)) {
+		// Si esta tocando de arriba/abajo en una caja, rebota verticalmente
+				this.rebotarVerticalmente()
+				return box.borrar()
+			}
+			if (this.estaTocandoDeIzquierdaYDerecha(box)) {
+		// Si esta tocando de derecha/izquierda en una caja, rebota horizontalmente (funciona a medias)
+				this.rebotarHorizontalmente()
+				return box.borrar()
+			}
+		}
+
+		//Rebotes de bola contra la $nave:
+		//1 => ----[--]
+		if (this.estaTocandoDerecha(nave)) {
+
+			this.rebotarDerecha()
+		}
+
+		//2 => [--]----
+		if (this.estaTocandoIzquierda(nave)) {
+
+			this.rebotarIzquierda()
+		}
+
+		//3 --[--]--
+		if (this.estaTocandoMedio(nave)) {
+
+			this.rebotarMedio()
+		}
+
+		//mover la bola
+		this.mover()
+	},
 }
 
-function initBall(ball) {
+window.initBall = function initBall(ball) {
 	ball.__proto__ = ballProto
 	return ball
 }

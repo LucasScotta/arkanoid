@@ -1,3 +1,4 @@
+/* globals $nave, game, naveWidth, mouse */
 const nave = {
 	$el: $nave,
 	size: {
@@ -40,7 +41,6 @@ const nave = {
 		const mapRight = game.pos.x + game.size.w
 		const mapBottom = game.pos.y + game.size.h
 		const mapLeft = game.pos.x
-		const ballWidth = balls[0].size.w
 
 		if (x <= mapRight  - mapBorder
 		&&	x >= mapLeft   + mapBorder
