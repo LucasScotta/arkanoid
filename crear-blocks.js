@@ -1,4 +1,4 @@
-/* globals game, container, boxes, randomPowerUp, initBox */
+/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes*/
 let k
 function blocks(level) {
 

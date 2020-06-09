@@ -1,4 +1,4 @@
-/* globals nave, ballInicial, naveInicial, clearBlocks, blocks */
+/* globals nave, ballInicial, naveInicial, clearBlocks, blocks, clearPowers, */
 const game = {
 	pos: {
 		x: 0,

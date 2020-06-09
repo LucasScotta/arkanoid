@@ -1,9 +1,9 @@
-/* globals initBall, game */
+/* globals Ball, game */
 ///////////////////////////////////////////////////////////////////////////////
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
 const $balls = document.getElementsByClassName('ball')
 window.balls = [
-	initBall({
+	new Ball({
 		$el: $balls[0],
 		pos: {
 			x: 0,
