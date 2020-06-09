@@ -1,26 +1,36 @@
-/* globals boxes */
-const bloques = {
-	normal: {tipo: 1},
-	multiplicador: {tipo: 2, caracter: 'Ⓜ'},
-	goma: {tipo: 3, caracter: 'Ⓖ'},
-	disparo: {tipo: 4, caracter: 'Ⓓ'},
-	agrandador: {tipo: 5, caracter: 'Ⓐ'},
-	achichador: {tipo: 6, caracter: '①'}, 
-} 
+/* globals boxes, powers, PowerUp, container*/
+window.Box = class Box {
+	constructor(options) {
+		Object.assign(this, options)
+	}
+	golpear() {
 
-const powerUps = [
-	bloques.normal,
-	bloques.multiplicador,
-	bloques.goma,
-	bloques.disparo,
-	bloques.agrandador,
-	bloques.achichador,
-]
+		if (this.power.tipo > 1) {
 
-const boxProto = {
-	borrar: function () {
+			const $el = document.createElement('div')
+			container.appendChild($el)
+			$el.classList.add('power')
+			powers.push(new PowerUp({
+				pos: {
+					x: this.pos.x + this.size.w / 2,
+					y: this.pos.y + this.size.h,
+				},
+				size: {
+					w: 5,
+					h: 5,
+				},
+				tipo: this.power.tipo,
+				index: 0,
+				$el,
+				caracter: this.power.caracter,
+			}))
+		}
+		this.borrar()
+	}
+	borrar() {
 
-		boxes.splice(this.index, 1)
+		const clear = boxes.indexOf(this)
+		boxes.splice(clear, 1)
 
 		for (let i = 0; i < boxes.length; i += 1) {
 		
@@ -28,13 +38,7 @@ const boxProto = {
 		}
 
 		return this.$el.remove()
-	},
-}
-
-window.initBox = function initBox(box) {
-
-	box.__proto__ = boxProto
-	return box
+	}
 }
 
 function randomOf(list) {

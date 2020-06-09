@@ -13,7 +13,7 @@ function blocks(level) {
 			const $el = document.createElement('div')
 			container.appendChild($el)
 			$el.classList.add('box')
-			boxes[k] = {
+			boxes[k] = new Box({
 				pos: {
 					x: posX,
 					y: posY,
@@ -25,8 +25,7 @@ function blocks(level) {
 				$el,
 				index: k,
 				power: randomPowerUp(),
-			}
-			initBox(boxes[k])
+			})
 			boxes[k].$el.style.left = posX + 'px'
 			boxes[k].$el.style.top = posY + 'px'
 			posX += 75
