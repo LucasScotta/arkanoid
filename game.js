@@ -17,32 +17,13 @@ const game = {
 	/**
 	 * El nombre lo dice todo
 	 */
-	perder: function (ball) {
+	perder: function (ball, col) {
 
-		clearPowers()
-		this.config.ballDirX = 0
-		this.config.ballDirY = 0
-		this.config.lifes -= 1
+		if (balls.length < 2) {
+			clearPowers()
+			this.config.lifes -= 1
+			if (this.config.lifes > 0) {
 
-		if (this.config.lifes > 0) {
-
-
-			ball.pos.x = ballInicial
-			ball.pos.y = nave.pos.y - ball.size.w - 1
-			nave.pos.x = naveInicial
-			nave.$el.style.left = `${nave.pos.x}px`
-			nave.$el.style.top  = `${nave.pos.y}px`
-			ball.$el.style.left = `${ball.pos.x}px`
-			ball.$el.style.top  = `${ball.pos.y}px`
-			console.log(`Perdiste una vida, quedan ${game.config.lifes}`)
-		}
-		else {
-			if (confirm('Reiniciar?')) {
-
-				clearPowers()
-				this.config.level = 0
-				clearBlocks()
-				this.config.lifes = 3
 				ball.pos.x = ballInicial
 				ball.pos.y = nave.pos.y - ball.size.w - 1
 				nave.pos.x = naveInicial
@@ -50,7 +31,29 @@ const game = {
 				nave.$el.style.top  = `${nave.pos.y}px`
 				ball.$el.style.left = `${ball.pos.x}px`
 				ball.$el.style.top  = `${ball.pos.y}px`
+				console.log(`Perdiste una vida, quedan ${game.config.lifes}`)
 			}
+			else {
+				if (confirm('Reiniciar?')) {
+
+					clearPowers()
+					this.config.level = 0
+					clearBlocks()
+					this.config.lifes = 3
+					ball.pos.x = ballInicial
+					ball.pos.y = nave.pos.y - ball.size.w - 1
+					nave.pos.x = naveInicial
+					nave.$el.style.left = `${nave.pos.x}px`
+					nave.$el.style.top  = `${nave.pos.y}px`
+					ball.$el.style.left = `${ball.pos.x}px`
+					ball.$el.style.top  = `${ball.pos.y}px`
+				}
+			}
+		}
+		else {
+			const clear = balls.indexOf(ball)
+			balls.splice(clear, 1)
+			col.remove()
 		}
 	},
 	/**
@@ -58,6 +61,7 @@ const game = {
 	 */
 	ganar: function (ball) {
 
+		clearBalls()
 		clearPowers()
 		this.config.level += 1
 

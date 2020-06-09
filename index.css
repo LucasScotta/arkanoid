@@ -4,17 +4,12 @@
 	background-color: red;
 }
 
-canvas {
-	position: absolute;
-}
-
 * {
 	margin: 0;
 	padding: 0;
 }
 
 .power {
-	background-color: blue;
 	width: 5px;
 	height: 5px;
 }
