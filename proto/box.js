@@ -1,4 +1,4 @@
-/* globals boxes, powers, PowerUp, container*/
+/* globals boxes, powers, PowerUp, container, powerUps, */
 window.Box = class Box {
 	constructor(options) {
 		Object.assign(this, options)

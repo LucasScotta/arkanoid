@@ -1,4 +1,4 @@
-/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes*/
+/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, */
 let k
 function blocks(level) {
 
@@ -58,6 +58,15 @@ const clearPowers = function clearPowers() {
 	nave.setWidth(widthTypes.M.w)
 }
 
+window.clearBalls = function clearBalls() {
+
+	for (let i = balls.length - 1; i > 0; i -= 1) {
+
+		balls[i].$el.remove()
+		balls.splice(i, 1)
+	}
+	balls[0].goma = false
+}
 window.clear = function clear () {
 
 	clearBlocks()

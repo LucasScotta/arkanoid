@@ -1,4 +1,5 @@
-/* globals mapBorder, game, mouse, boxes, nave, */
+/* globals mapBorder, game, mouse, boxes, nave, container, balls*/
+
 window.Ball = class Ball {
 	constructor (options) {
 		Object.assign(this, options)
