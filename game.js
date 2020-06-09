@@ -21,6 +21,7 @@ const game = {
 	 */
 	perder: function (ball) {
 
+		clearPowers()
 		this.config.ballDirX = 0
 		this.config.ballDirY = 0
 		this.config.lifes -= 1
@@ -40,6 +41,7 @@ const game = {
 		else {
 			if (confirm('Reiniciar?')) {
 
+				clearPowers()
 				this.config.level = 0
 				clearBlocks()
 				this.config.lifes = 3
@@ -58,6 +60,7 @@ const game = {
 	 */
 	ganar: function (ball) {
 
+		clearPowers()
 		this.config.level += 1
 
 		if (this.config.level <= 6) {
@@ -69,6 +72,7 @@ const game = {
 			this.config.ballDirY = 0
 			this.config.ballDirX = 0
 			blocks(this.config.level)
+			nave.size.w = 100
 			console.log(`Pasaste al nivel: ${this.config.level}`)
 		}
 		if (this.config.level === 7) {

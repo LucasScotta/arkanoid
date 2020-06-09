@@ -41,12 +41,25 @@ function blocks(level) {
 
 blocks(game.config.level)
 
-window.clearBlocks = function clearBlocks() {
-
+const clearBlocks = function clearBlocks() {
 	let i = 0
-	
 	while (boxes.length > 0) {
 
 		boxes[i].borrar()
 	}
+}
+
+const clearPowers = function clearPowers() {
+
+	for (let i = powers.length - 1; i > -1; i -= 1) {
+		powers[i].$el.remove()
+		powers.splice(i, 1)
+	}
+	nave.setWidth(widthTypes.M.w)
+}
+
+window.clear = function clear () {
+
+	clearBlocks()
+	clearPowers()
 }
