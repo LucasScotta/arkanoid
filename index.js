@@ -26,9 +26,8 @@ $nave.style.height = `15px`
 window.naveWidth = parseInt($nave.style.width)
 window.container = document.getElementById('container')
 window.mapBorder = game.size.b
-window.$boxes = document.getElementsByClassName('box')
 window.boxes = []
-window.powerUps = []
+window.powers = []
 ///////////////////////////////////////////////////////////////////////////////
 
 // Config bola

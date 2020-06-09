@@ -1,4 +1,16 @@
 /* globals $nave, game, naveWidth, mouse */
+window.widthTypes = {
+	S: {
+		w: 50,
+	},
+	M: {
+		w: 100,
+	},
+	L: {
+		w: 150,
+	},
+}
+
 const nave = {
 	$el: $nave,
 	size: {
@@ -10,18 +22,12 @@ const nave = {
 		y: game.pos.y + game.size.h - 40,
 	},
 	/**
-	 * Alarga la nave al agarrar el powerUp 'alargar'
+	 * Alarga o achica la nave segun corresponda
 	 */
-	alargar: function () {
+	setWidth: function (widthType) {
 
-		return this.size.w += 50
-	},
-	/**
-	 * Achica la nave al agarrar el powerUp 'achicar'
-	 */
-	achicar: function () {
-
-		return this.size.w -= 50
+		this.size.w = widthType
+		this.$el.style.width = `${this.size.w}px`
 	},
 	/**
 	 * Reinicia los powerUps de la nave
@@ -71,13 +77,13 @@ const nave = {
 	/**
 	 * Pinta la nave al inicio del juego, despues de ganar y al perder una vida
 	 */
-	 pintarNaveInicio: function () {
+	pintarNaveInicio: function () {
 
-	 	mouse.x = game.pos.x + game.size.b + game.size.w / 2
-	 	mouse.y = this.pos.y - 1
-	 	this.$el.style.left = `${this.pos.x}px`
-	 	this.$el.style.top = `${this.pos.y}px`
-	 },
+		mouse.x = game.pos.x + game.size.b + game.size.w / 2
+		mouse.y = this.pos.y - 1
+		this.$el.style.left = `${this.pos.x}px`
+		this.$el.style.top = `${this.pos.y}px`
+	},
 }
 
-const naveInicial = parseInt(nave.pos.x)
+window.naveInicial = parseInt(nave.pos.x)
