@@ -19,7 +19,11 @@ document.onclick = function(event) {
 
 	const x = event.x
 	const y = event.y
-	balls[0].arrancar(x, y, game, nave)
+
+	for (let ball of balls) {
+		
+		ball.arrancar(x, y, game, nave)
+	}
 }
 
 document.onkeydown = function tecla(event) {

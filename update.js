@@ -1,15 +1,16 @@
 /* globals mouse, balls, $balls, nave, game, boxes, powers*/
 function update() {
 	
+	for (const ball of balls) {
+		ball.moverInicio(mouse.x, mouse.y)
+		ball.update()
+	}
+	
 	if (mouse.b) {
 		nave.mover(mouse.x, mouse.y)
-		balls[0].moverInicio(mouse.x, mouse.y)
 		mouse.b = false
 	}
 
-	for (const ball of balls) {
-		ball.update()
-	}
 
 	for (let i = 0; i < powers.length; i += 1) {
 		powers[i].update(i)

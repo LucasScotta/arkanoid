@@ -130,31 +130,31 @@ window.Ball = class Ball {
 	 */
 	rebotarDerecha() {
 
-		game.config.ballDirY *= -1
-		game.config.ballDirX  = 1
+		this.config.ballDirY *= -1
+		this.config.ballDirX  = 1
 	}
 	/**
 	 * Cambia la direccion de la bola en Y contrariamente y en X hacia la izquierda
 	 */
 	rebotarIzquierda() {
 
-		game.config.ballDirY *= -1
-		game.config.ballDirX  = -1
+		this.config.ballDirY *= -1
+		this.config.ballDirX  = -1
 	}
 	/**
 	 * Cambia la direccion de la bola en Y contrariamente
 	 */
 	rebotarMedio() {
 
-		game.config.ballDirY *= -1
+		this.config.ballDirY *= -1
 	}
 	/**
 	 * Esta funcion hace que la bola se mueva por el mapa sumandole la direccion
 	 */
 	mover() {
 
-			this.pos.x += game.config.ballDirX
-			this.pos.y += game.config.ballDirY
+			this.pos.x += this.config.ballDirX
+			this.pos.y += this.config.ballDirY
 			this.$el.style.left = `${this.pos.x}px`
 			this.$el.style.top = `${this.pos.y}px`
 	}
@@ -170,18 +170,18 @@ window.Ball = class Ball {
 		const mapBottom = game.pos.y + mapHeight
 		const ballWidth = this.size.w
 
-		if (game.config.ballDirX === 0 && game.config.ballDirY === 0
+		if (this.config.ballDirX === 0 && this.config.ballDirY === 0
 		&&  mouse.x >= mapLeft   + mapBorder
 		&&  mouse.x <= mapRight  - mapBorder
 		&&  mouse.y >= mapTop    + mapBorder
 		&&  mouse.y <= mapBottom - mapBorder) {
-			if (x <= mapLeft + mapBorder) {
+			if (x <= mapLeft + mapBorder + ballWidth / 2) {
 
 				x = mapLeft + mapBorder
 				this.pos.x = x
 				this.$el.style.left = `${this.pos.x}px`
 			}
-			else if (x >= mapRight - mapBorder - ballWidth) {
+			else if (x >= mapRight - mapBorder - ballWidth / 2) {
 
 				x = mapRight - mapBorder - ballWidth
 				this.pos.x = x
@@ -189,7 +189,7 @@ window.Ball = class Ball {
 			}
 			else {
 
-				this.pos.x = x
+				this.pos.x = x - ballWidth / 2 - 0.5
 				this.$el.style.left = `${this.pos.x}px`
 			}
 		}	
@@ -199,14 +199,14 @@ window.Ball = class Ball {
 	 */
 	rebotarVerticalmente() {
 
-		game.config.ballDirY *= -1
+		this.config.ballDirY *= -1
 	}
 	/**
 	 * Da vuelta la direccion de la bola en X
 	 */
 	rebotarHorizontalmente() {
 
-		game.config.ballDirX *= -1
+		this.config.ballDirX *= -1
 	}
 	/**
 	 * Funciona unicamente antes de comenzar el nivel, al empezar el juego, al
@@ -222,7 +222,7 @@ window.Ball = class Ball {
 		const mapBorder = game.size.b
 		const naveWidth = nave.size.w
 
-		if (game.config.ballDirY === 0 && game.config.ballDirX === 0
+		if (this.config.ballDirY === 0 && this.config.ballDirX === 0
 		&&	x <= mapRight - mapBorder
 		&& 	x >= mapTop + mapBorder
 		&&  y <= mapBottom - mapBorder
@@ -254,6 +254,9 @@ window.Ball = class Ball {
 		}
 
 		if (this.tocaBordeInferior(game)) {
+
+			this.config.ballDirY = 0
+			this.config.ballDirX = 0
 			return game.perder(this, this.$el)
 		}
 

@@ -9,6 +9,10 @@ window.balls = [
 			x: 0,
 			y: 0,
 		},
+		config: {
+			ballDirX: 0,
+			ballDirY: 0,
+		},
 		vel: {
 			r: 5,
 			a: Math.PI,

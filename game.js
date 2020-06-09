@@ -10,8 +10,6 @@ const game = {
 		b: 10,
 	},
 	config: {
-		ballDirX: 0,
-		ballDirY: 0,
 		lifes: 3,
 		level: 1,
 		pause: false,
@@ -69,8 +67,8 @@ const game = {
 			ball.pos.y = nave.pos.y - ball.size.w - 1
 			ball.$el.style.left = `${ball.pos.x}px`
 			ball.$el.style.top  = `${ball.pos.y}px`
-			this.config.ballDirY = 0
-			this.config.ballDirX = 0
+			balls[0].config.ballDirY = 0
+			balls[0].config.ballDirX = 0
 			blocks(this.config.level)
 			nave.size.w = 100
 			console.log(`Pasaste al nivel: ${this.config.level}`)
