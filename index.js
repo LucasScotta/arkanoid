@@ -13,6 +13,10 @@ window.balls = [
 			r: 5,
 			a: Math.PI,
 		},
+		size : {
+			w: 15,
+			h: 15,
+		},
 	}),
 ]
 
