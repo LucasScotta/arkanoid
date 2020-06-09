@@ -8,6 +8,7 @@ window.Box = class Box {
 		if (this.power.tipo > 1) {
 
 			const $el = document.createElement('div')
+			$el.innerText = this.power.caracter
 			container.appendChild($el)
 			$el.classList.add('power')
 			powers.push(new PowerUp({

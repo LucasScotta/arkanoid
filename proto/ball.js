@@ -230,15 +230,53 @@ window.Ball = class Ball {
 
 			if (this.pos.x <= mapLeft + mapBorder + naveWidth / 2) {
 
-				game.config.ballDirX = -1
-				game.config.ballDirY = -1
+				this.config.ballDirX = -1
+				this.config.ballDirY = -1
 			}
 			else {
 
-				game.config.ballDirX =  1
-				game.config.ballDirY = -1
+				this.config.ballDirX =  1
+				this.config.ballDirY = -1
 			}
 		}
+	}
+	agregarBall() {
+		const $el = document.createElement('div')
+		$el.classList.add('ball')
+		container.appendChild($el)
+		balls[balls.length] = new Ball({
+			$el,
+			pos: {
+				x: this.pos.x,
+				y: this.pos.y,
+			},
+			vel: {
+				r: 5,
+				a: Math.PI,
+			},
+			size : {
+				w: 15,
+				h: 15,
+			},
+			config: {
+				ballDirX: Math.ceil(Math.random()),
+				ballDirY: -1,
+			},
+		})
+	}
+	noRebota() {
+
+		this.pos.y = nave.pos.y - 16
+		this.config.ballDirX = 0
+		this.config.ballDirY = 0
+	}
+	pegar() {
+
+		this.goma = true
+	}
+	despegar() {
+
+		this.goma = false
 	}
 	update() {
 
@@ -279,19 +317,22 @@ window.Ball = class Ball {
 		//1 => ----[--]
 		if (this.estaTocandoDerecha(nave)) {
 
-			this.rebotarDerecha()
+			if (!this.goma) this.rebotarDerecha()
+			else this.noRebota()
 		}
 
 		//2 => [--]----
 		if (this.estaTocandoIzquierda(nave)) {
 
-			this.rebotarIzquierda()
+			if (!this.goma) this.rebotarIzquierda()
+			else this.noRebota()
 		}
 
 		//3 --[--]--
 		if (this.estaTocandoMedio(nave)) {
 
-			this.rebotarMedio()
+			if (!this.goma) this.rebotarMedio()
+			else this.noRebota()
 		}
 
 		//mover la bola

@@ -21,6 +21,7 @@ window.balls = [
 			w: 15,
 			h: 15,
 		},
+		goma: false,
 	}),
 ]
 
