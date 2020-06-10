@@ -153,10 +153,12 @@ window.Ball = class Ball {
 	 */
 	mover() {
 
+		if (game.config.level < 7) {
 			this.pos.x += this.config.ballDirX
 			this.pos.y += this.config.ballDirY
 			this.$el.style.left = `${this.pos.x}px`
 			this.$el.style.top = `${this.pos.y}px`
+		}
 	}
 	moverInicio() {
 
@@ -174,7 +176,8 @@ window.Ball = class Ball {
 		&&  mouse.x >= mapLeft   + mapBorder
 		&&  mouse.x <= mapRight  - mapBorder
 		&&  mouse.y >= mapTop    + mapBorder
-		&&  mouse.y <= mapBottom - mapBorder) {
+		&&  mouse.y <= mapBottom - mapBorder
+		&&	game.config.level < 7) {
 			if (x <= mapLeft + mapBorder + ballWidth / 2) {
 
 				x = mapLeft + mapBorder
@@ -188,7 +191,6 @@ window.Ball = class Ball {
 				this.$el.style.left = `${this.pos.x}px`
 			}
 			else {
-
 				this.pos.x = x - ballWidth / 2 - 0.5
 				this.$el.style.left = `${this.pos.x}px`
 			}
@@ -259,8 +261,8 @@ window.Ball = class Ball {
 				h: 15,
 			},
 			config: {
-				ballDirX: Math.ceil(Math.random()),
-				ballDirY: -1,
+				ballDirX: this.config.ballDirX * -1,
+				ballDirY: this.config.ballDirY * -1,
 			},
 		})
 	}

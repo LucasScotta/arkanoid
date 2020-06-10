@@ -17,8 +17,8 @@ window.Box = class Box {
 					y: this.pos.y + this.size.h,
 				},
 				size: {
-					w: 5,
-					h: 5,
+					w: 15,
+					h: 25,
 				},
 				tipo: this.power.tipo,
 				index: 0,
