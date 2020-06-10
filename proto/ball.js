@@ -302,16 +302,27 @@ window.Ball = class Ball {
 
 		// Bola golpeando las cajas:
 		for (let box of boxes) {
-
+			let golpeV
+			let golpeH
 			if (this.estaTocandoDeArribaYAbajo(box)) {
 		// Si esta tocando de arriba/abajo en una caja, rebota verticalmente
-				this.rebotarVerticalmente()
-				return box.golpear()
+				golpeV = 1
 			}
 			if (this.estaTocandoDeIzquierdaYDerecha(box)) {
 		// Si esta tocando de derecha/izquierda en una caja, rebota horizontalmente (funciona a medias)
+				golpeH = 1
+			}
+			if (golpeV === 1) {
+				this.rebotarVerticalmente()
+				let newPoss = this.pos.y + this.config.ballDirY
+				this.pos.y = newPoss
+				box.golpear()
+			}
+			if (golpeH === 1) {
 				this.rebotarHorizontalmente()
-				return box.golpear()
+				let newPoss = this.pos.x + this.config.ballDirX
+				this.pos.x = newPoss
+				box.golpear()
 			}
 		}
 
