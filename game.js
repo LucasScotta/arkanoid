@@ -1,4 +1,4 @@
-/* globals nave, ballInicial, naveInicial, clearBlocks, blocks, clearPowers, clearBalls, balls*/
+/* globals nave, ballInicial, naveInicial, clearBlocks, blocks, clearPowers, clearBalls, balls, mouse*/
 const game = {
 	pos: {
 		x: 0,
@@ -31,6 +31,7 @@ const game = {
 				nave.$el.style.top  = `${nave.pos.y}px`
 				ball.$el.style.left = `${ball.pos.x}px`
 				ball.$el.style.top  = `${ball.pos.y}px`
+				nave.mover(mouse.x, mouse.y)
 				console.log(`Perdiste una vida, quedan ${game.config.lifes}`)
 			}
 			else {
@@ -75,6 +76,7 @@ const game = {
 			balls[0].config.ballDirX = 0
 			blocks(this.config.level)
 			nave.size.w = 100
+
 			console.log(`Pasaste al nivel: ${this.config.level}`)
 		}
 		if (this.config.level === 7) {

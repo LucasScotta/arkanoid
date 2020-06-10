@@ -194,7 +194,7 @@ window.Ball = class Ball {
 				this.pos.x = x - ballWidth / 2 - 0.5
 				this.$el.style.left = `${this.pos.x}px`
 			}
-		}	
+		}
 	}
 	/**
 	 * Da vuelta la direccion de la bola en Y

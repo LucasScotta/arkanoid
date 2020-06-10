@@ -11,8 +11,14 @@
 .power {
 	width: 15px;
 	height: 25px;
+	font-weight: bold;
 }
 
+.gun {
+	width: 5px;
+	height: 20px;
+	background-color: brown;
+}
 #container {
 	border: 10px solid black;
 	display: inline-block;

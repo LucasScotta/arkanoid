@@ -19,6 +19,7 @@ function update() {
 	if (boxes.length === 0) {
 		return game.ganar(balls[0], $balls[0])
 	}
+	nave.update()
 }
 
 function loop() {
