@@ -1,32 +1,38 @@
-/* globals boxes, powers, PowerUp, container, powerUps, */
+/* globals boxes, powers, PowerUp, container, powerUps, colors, */
 window.Box = class Box {
 	constructor(options) {
 		Object.assign(this, options)
 	}
 	golpear() {
 
-		if (this.power.tipo > 1) {
-
-			const $el = document.createElement('div')
-			$el.innerText = this.power.caracter
-			container.appendChild($el)
-			$el.classList.add('power')
-			powers.push(new PowerUp({
-				pos: {
-					x: this.pos.x + this.size.w / 2,
-					y: this.pos.y + this.size.h,
-				},
-				size: {
-					w: 15,
-					h: 25,
-				},
-				tipo: this.power.tipo,
-				index: 0,
-				$el,
-				caracter: this.power.caracter,
-			}))
+		if (this.strong > 0) {
+			this.strong -= 1
+			this.$el.style.backgroundColor = colors[this.strong]
 		}
-		this.borrar()
+		else {
+			if (this.power.tipo > 1) {
+
+				const $el = document.createElement('div')
+				$el.innerText = this.power.caracter
+				container.appendChild($el)
+				$el.classList.add('power')
+				powers.push(new PowerUp({
+					pos: {
+						x: this.pos.x + this.size.w / 2,
+						y: this.pos.y + this.size.h,
+					},
+					size: {
+						w: 15,
+						h: 25,
+					},
+					tipo: this.power.tipo,
+					index: 0,
+					$el,
+					caracter: this.power.caracter,
+				}))
+			}
+			this.borrar()
+		}
 	}
 	borrar() {
 

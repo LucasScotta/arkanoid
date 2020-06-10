@@ -2,6 +2,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
 const $balls = document.getElementsByClassName('ball')
+window.colors = ['green', 'yellow', 'black']
 window.balls = [
 	new Ball({
 		$el: $balls[0],

@@ -1,4 +1,4 @@
-/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, */
+/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, colors, */
 let k
 function blocks(level) {
 
@@ -22,10 +22,12 @@ function blocks(level) {
 					w: 60,
 					h: 20,
 				},
+				strong: Math.floor(Math.random() * colors.length),
 				$el,
 				index: k,
 				power: randomPowerUp(),
 			})
+			boxes[k].$el.style.backgroundColor = colors[boxes[k].strong]
 			boxes[k].$el.style.left = posX + 'px'
 			boxes[k].$el.style.top = posY + 'px'
 			posX += 75

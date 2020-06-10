@@ -1,7 +1,6 @@
 .box {
 	width: 60px;
 	height: 20px;
-	background-color: red;
 }
 
 * {
@@ -23,12 +22,12 @@
 }
 
 #nave {
-	background-color: red;
+	background-color: gray;
 }
 
 .ball {
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
-	background-color: pink;
+	background-color: rebeccapurple;
 }
