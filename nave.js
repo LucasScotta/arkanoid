@@ -103,6 +103,9 @@ const nave = {
 		this.$el.style.left = `${this.pos.x}px`
 		this.$el.style.top = `${this.pos.y}px`
 	},
+	/**
+	 * Activa los disparos de la nave al agarrar el powerUp
+	 */
 	activarGun: function () {
 		if (this.gun.shots === 0) {
 			container.appendChild(arma)
@@ -112,6 +115,9 @@ const nave = {
 		}
 		else this.gun.shots += 5
 	},
+	/**
+	 * update...
+	 */
 	update: function () {
 		if (this.gun.shots > 0) {
 				this.gun.$el.style.left = `${this.gun.pos.x}px`
@@ -128,12 +134,18 @@ const nave = {
 			}
 		}
 	},
+	/**
+	 * Saca los disparos del juego y los lleva a 0
+	 */
 	clearArma: function () {
 		if (this.gun.shots > 0) {
 			this.gun.shots = 0
 			this.gun.$el.remove()
 		}
 	},
+	/**
+	 * Elimina el arma al quedarse sin disparos o descuenta un disparo
+	 */
 	elimArma: function () {
 		this.gun.shots -= 1
 		this.gun.pos.x = this.pos.x + this.size.w / 2
@@ -142,11 +154,17 @@ const nave = {
 			this.gun.$el.remove()
 		}
 	},
+	/**
+	 * retorna si el disparo toca el borde superior de la pantalla
+	 */
 	disparoTocaBorde: function () {
 		const top = game.pos.y + game.size.b
 		const disparoT = this.gun.pos.y
 		return disparoT < top
 	},
+	/**
+	 * retorna si el disparo toca una caja
+	 */
 	disparoToca: function (box) {
 		const disparoT = this.gun.pos.y
 		const disparoR = this.gun.pos.x + this.gun.size.w

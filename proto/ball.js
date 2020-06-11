@@ -160,6 +160,11 @@ window.Ball = class Ball {
 			this.$el.style.top = `${this.pos.y}px`
 		}
 	}
+	/**
+	 * Se encarga de que la bola se mueva correctamente al estar pegada a la nave.
+	 * Puede ser al comenzar el juego o al tener activada la propiedad 'goma' de este
+	 * objeto
+	 */
 	moverInicio() {
 
 		let x = mouse.x
@@ -242,6 +247,9 @@ window.Ball = class Ball {
 			}
 		}
 	}
+	/**
+	 * Agrega una bola tomando el X e Y de este objeto
+	 */
 	agregarBall() {
 		const $el = document.createElement('div')
 		$el.classList.add('ball')
@@ -266,20 +274,32 @@ window.Ball = class Ball {
 			},
 		})
 	}
+	/**
+	 * Hace que la bola no rebote al golpear contra la nave
+	 */
 	noRebota() {
 
 		this.pos.y = nave.pos.y - 16
 		this.config.ballDirX = 0
 		this.config.ballDirY = 0
 	}
+	/**
+	 * Cambia la propiedad goma por verdadero para que no rebote la bola al tocar la nave
+	 */
 	pegar() {
 
 		this.goma = true
 	}
+	/**
+	 * Cambia la propiedad goma por verdadero para que rebote la bola al tocar la nave
+	 */
 	despegar() {
 
 		this.goma = false
 	}
+	/**
+	 * update...
+	 */
 	update() {
 
 		// Bola golpeando contra los bordes
