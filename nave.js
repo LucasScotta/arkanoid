@@ -38,15 +38,15 @@ const nave = {
 	/**
 	 * Alarga o achica la nave segun corresponda
 	 */
-	setWidth: function (widthType) {
+	setWidthType: function (widthType) {
 
-		this.size.w = widthType
-		this.$el.style.width = `${this.size.w}px`
-		if (this.pos.x + this.size.w > game.pos.x + game.size.w) {
+		this.pos.x -= (widthType.w - this.size.w) / 2
+		this.size.w = widthType.w
+		if (this.pos.x + this.size.w >= game.pos.x + game.size.w - game.size.b) {
 			this.pos.x = game.pos.x + game.size.w - game.size.b - this.size.w
-			this.$el.style.top  = `${this.pos.y}px`
-			this.$el.style.left = `${this.pos.x}px`
 		}
+		this.$el.style.width = `${this.size.w}px`
+		this.$el.style.left  = `${this.pos.x}px`
 	},
 	/**
 	 * Reinicia los powerUps de la nave

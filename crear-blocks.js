@@ -58,7 +58,7 @@ const clearPowers = function clearPowers() {
 		powers.splice(i, 1)
 	}
 	nave.clearArma()
-	nave.setWidth(widthTypes.M.w)
+	nave.setWidthType(widthTypes.M)
 }
 
 window.clearBalls = function clearBalls() {

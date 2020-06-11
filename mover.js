@@ -1,4 +1,4 @@
-/* globals nave, mouse, balls, game, $balls */
+/* globals nave, mouse, balls, game, randomOf, widthTypes */
 /////////////
 nave.pintarNaveInicio()
 pintarBolaInicio()
