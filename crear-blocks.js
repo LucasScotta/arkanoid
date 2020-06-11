@@ -1,4 +1,4 @@
-/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, colors, */
+/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, colors, gun, */
 let k
 function blocks(level) {
 
@@ -57,7 +57,9 @@ const clearPowers = function clearPowers() {
 		powers[i].$el.remove()
 		powers.splice(i, 1)
 	}
-	nave.clearArma()
+	for (const gun of guns) {
+		gun.clearGun()
+	}
 	nave.setWidthType(widthTypes.M)
 }
 

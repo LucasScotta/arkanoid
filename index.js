@@ -34,6 +34,7 @@ window.container = document.getElementById('container')
 window.mapBorder = game.size.b
 window.boxes = []
 window.powers = []
+window.guns = []
 ///////////////////////////////////////////////////////////////////////////////
 
 // Config bola

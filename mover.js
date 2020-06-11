@@ -1,4 +1,4 @@
-/* globals nave, mouse, balls, game, randomOf, widthTypes */
+/* globals nave, mouse, balls, game, randomOf, widthTypes, Gun, guns */
 /////////////
 nave.pintarNaveInicio()
 pintarBolaInicio()
@@ -24,6 +24,9 @@ document.onclick = function(event) {
 		
 		ball.arrancar(x, y, game, nave)
 	}
+	for (const gun of guns) {
+		gun.disparar()
+	}
 }
 
 document.onkeydown = function tecla(event) {
@@ -31,6 +34,9 @@ document.onkeydown = function tecla(event) {
 		game.config.pause = !game.config.pause
 	}
 	if (event.code === 'Space') {
+		for (const gun of guns) {
+			gun.disparar()
+		}
 		for (let ball of balls) {
 		
 			ball.arrancar(mouse.x, mouse.y, game, nave)
@@ -49,7 +55,44 @@ document.onkeydown = function tecla(event) {
 		nave.setWidthType(widthTypes.M)
 	}
 	if (event.key === 'v') {
-		nave.activarGun()
+		if (guns.length === 0) {
+			const init = nave.pos.x + 10
+			const arma = document.createElement('div')
+			arma.classList.add('gun')
+			guns.push(new Gun({
+				shots: 5,
+				pos: {
+					x: init,
+					y: 0,
+					init: init,
+				},
+				size: {
+					w: 5,
+					h: 20,
+				},
+				activo: false,
+				$el: arma,
+			}))
+		}
+		else if (guns.length === 1) {
+			const init = nave.pos.x + nave.size.w - 10
+			const arma = document.createElement('div')
+			arma.classList.add('gun')
+			guns.push(new Gun({
+				shots: 5,
+				pos: {
+					x: init,
+					y: 0,
+					init: init,
+				},
+				size: {
+					w: 5,
+					h: 20,
+				},
+				activo: false,
+				$el: arma,
+			}))
+		}
 	}
 }
 

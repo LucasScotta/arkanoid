@@ -1,6 +1,4 @@
-/* globals $nave, game, naveWidth, mouse, container, boxes */
-const arma = document.createElement('div')
-arma.classList.add('gun')
+/* globals $nave, game, naveWidth, mouse,*/
 window.widthTypes = {
 	S: {
 		w: 60,
@@ -22,18 +20,6 @@ const nave = {
 	pos: {
 		x: game.size.w / 2 - naveWidth / 2,
 		y: game.pos.y + game.size.h - 40,
-	},
-	gun: {
-		shots: 0,
-		size: {
-			w: 5,
-			h: 20,
-		},
-		pos: {
-			x: 0,
-			y: 0,
-		},
-		$el: arma,
 	},
 	/**
 	 * Alarga o achica la nave segun corresponda
@@ -102,77 +88,6 @@ const nave = {
 		mouse.y = this.pos.y - 1
 		this.$el.style.left = `${this.pos.x}px`
 		this.$el.style.top = `${this.pos.y}px`
-	},
-	/**
-	 * Activa los disparos de la nave al agarrar el powerUp
-	 */
-	activarGun: function () {
-		if (this.gun.shots === 0) {
-			container.appendChild(arma)
-			this.gun.shots += 5
-			this.gun.pos.x = this.pos.x + this.size.w / 2
-			this.gun.pos.y = this.pos.y - this.gun.size.h
-		}
-		else this.gun.shots += 5
-	},
-	/**
-	 * update...
-	 */
-	update: function () {
-		if (this.gun.shots > 0) {
-				this.gun.$el.style.left = `${this.gun.pos.x}px`
-				this.gun.$el.style.top  = `${this.gun.pos.y}px`
-				this.gun.pos.y -= 4
-			for (const box of boxes) {
-				if (this.disparoTocaBorde()) {
-					this.elimArma()
-				}
-				if (this.disparoToca(box)) {
-					box.golpear()
-					this.elimArma()
-				}
-			}
-		}
-	},
-	/**
-	 * Saca los disparos del juego y los lleva a 0
-	 */
-	clearArma: function () {
-		if (this.gun.shots > 0) {
-			this.gun.shots = 0
-			this.gun.$el.remove()
-		}
-	},
-	/**
-	 * Elimina el arma al quedarse sin disparos o descuenta un disparo
-	 */
-	elimArma: function () {
-		this.gun.shots -= 1
-		this.gun.pos.x = this.pos.x + this.size.w / 2
-		this.gun.pos.y = this.pos.y - this.gun.size.h
-		if (this.gun.shots === 0) {
-			this.gun.$el.remove()
-		}
-	},
-	/**
-	 * retorna si el disparo toca el borde superior de la pantalla
-	 */
-	disparoTocaBorde: function () {
-		const top = game.pos.y + game.size.b
-		const disparoT = this.gun.pos.y
-		return disparoT < top
-	},
-	/**
-	 * retorna si el disparo toca una caja
-	 */
-	disparoToca: function (box) {
-		const disparoT = this.gun.pos.y
-		const disparoR = this.gun.pos.x + this.gun.size.w
-		const disparoL = this.gun.pos.x
-		const boxB = box.pos.y + box.size.h
-		const boxL = box.pos.x
-		const boxR = box.pos.x + box.size.w
-		return disparoT === boxB && disparoR >= boxL && disparoL <= boxR
 	},
 }
 

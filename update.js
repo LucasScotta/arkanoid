@@ -1,4 +1,4 @@
-/* globals mouse, balls, $balls, nave, game, boxes, powers*/
+/* globals mouse, balls, $balls, nave, game, boxes, powers, guns*/
 function update() {
 	
 	for (const ball of balls) {
@@ -12,14 +12,16 @@ function update() {
 	}
 
 
-	for (let i = 0; i < powers.length; i += 1) {
-		powers[i].update(i)
+	for (const power of powers) {
+		power.update()
 	}
 
 	if (boxes.length === 0) {
 		return game.ganar(balls[0], $balls[0])
 	}
-	nave.update()
+	for (const gun of guns) {
+		gun.update()
+	}
 }
 
 function loop() {
