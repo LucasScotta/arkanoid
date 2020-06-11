@@ -10,30 +10,34 @@ window.Box = class Box {
 			this.$el.style.backgroundColor = colors[this.strong]
 		}
 		else {
-			if (this.power.tipo > 1) {
+			if (this.power) {
 
 				const $el = document.createElement('div')
 				$el.innerText = this.power.caracter
 				container.appendChild($el)
 				$el.classList.add('power')
-				powers.push(new PowerUp({
+				const power = {
 					pos: {
-						x: this.pos.x + this.size.w / 2,
+						x: this.pos.x + this.size.w / 2- 15 ,
 						y: this.pos.y + this.size.h,
 					},
 					size: {
 						w: 15,
 						h: 25,
 					},
-					tipo: this.power.tipo,
 					index: 0,
-					$el,
-					caracter: this.power.caracter,
-				}))
+					$el: $el,
+				}
+				Object.assign(power, this.power)
+				powers.push(new PowerUp(power))
 			}
 			this.borrar()
 		}
 	}
+	/**
+	 * Borra una caja y cambia la propiedad 'index' de las restantes para que el for del que
+	 * viene no falle.
+	 */
 	borrar() {
 
 		const clear = boxes.indexOf(this)

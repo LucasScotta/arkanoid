@@ -301,51 +301,42 @@ window.Ball = class Ball {
 		}
 
 		// Bola golpeando las cajas:
-		for (let box of boxes) {
-			let golpeV
-			let golpeH
-			if (this.estaTocandoDeArribaYAbajo(box)) {
+		for (const box of boxes) {
 		// Si esta tocando de arriba/abajo en una caja, rebota verticalmente
-				golpeV = 1
-			}
-			if (this.estaTocandoDeIzquierdaYDerecha(box)) {
+			const golpeV = this.estaTocandoDeArribaYAbajo(box)
 		// Si esta tocando de derecha/izquierda en una caja, rebota horizontalmente (funciona a medias)
-				golpeH = 1
-			}
-			if (golpeV === 1) {
+			const golpeH = this.estaTocandoDeIzquierdaYDerecha(box)
+			if (golpeV) {
 				this.rebotarVerticalmente()
-				let newPoss = this.pos.y + this.config.ballDirY
-				this.pos.y = newPoss
-				box.golpear()
+				this.pos.y += this.config.ballDirY
 			}
-			if (golpeH === 1) {
+			if (golpeH) {
 				this.rebotarHorizontalmente()
-				let newPoss = this.pos.x + this.config.ballDirX
-				this.pos.x = newPoss
-				box.golpear()
+				this.pos.x += this.config.ballDirX
 			}
+			if (golpeV || golpeH) box.golpear()
 		}
 
 		//Rebotes de bola contra la $nave:
 		//1 => ----[--]
 		if (this.estaTocandoDerecha(nave)) {
 
-			if (!this.goma) this.rebotarDerecha()
-			else this.noRebota()
+			if (this.goma) this.noRebota()
+			else this.rebotarDerecha()
 		}
 
 		//2 => [--]----
 		if (this.estaTocandoIzquierda(nave)) {
 
-			if (!this.goma) this.rebotarIzquierda()
-			else this.noRebota()
+			if (this.goma) this.noRebota()
+			else this.rebotarIzquierda()
 		}
 
 		//3 --[--]--
 		if (this.estaTocandoMedio(nave)) {
 
-			if (!this.goma) this.rebotarMedio()
-			else this.noRebota()
+			if (this.goma) this.noRebota()
+			else this.rebotarMedio()
 		}
 
 		//mover la bola
