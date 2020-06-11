@@ -3,38 +3,39 @@
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
 const $balls = document.getElementsByClassName('ball')
 window.colors = ['green', 'yellow', 'black']
-window.balls = [
-	new Ball({
-		$el: $balls[0],
-		pos: {
-			x: 0,
-			y: 0,
-		},
-		config: {
-			ballDirX: 0,
-			ballDirY: 0,
-		},
-		vel: {
-			r: 5,
-			a: Math.PI,
-		},
-		size : {
-			w: 15,
-			h: 15,
-		},
-		goma: false,
-	}),
-]
-
 const $nave = document.getElementById('nave')
 $nave.style.width = `100px`
 $nave.style.height = `15px`
 window.naveWidth = parseInt($nave.style.width)
-window.container = document.getElementById('container')
+const container = document.getElementById('container')
 window.mapBorder = game.size.b
+const balls = []
 window.boxes = []
 window.powers = []
 window.guns = []
+const newBall = document.createElement('div')
+newBall.classList.add('ball')
+container.appendChild(newBall)
+balls.push(new Ball({
+	$el: $balls[0],
+	pos: {
+		x: 0,
+		y: 0,
+	},
+	config: {
+		ballDirX: 0,
+		ballDirY: 0,
+	},
+	vel: {
+		r: 5,
+		a: Math.PI,
+	},
+	size : {
+		w: 15,
+		h: 15,
+	},
+	goma: false,
+}))
 ///////////////////////////////////////////////////////////////////////////////
 
 // Config bola

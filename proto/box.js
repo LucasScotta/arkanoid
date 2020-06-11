@@ -40,8 +40,7 @@ window.Box = class Box {
 	 */
 	borrar() {
 
-		const clear = boxes.indexOf(this)
-		boxes.splice(clear, 1)
+		boxes.splice(boxes.indexOf(this), 1)
 
 		for (let i = 0; i < boxes.length; i += 1) {
 		

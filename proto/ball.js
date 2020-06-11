@@ -1,4 +1,4 @@
-/* globals mapBorder, game, mouse, boxes, nave, container, balls*/
+/* globals mapBorder, game, mouse, boxes, nave, container, balls, indexOf*/
 
 window.Ball = class Ball {
 	constructor (options) {
@@ -296,6 +296,10 @@ window.Ball = class Ball {
 	despegar() {
 
 		this.goma = false
+	}
+	clearBall() {
+		balls.splice(balls.indexOf(this), 1)
+		this.$el.remove()
 	}
 	/**
 	 * update...

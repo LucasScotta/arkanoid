@@ -1,4 +1,4 @@
-/* globals nave, ballInicial, naveInicial, clearBlocks, blocks, clearPowers, clearBalls, balls, mouse*/
+/* globals nave, ballInicial, naveInicial, clear, blocks, balls, mouse, Ball, balls, container*/
 const game = {
 	pos: {
 		x: 0,
@@ -17,44 +17,88 @@ const game = {
 	/**
 	 * El nombre lo dice todo
 	 */
-	perder: function (ball, col) {
+	perder: function (ball, $ball) {
 
-		if (balls.length < 2) {
-			clearPowers()
+		if (balls.length === 1) {
+			clear()
 			this.config.lifes -= 1
 			if (this.config.lifes > 0) {
 
-				ball.pos.x = ballInicial
-				ball.pos.y = nave.pos.y - ball.size.w - 1
+				const newBall = document.createElement('div')
+				newBall.classList.add('ball')
+				container.appendChild(newBall)
+				balls.push(new Ball({
+					$el: newBall,
+					pos: {
+						x: 0,
+						y: 0,
+					},
+					config: {
+						ballDirX: 0,
+						ballDirY: 0,
+					},
+					vel: {
+						r: 5,
+						a: Math.PI,
+					},
+					size : {
+						w: 15,
+						h: 15,
+					},
+					goma: false,
+				}))
+				balls[0].pos.x = ballInicial
+				balls[0].pos.y = nave.pos.y - ball.size.w - 1
 				nave.pos.x = naveInicial
 				nave.$el.style.left = `${nave.pos.x}px`
 				nave.$el.style.top  = `${nave.pos.y}px`
-				ball.$el.style.left = `${ball.pos.x}px`
-				ball.$el.style.top  = `${ball.pos.y}px`
+				balls[0].$el.style.left = `${ball.pos.x}px`
+				balls[0].$el.style.top  = `${ball.pos.y}px`
 				nave.mover(mouse.x, mouse.y)
 				console.log(`Perdiste una vida, quedan ${game.config.lifes}`)
 			}
 			else {
 				if (confirm('Reiniciar?')) {
 
-					clearPowers()
+					clear()
+					const newBall = document.createElement('div')
+					newBall.classList.add('ball')
+					container.appendChild(newBall)
+					balls.push(new Ball({
+						$el: newBall,
+						pos: {
+							x: 0,
+							y: 0,
+						},
+						config: {
+							ballDirX: 0,
+							ballDirY: 0,
+						},
+						vel: {
+							r: 5,
+							a: Math.PI,
+						},
+						size : {
+							w: 15,
+							h: 15,
+						},
+						goma: false,
+					}))
 					this.config.level = 0
-					clearBlocks()
 					this.config.lifes = 3
-					ball.pos.x = ballInicial
-					ball.pos.y = nave.pos.y - ball.size.w - 1
+					balls[0].pos.x = ballInicial
+					balls[0].pos.y = nave.pos.y - ball.size.w - 1
 					nave.pos.x = naveInicial
 					nave.$el.style.left = `${nave.pos.x}px`
 					nave.$el.style.top  = `${nave.pos.y}px`
-					ball.$el.style.left = `${ball.pos.x}px`
-					ball.$el.style.top  = `${ball.pos.y}px`
+					balls[0].$el.style.left = `${ball.pos.x}px`
+					balls[0].$el.style.top  = `${ball.pos.y}px`
 				}
 			}
 		}
 		else {
-			const clear = balls.indexOf(ball)
-			balls.splice(clear, 1)
-			col.remove()
+			balls.splice(balls.indexOf(ball), 1)
+			$ball.remove()
 		}
 	},
 	/**
@@ -62,16 +106,38 @@ const game = {
 	 */
 	ganar: function (ball) {
 
-		clearBalls()
-		clearPowers()
+		clear()
 		this.config.level += 1
 
 		if (this.config.level <= 6) {
 
-			ball.pos.x = nave.pos.x + nave.size.w / 2
-			ball.pos.y = nave.pos.y - ball.size.w - 1
-			ball.$el.style.left = `${ball.pos.x}px`
-			ball.$el.style.top  = `${ball.pos.y}px`
+			const newBall = document.createElement('div')
+			newBall.classList.add('ball')
+			container.appendChild(newBall)
+			balls.push(new Ball({
+				$el: newBall,
+				pos: {
+					x: 0,
+					y: 0,
+				},
+				config: {
+					ballDirX: 0,
+					ballDirY: 0,
+				},
+				vel: {
+					r: 5,
+					a: Math.PI,
+				},
+				size : {
+					w: 15,
+					h: 15,
+				},
+				goma: false,
+			}))
+			balls[0].pos.x = nave.pos.x + nave.size.w / 2
+			balls[0].pos.y = nave.pos.y - ball.size.w - 1
+			balls[0].$el.style.left = `${ball.pos.x}px`
+			balls[0].$el.style.top  = `${ball.pos.y}px`
 			balls[0].config.ballDirY = 0
 			balls[0].config.ballDirX = 0
 			blocks(this.config.level)
