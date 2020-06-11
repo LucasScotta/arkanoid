@@ -24,29 +24,7 @@ const game = {
 			this.config.lifes -= 1
 			if (this.config.lifes > 0) {
 
-				const newBall = document.createElement('div')
-				newBall.classList.add('ball')
-				container.appendChild(newBall)
-				balls.push(new Ball({
-					$el: newBall,
-					pos: {
-						x: 0,
-						y: 0,
-					},
-					config: {
-						ballDirX: 0,
-						ballDirY: 0,
-					},
-					vel: {
-						r: 5,
-						a: Math.PI,
-					},
-					size : {
-						w: 15,
-						h: 15,
-					},
-					goma: false,
-				}))
+				ballN()
 				balls[0].pos.x = ballInicial
 				balls[0].pos.y = nave.pos.y - ball.size.w - 1
 				nave.pos.x = naveInicial
@@ -60,31 +38,10 @@ const game = {
 			else {
 				if (confirm('Reiniciar?')) {
 
-					clear()
-					const newBall = document.createElement('div')
-					newBall.classList.add('ball')
-					container.appendChild(newBall)
-					balls.push(new Ball({
-						$el: newBall,
-						pos: {
-							x: 0,
-							y: 0,
-						},
-						config: {
-							ballDirX: 0,
-							ballDirY: 0,
-						},
-						vel: {
-							r: 5,
-							a: Math.PI,
-						},
-						size : {
-							w: 15,
-							h: 15,
-						},
-						goma: false,
-					}))
 					this.config.level = 0
+					clearAll()
+					
+					ballN()
 					this.config.lifes = 3
 					balls[0].pos.x = ballInicial
 					balls[0].pos.y = nave.pos.y - ball.size.w - 1
@@ -93,6 +50,7 @@ const game = {
 					nave.$el.style.top  = `${nave.pos.y}px`
 					balls[0].$el.style.left = `${ball.pos.x}px`
 					balls[0].$el.style.top  = `${ball.pos.y}px`
+					nave.mover(mouse.x, mouse.y)
 				}
 			}
 		}
@@ -111,29 +69,7 @@ const game = {
 
 		if (this.config.level <= 6) {
 
-			const newBall = document.createElement('div')
-			newBall.classList.add('ball')
-			container.appendChild(newBall)
-			balls.push(new Ball({
-				$el: newBall,
-				pos: {
-					x: 0,
-					y: 0,
-				},
-				config: {
-					ballDirX: 0,
-					ballDirY: 0,
-				},
-				vel: {
-					r: 5,
-					a: Math.PI,
-				},
-				size : {
-					w: 15,
-					h: 15,
-				},
-				goma: false,
-			}))
+			ballN()
 			balls[0].pos.x = nave.pos.x + nave.size.w / 2
 			balls[0].pos.y = nave.pos.y - ball.size.w - 1
 			balls[0].$el.style.left = `${ball.pos.x}px`

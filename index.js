@@ -23,11 +23,15 @@ const balls = []
 window.boxes = []
 window.powers = []
 window.guns = []
-const newBall = document.createElement('div')
-newBall.classList.add('ball')
-container.appendChild(newBall)
-balls.push(new Ball({
-	$el: $balls[0],
+window.ballN = function ballN() {
+	const newBallDiv = document.createElement('div')
+	const newBallImg = document.createElement('img')
+	newBallDiv.appendChild(newBallImg)
+	newBallImg.classList.add('ball')
+	newBallImg.src = imgBalls
+	balls.push(new Ball({
+	$el: newBallDiv,
+	$img: newBallImg,
 	pos: {
 		x: 0,
 		y: 0,
@@ -45,7 +49,10 @@ balls.push(new Ball({
 		h: 15,
 	},
 	goma: false,
-}))
+	}))
+	container.appendChild(newBallDiv)
+}
+ballN()
 ///////////////////////////////////////////////////////////////////////////////
 
 // Config bola

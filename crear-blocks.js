@@ -68,17 +68,17 @@ const clearGuns = function clearGuns() {
 }
 window.clearBalls = function clearBalls() {
 
-	for (const ball of balls) {
-		ball.clearBall()
+	for (let i = balls.length - 1; i > -1; i -= 1) {
+		balls[i].clearBall()
 	}
 }
 window.clear = function clear () {
+	clearBalls()
 	clearGuns()
 	clearPowers()
-	clearBalls()
 }
 
-window.c = function c () {
+window.clearAll = function clearAll () {
 	clearGuns()
 	clearPowers()
 	clearBlocks()

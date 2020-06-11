@@ -251,11 +251,15 @@ window.Ball = class Ball {
 	 * Agrega una bola tomando el X e Y de este objeto
 	 */
 	agregarBall() {
-		const $el = document.createElement('div')
-		$el.classList.add('ball')
-		container.appendChild($el)
-		balls[balls.length] = new Ball({
-			$el,
+		const newBallDiv = document.createElement('div')
+		const newBallImg = document.createElement('img')
+		newBallImg.src = imgBalls
+		newBallDiv.appendChild(newBallImg)
+		newBallImg.classList.add('ball')
+		container.appendChild(newBallDiv)
+		balls.push(new Ball({
+			$el: newBallDiv,
+			$img: newBallImg,
 			pos: {
 				x: this.pos.x,
 				y: this.pos.y,
@@ -272,7 +276,7 @@ window.Ball = class Ball {
 				ballDirX: this.config.ballDirX * -1,
 				ballDirY: this.config.ballDirY * -1,
 			},
-		})
+		}))
 	}
 	/**
 	 * Hace que la bola no rebote al golpear contra la nave
