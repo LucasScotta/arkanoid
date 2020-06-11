@@ -9,10 +9,10 @@ function blocks(level) {
 	for (let i = 0; i < level + 3; i += 1) {
 		
 		for (let j = 0; j <= 8; j += 1) {
-
-			const $el = document.createElement('div')
-			container.appendChild($el)
-			$el.classList.add('box')
+			const div = document.createElement('div')
+			const img = document.createElement('img')
+			div.appendChild(img)
+			img.classList.add('box')
 			boxes[k] = new Box({
 				pos: {
 					x: posX,
@@ -22,14 +22,16 @@ function blocks(level) {
 					w: 60,
 					h: 20,
 				},
-				strong: Math.floor(Math.random() * colors.length),
-				$el,
+				strong: Math.floor(Math.random() * imgsBox.length),
+				$div: div,
+				$img: img,
 				index: k,
 				power: randomPowerUp(),
 			})
-			boxes[k].$el.style.backgroundColor = colors[boxes[k].strong]
-			boxes[k].$el.style.left = posX + 'px'
-			boxes[k].$el.style.top = posY + 'px'
+			boxes[k].$img.src = imgsBox[boxes[k].strong]
+			container.appendChild(div)
+			boxes[k].$div.style.left = posX + 'px'
+			boxes[k].$div.style.top = posY + 'px'
 			posX += 75
 			k += 1
 			if (j === 8) {

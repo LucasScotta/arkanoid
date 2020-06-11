@@ -7,7 +7,7 @@ window.Box = class Box {
 
 		if (this.strong > 0) {
 			this.strong -= 1
-			this.$el.style.backgroundColor = colors[this.strong]
+			this.$img.src = imgsBox[this.strong]
 		}
 		else {
 			if (this.power) {
@@ -47,7 +47,7 @@ window.Box = class Box {
 			boxes[i].index = i
 		}
 
-		this.$el.remove()
+		this.$div.remove()
 	}
 }
 
