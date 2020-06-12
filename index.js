@@ -17,7 +17,6 @@ const $nave = document.getElementById('nave')
 $nave.style.width = `100px`
 $nave.style.height = `15px`
 window.naveWidth = parseInt($nave.style.width)
-const container = document.getElementById('container')
 window.mapBorder = game.size.b
 const balls = []
 window.boxes = []
@@ -50,7 +49,7 @@ window.ballN = function ballN() {
 	},
 	goma: false,
 	}))
-	container.appendChild(newBallDiv)
+	document.getElementById('container').appendChild(newBallDiv)
 }
 ballN()
 ///////////////////////////////////////////////////////////////////////////////

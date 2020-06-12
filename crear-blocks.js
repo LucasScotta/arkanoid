@@ -1,4 +1,4 @@
-/* globals container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, imgsBox , guns, */
+/* globals boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, imgsBox , guns, */
 require(['game',], function (game) {
 let k
 function blocks(level) {
@@ -31,7 +31,7 @@ function blocks(level) {
 				power: randomPowerUp(),
 			})
 			boxes[k].$img.src = imgsBox[boxes[k].strong]
-			container.appendChild(div)
+			document.getElementById('container').appendChild(div)
 			boxes[k].$div.style.left = posX + 'px'
 			boxes[k].$div.style.top = posY + 'px'
 			posX += 75
