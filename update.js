@@ -1,6 +1,7 @@
-/* globals balls, $balls, nave, boxes, powers, guns*/
+/* globals require, balls, $balls, boxes, powers, guns*/
 require(['modules/mouse',
-		'game'], function (mouse, game) {
+		'game',
+		'nave',], function (mouse, game, nave) {
 function update() {
 	
 	for (const ball of balls) {

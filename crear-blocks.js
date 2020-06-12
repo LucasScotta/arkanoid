@@ -1,5 +1,6 @@
-/* globals boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, imgsBox , guns, */
-require(['game',], function (game) {
+/* globals require, boxes, randomPowerUp, Box, powers, widthTypes, balls, imgsBox , guns, */
+require(['game',
+		'nave',], function (game, nave) {
 let k
 function blocks(level) {
 

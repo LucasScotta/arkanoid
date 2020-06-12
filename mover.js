@@ -1,7 +1,8 @@
-/* globals nave, balls, randomOf, widthTypes, Gun, guns, require */
+/* globals balls, randomOf, widthTypes, Gun, guns, require */
 /////////////
 require(['modules/mouse',
-	'game'], function (mouse, game) {
+		'game',
+		'nave',], function (mouse, game, nave) {
 	nave.pintarNaveInicio()
 pintarBolaInicio()
 window.ballInicial = parseInt(balls[0].pos.x)
