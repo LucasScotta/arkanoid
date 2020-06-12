@@ -1,5 +1,5 @@
-/* globals mapBorder, game, mouse, boxes, nave, container, balls, indexOf*/
-
+/* globals mapBorder, game, define, boxes, nave, container, balls */
+define(['./modules/mouse',], function (mouse) {
 window.Ball = class Ball {
 	constructor (options) {
 		Object.assign(this, options)
@@ -178,27 +178,13 @@ window.Ball = class Ball {
 		const ballWidth = this.size.w
 
 		if (this.config.ballDirX === 0 && this.config.ballDirY === 0
-		&&  mouse.x >= mapLeft   + mapBorder
-		&&  mouse.x <= mapRight  - mapBorder
+		&&  mouse.x >= mapLeft   + mapBorder + nave.size.w / 2
+		&&  mouse.x <= mapRight  - mapBorder - nave.size.w / 2
 		&&  mouse.y >= mapTop    + mapBorder
 		&&  mouse.y <= mapBottom - mapBorder
 		&&	game.config.level < 7) {
-			if (x <= mapLeft + mapBorder + ballWidth / 2) {
-
-				x = mapLeft + mapBorder
-				this.pos.x = x
-				this.$el.style.left = `${this.pos.x}px`
-			}
-			else if (x >= mapRight - mapBorder - ballWidth / 2) {
-
-				x = mapRight - mapBorder - ballWidth
-				this.pos.x = x
-				this.$el.style.left = `${this.pos.x}px`
-			}
-			else {
-				this.pos.x = x - ballWidth / 2 - 0.5
-				this.$el.style.left = `${this.pos.x}px`
-			}
+			this.pos.x = x - ballWidth / 2 - 0.5
+			this.$el.style.left = `${this.pos.x}px`
 		}
 	}
 	/**
@@ -227,6 +213,7 @@ window.Ball = class Ball {
 		const mapBottom = game.pos.y + game.size.h
 		const mapLeft   = game.pos.x
 		const mapBorder = game.size.b
+		const mapWidth  = game.size.w
 		const naveWidth = nave.size.w
 
 		if (this.config.ballDirY === 0 && this.config.ballDirX === 0
@@ -235,7 +222,7 @@ window.Ball = class Ball {
 		&&  y <= mapBottom - mapBorder
 		&&	y >= mapTop + mapBorder) {
 
-			if (this.pos.x <= mapLeft + mapBorder + naveWidth / 2) {
+			if (this.pos.x <= mapLeft + mapBorder + mapWidth / 2) {
 
 				this.config.ballDirX = -1
 				this.config.ballDirY = -1
@@ -291,8 +278,8 @@ window.Ball = class Ball {
 	 * Cambia la propiedad goma por verdadero para que no rebote la bola al tocar la nave
 	 */
 	pegar() {
-
-		this.goma = true
+		if (this.goma) this.despegar()
+		else this.goma = true
 	}
 	/**
 	 * Cambia la propiedad goma por verdadero para que rebote la bola al tocar la nave
@@ -370,4 +357,4 @@ window.Ball = class Ball {
 		//mover la bola
 		this.mover()
 	}
-}
+}})

@@ -1,5 +1,6 @@
-/* globals nave, ballInicial, naveInicial, clear, blocks, balls, mouse, Ball, balls, container*/
-const game = {
+/* globals define, ballInicial, naveInicial, clear, blocks, balls, */
+define(['mouse'], function (mouse) {
+	return {
 	pos: {
 		x: 0,
 		y: 0,
@@ -87,4 +88,4 @@ const game = {
 			console.log(`Felicitaciones, terminaste un juego en desarrollo... Manco asqueroso`)
 		}
 	}
-}
+}})

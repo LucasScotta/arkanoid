@@ -1,4 +1,5 @@
-/* globals $nave, game, naveWidth, mouse,*/
+/* globals $nave, game, naveWidth, require */
+require(['./modules/mouse'], function (mouse) {
 window.widthTypes = {
 	S: {
 		w: 60,
@@ -30,6 +31,9 @@ const nave = {
 		this.size.w = widthType.w
 		if (this.pos.x + this.size.w >= game.pos.x + game.size.w - game.size.b) {
 			this.pos.x = game.pos.x + game.size.w - game.size.b - this.size.w
+		}
+		else if(this.pos.x <= game.pos.x + game.size.b) {
+			this.pos.x = game.pos.x + game.size.b
 		}
 		this.$el.style.width = `${this.size.w}px`
 		this.$el.style.left  = `${this.pos.x}px`

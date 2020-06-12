@@ -1,6 +1,7 @@
-/* globals nave, mouse, balls, game, randomOf, widthTypes, Gun, guns */
+/* globals nave, balls, game, randomOf, widthTypes, Gun, guns, require */
 /////////////
-nave.pintarNaveInicio()
+require(['./modules/mouse',], function (mouse) {
+	nave.pintarNaveInicio()
 pintarBolaInicio()
 window.ballInicial = parseInt(balls[0].pos.x)
 document.onmousemove = function mover(event) {
@@ -104,3 +105,4 @@ function pintarBolaInicio() {
 	balls[0].$el.style.left = `${balls[0].pos.x}px`
 	balls[0].$el.style.top  = `${balls[0].pos.y}px`
 }
+})

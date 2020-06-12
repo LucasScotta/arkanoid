@@ -55,13 +55,7 @@ window.ballN = function ballN() {
 ballN()
 ///////////////////////////////////////////////////////////////////////////////
 
-// Config bola
 
-window.mouse = {
-	x: 0,
-	y: 0,
-	b: false,
-}
 
 // const vel = {
 //   r: 1,

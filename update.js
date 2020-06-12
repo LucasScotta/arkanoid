@@ -1,4 +1,5 @@
-/* globals mouse, balls, $balls, nave, game, boxes, powers, guns*/
+/* globals balls, $balls, nave, game, boxes, powers, guns*/
+require(['./modules/mouse',], function (mouse) {
 function update() {
 	
 	for (const ball of balls) {
@@ -31,3 +32,4 @@ function loop() {
 
 let time = 5
 setInterval(loop, time)
+})
