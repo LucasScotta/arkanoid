@@ -1,4 +1,4 @@
-/* globals Ball, */
+/* globals require, Ball, */
 ///////////////////////////////////////////////////////////////////////////////
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
 require(['game',], function (game) {
@@ -22,7 +22,7 @@ const balls = []
 window.boxes = []
 window.powers = []
 window.guns = []
-window.ballN = function ballN() {
+const ballN = function ballN() {
 	const newBallDiv = document.createElement('div')
 	const newBallImg = document.createElement('img')
 	newBallDiv.appendChild(newBallImg)
