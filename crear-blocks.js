@@ -67,7 +67,7 @@ const clearGuns = function clearGuns() {
 		guns[i].clearGun()
 	}
 }
-window.clearBalls = function clearBalls() {
+const clearBalls = function clearBalls() {
 
 	for (let i = balls.length - 1; i > -1; i -= 1) {
 		balls[i].clearBall()

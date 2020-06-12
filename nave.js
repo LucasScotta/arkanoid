@@ -11,7 +11,12 @@ window.widthTypes = {
 		w: 140,
 	},
 }
-
+const naveImg = document.createElement('img')
+naveImg.style.width = `100px`
+naveImg.style.height = `15px`
+naveImg.style.borderRadius = '1em'
+naveImg.src = 'img/nave.png'
+$nave.appendChild(naveImg)
 const nave = {
 	$el: $nave,
 	size: {
@@ -96,3 +101,4 @@ const nave = {
 }
 
 window.naveInicial = parseInt(nave.pos.x)
+})
