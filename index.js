@@ -1,6 +1,7 @@
-/* globals Ball, game,  */
+/* globals Ball, */
 ///////////////////////////////////////////////////////////////////////////////
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
+require(['game',], function (game) {
 window.colors = ['green', 'yellow', 'black']
 window.imgsBox = [
 'img/0.png',
@@ -62,3 +63,4 @@ ballN()
 // }
 
 ///////////////////////////////////////////////////////////////////////////////
+})

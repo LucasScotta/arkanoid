@@ -1,5 +1,5 @@
 /* globals define, ballInicial, naveInicial, clear, blocks, balls, */
-define(['mouse'], function (mouse) {
+define(['modules/mouse',], function (mouse) {
 	return {
 	pos: {
 		x: 0,

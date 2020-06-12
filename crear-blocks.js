@@ -1,4 +1,5 @@
-/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, imgsBox , guns, */
+/* globals container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, imgsBox , guns, */
+require(['game',], function (game) {
 let k
 function blocks(level) {
 
@@ -84,3 +85,4 @@ window.clearAll = function clearAll () {
 	clearPowers()
 	clearBlocks()
 }
+})
