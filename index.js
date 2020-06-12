@@ -1,18 +1,17 @@
-/* globals Ball, game */
+/* globals Ball, game,  */
 ///////////////////////////////////////////////////////////////////////////////
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
-const $balls = document.getElementsByClassName('ball')
 window.colors = ['green', 'yellow', 'black']
 window.imgsBox = [
-'/home/lucas/Desktop/codigo/js/mayo/arka-html-js/img/0.png',
-'/home/lucas/Desktop/codigo/js/mayo/arka-html-js/img/1.png',
-'/home/lucas/Desktop/codigo/js/mayo/arka-html-js/img/2.png',
-'/home/lucas/Desktop/codigo/js/mayo/arka-html-js/img/3.png',
-`/home/lucas/Desktop/codigo/js/mayo/arka-html-js/img/4.png`,
-'/home/lucas/Desktop/codigo/js/mayo/arka-html-js/img/5.png',
-'/home/lucas/Desktop/codigo/js/mayo/arka-html-js/img/6.png',
-'/home/lucas/Desktop/codigo/js/mayo/arka-html-js/img/7.png',]
-window.imgBalls = '/home/lucas/Desktop/codigo/js/mayo/arka-html-js/img/ball.png'
+'img/0.png',
+'img/1.png',
+'img/2.png',
+'img/3.png',
+'img/4.png',
+'img/5.png',
+'img/6.png',
+'img/7.png',]
+const imgBalls = 'img/ball.png'
 const $nave = document.getElementById('nave')
 $nave.style.width = `100px`
 $nave.style.height = `15px`

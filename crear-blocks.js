@@ -1,4 +1,4 @@
-/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, colors, guns, */
+/* globals game, container, boxes, randomPowerUp, Box, powers, nave, widthTypes, balls, imgsBox , guns, */
 let k
 function blocks(level) {
 
@@ -12,6 +12,7 @@ function blocks(level) {
 			const div = document.createElement('div')
 			const img = document.createElement('img')
 			div.appendChild(img)
+			div.classList.add('box')
 			img.classList.add('box')
 			boxes[k] = new Box({
 				pos: {
