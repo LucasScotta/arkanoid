@@ -1,7 +1,8 @@
 /* globals define, ballInicial, naveInicial, clear, blocks, balls, */
 define(['modules/mouse',
 		'game',
-		'modules/nave'], function (mouse, game, nave) {
+		'modules/nave',
+		'index'], function (mouse, game, nave, ballN) {
 	return {
 	pos: {
 		x: 0,
