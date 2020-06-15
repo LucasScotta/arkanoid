@@ -1,7 +1,6 @@
-/* globals naveWidth, define */
+/* globals naveWidth, define, $nave */
 define(['modules/mouse',
-	'game',
-	'$nave'], function (mouse, game, $nave) {
+	'game',], function (mouse, game) {
 window.widthTypes = {
 	S: {
 		w: 60,

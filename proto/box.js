@@ -1,5 +1,6 @@
 /* globals require, boxes, PowerUp, container, powerUps, */
-require(['modules/powers'], function (powers) {
+require(['modules/powers',
+		'modules/imgs-box'], function (powers, imgsBox) {
 window.Box = class Box {
 	constructor(options) {
 		Object.assign(this, options)
