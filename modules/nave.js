@@ -1,17 +1,6 @@
 /* globals naveWidth, define, $nave */
 define(['modules/mouse',
 	'game',], function (mouse, game) {
-window.widthTypes = {
-	S: {
-		w: 60,
-	},
-	M: {
-		w: 100,
-	},
-	L: {
-		w: 140,
-	},
-}
 const naveImg = document.createElement('img')
 naveImg.style.width = `100px`
 naveImg.style.height = `15px`

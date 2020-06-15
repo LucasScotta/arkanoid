@@ -3,7 +3,7 @@
 require(['modules/mouse',
 		'game',
 		'modules/nave',
-		'modules/nave',
+		'modules/width-types',
 		'proto/box',
 		'modules/balls',
 		'modules/guns',

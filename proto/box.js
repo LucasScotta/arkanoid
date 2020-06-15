@@ -1,4 +1,4 @@
-/* globals require, PowerUp, container, powerUps, */
+/* globals require, PowerUp, powerUps, */
 require(['modules/powers',
 		'modules/imgs-box',
 		'modules/boxes'], function (powers, imgsBox, boxes) {
@@ -17,7 +17,7 @@ window.Box = class Box {
 
 				const $el = document.createElement('div')
 				$el.innerText = this.power.caracter
-				container.appendChild($el)
+				document.getElementById('container').appendChild($el)
 				$el.classList.add('power')
 				const power = {
 					pos: {
