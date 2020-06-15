@@ -1,4 +1,4 @@
-/* globals require, randomPowerUp, Box,*/
+/* globals require, randomPowerUp, */
 require(['game',
 		'modules/nave',
 		'modules/powers',
@@ -6,7 +6,8 @@ require(['game',
 		'modules/guns',
 		'modules/imgs-box',
 		'modules/boxes',
-		'modules/width-types'], function (game, nave, powers, balls, guns, imgsBox, boxes, widthTypes) {
+		'modules/width-types',
+		'proto/box'], function (game, nave, powers, balls, guns, imgsBox, boxes, widthTypes, Box) {
 let k
 function blocks(level) {
 
