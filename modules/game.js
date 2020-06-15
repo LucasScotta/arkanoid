@@ -7,7 +7,8 @@ define(['modules/mouse',
 		'crear-blocks',
 		'crear-blocks',
 		'mover',
-		'modules/nave'], function (mouse, nave, ballN, clearAll, balls, clear, blocks, ballInicial, naveInicial) {
+		'modules/nave'], function (mouse, nave, ballN, clearAll,
+								balls, clear, blocks, ballInicial, naveInicial) {
 	return {
 	pos: {
 		x: 0,
