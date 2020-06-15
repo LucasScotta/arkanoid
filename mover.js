@@ -2,7 +2,7 @@
 /////////////
 require(['modules/mouse',
 		'game',
-		'proto/nave',], function (mouse, game, nave) {
+		'modules/nave',], function (mouse, game, nave) {
 	nave.pintarNaveInicio()
 pintarBolaInicio()
 window.ballInicial = parseInt(balls[0].pos.x)

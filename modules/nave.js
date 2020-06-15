@@ -1,5 +1,5 @@
-/* globals $nave, naveWidth, require */
-require(['modules/mouse',
+/* globals $nave, naveWidth, define */
+define(['modules/mouse',
 	'game',], function (mouse, game) {
 window.widthTypes = {
 	S: {

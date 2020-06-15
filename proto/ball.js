@@ -1,7 +1,7 @@
 /* globals mapBorder, define, boxes, container, balls */
 define(['modules/mouse',
 		'game',
-		'proto/nave',], function (mouse, game, nave) {
+		'modules/nave',], function (mouse, game, nave) {
 window.Ball = class Ball {
 	constructor (options) {
 		Object.assign(this, options)
