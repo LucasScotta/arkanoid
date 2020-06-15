@@ -1,10 +1,11 @@
-/* globals define, ballInicial, naveInicial, clear, blocks, */
+/* globals define, ballInicial, naveInicial*/
 define(['modules/mouse',
-		'game',
 		'modules/nave',
-		'index',
+		'index.js',
 		'crear-blocks',
-		'modules/balls'], function (mouse, game, nave, ballN, clearAll, balls) {
+		'modules/balls',
+		'crear-blocks',
+		'crear-blocks'], function (mouse, nave, ballN, clearAll, balls, clear, blocks) {
 	return {
 	pos: {
 		x: 0,
@@ -39,7 +40,7 @@ define(['modules/mouse',
 				balls[0].$el.style.left = `${ball.pos.x}px`
 				balls[0].$el.style.top  = `${ball.pos.y}px`
 				nave.mover(mouse.x, mouse.y)
-				console.log(`Perdiste una vida, quedan ${game.config.lifes}`)
+				console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
 			}
 			else {
 				if (confirm('Reiniciar?')) {

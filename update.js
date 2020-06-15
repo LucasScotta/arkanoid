@@ -1,6 +1,6 @@
-/* globals require, $balls*/
+/* globals require*/
 require(['modules/mouse',
-		'game',
+		'modules/game',
 		'modules/nave',
 		'modules/powers',
 		'modules/balls',
@@ -24,7 +24,7 @@ function update() {
 	}
 
 	if (boxes.length === 0) {
-		return game.ganar(balls[0], $balls[0])
+		return game.ganar(balls[0])
 	}
 	for (const gun of guns) {
 		gun.update()

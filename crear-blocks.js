@@ -1,5 +1,5 @@
 /* globals require, randomPowerUp, */
-require(['game',
+require(['modules/game',
 		'modules/nave',
 		'modules/powers',
 		'modules/balls',

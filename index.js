@@ -1,7 +1,7 @@
 /* globals require*/
 ///////////////////////////////////////////////////////////////////////////////
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
-require(['game',
+require(['modules/game',
 		'modules/balls',
 		'proto/ball'], function (game, balls, Ball) {
 window.colors = ['green', 'yellow', 'black']
