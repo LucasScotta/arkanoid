@@ -10,7 +10,6 @@ $nave.style.width = `100px`
 $nave.style.height = `15px`
 window.naveWidth = parseInt($nave.style.width)
 window.mapBorder = game.size.b
-window.boxes = []
 const ballN = function ballN() {
 	const newBallDiv = document.createElement('div')
 	const newBallImg = document.createElement('img')
