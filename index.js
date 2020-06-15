@@ -1,7 +1,8 @@
 /* globals require, Ball, */
 ///////////////////////////////////////////////////////////////////////////////
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
-require(['game',], function (game) {
+require(['game',
+		'modules/balls'], function (game, balls) {
 window.colors = ['green', 'yellow', 'black']
 window.imgsBox = [
 'img/0.png',
@@ -18,7 +19,6 @@ $nave.style.width = `100px`
 $nave.style.height = `15px`
 window.naveWidth = parseInt($nave.style.width)
 window.mapBorder = game.size.b
-const balls = []
 window.boxes = []
 window.guns = []
 const ballN = function ballN() {

@@ -1,4 +1,4 @@
-/* globals require, boxes, PowerUp, container, powerUps, colors, */
+/* globals require, boxes, PowerUp, container, powerUps, */
 require(['modules/powers'], function (powers) {
 window.Box = class Box {
 	constructor(options) {
