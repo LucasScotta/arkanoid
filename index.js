@@ -6,10 +6,9 @@ require(['game',
 		'proto/ball'], function (game, balls, Ball) {
 window.colors = ['green', 'yellow', 'black']
 const imgBalls = 'img/ball.png'
-const $nave = document.getElementById('nave')
-$nave.style.width = `100px`
-$nave.style.height = `15px`
-window.naveWidth = parseInt($nave.style.width)
+document.getElementById('nave').style.width = `100px`
+document.getElementById('nave').style.height = `15px`
+window.naveWidth = parseInt(document.getElementById('nave').style.width)
 window.mapBorder = game.size.b
 const ballN = function ballN() {
 	const newBallDiv = document.createElement('div')

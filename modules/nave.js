@@ -1,4 +1,4 @@
-/* globals naveWidth, define, $nave */
+/* globals naveWidth, define*/
 define(['modules/mouse',
 	'game',], function (mouse, game) {
 const naveImg = document.createElement('img')
@@ -6,9 +6,9 @@ naveImg.style.width = `100px`
 naveImg.style.height = `15px`
 naveImg.style.borderRadius = '1em'
 naveImg.src = 'img/nave.png'
-$nave.appendChild(naveImg)
+document.getElementById('nave').appendChild(naveImg)
 const nave = {
-	$el: $nave,
+	$el: document.getElementById('nave'),
 	size: {
 		w: 100,
 		h: 15,

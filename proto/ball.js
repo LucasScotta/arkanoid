@@ -336,7 +336,7 @@ window.Ball = class Ball {
 			if (golpeV || golpeH) box.golpear()
 		}
 
-		//Rebotes de bola contra la $nave:
+		//Rebotes de bola contra la nave:
 		//1 => ----[--]
 		if (this.estaTocandoDerecha(nave)) {
 
