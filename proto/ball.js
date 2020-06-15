@@ -1,4 +1,4 @@
-/* globals mapBorder, define, boxes, container, balls */
+/* globals mapBorder, define, boxes, balls */
 define(['modules/mouse',
 		'game',
 		'modules/nave',
@@ -245,7 +245,7 @@ window.Ball = class Ball {
 		newBallImg.src = imgBalls
 		newBallDiv.appendChild(newBallImg)
 		newBallImg.classList.add('ball')
-		container.appendChild(newBallDiv)
+		document.getElementById('container').appendChild(newBallDiv)
 		balls.push(new Ball({
 			$el: newBallDiv,
 			$img: newBallImg,
