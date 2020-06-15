@@ -1,7 +1,8 @@
 /* globals mapBorder, define, boxes, container, balls */
 define(['modules/mouse',
 		'game',
-		'modules/nave',], function (mouse, game, nave) {
+		'modules/nave',
+		'index'], function (mouse, game, nave, imgBalls) {
 window.Ball = class Ball {
 	constructor (options) {
 		Object.assign(this, options)
@@ -208,7 +209,7 @@ window.Ball = class Ball {
 	 * pasar de nivel, o al perder todas las vidas y reiniciar el juego del nivel 1.
 	 * Comienza el juego
 	 */
-	arrancar(x, y, game, nave) {
+	arrancar(x, y, game) {
 
 		const mapTop    = game.pos.y
 		const mapRight  = game.pos.x + game.size.w
@@ -216,7 +217,6 @@ window.Ball = class Ball {
 		const mapLeft   = game.pos.x
 		const mapBorder = game.size.b
 		const mapWidth  = game.size.w
-		const naveWidth = nave.size.w
 
 		if (this.config.ballDirY === 0 && this.config.ballDirX === 0
 		&&	x <= mapRight - mapBorder
