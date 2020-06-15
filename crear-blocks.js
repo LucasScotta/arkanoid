@@ -9,7 +9,7 @@ require(['modules/game',
 		'modules/width-types',
 		'proto/box'], function (game, nave, powers, balls, guns, imgsBox, boxes, widthTypes, Box) {
 let k
-function blocks(level) {
+const blocks = function blocks(level) {
 
 	k = 0
 	let posX = game.pos.x + game.size.b * 2
