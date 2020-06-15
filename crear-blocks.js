@@ -7,7 +7,7 @@ require(['modules/game',
 		'modules/imgs-box',
 		'modules/boxes',
 		'modules/width-types',
-		'proto/box'
+		'proto/box',
 		'proto/box'], function (game, nave, powers, balls, guns, imgsBox, boxes, widthTypes, Box, randomPowerUp) {
 let k
 const blocks = function blocks(level) {
