@@ -2,7 +2,8 @@
 define(['modules/mouse',
 		'game',
 		'modules/nave',
-		'index'], function (mouse, game, nave, ballN) {
+		'index',
+		'crear-blocks'], function (mouse, game, nave, ballN, clearAll) {
 	return {
 	pos: {
 		x: 0,
