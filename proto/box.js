@@ -1,4 +1,5 @@
-/* globals boxes, powers, PowerUp, container, powerUps, colors, */
+/* globals require, boxes, PowerUp, container, powerUps, colors, */
+require(['modules/powers'], function (powers) {
 window.Box = class Box {
 	constructor(options) {
 		Object.assign(this, options)
@@ -67,3 +68,4 @@ window.randomPowerUp = function randomPowerUp() {
 
 	return randomOf(powerUps)
 }
+})

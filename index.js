@@ -20,7 +20,6 @@ window.naveWidth = parseInt($nave.style.width)
 window.mapBorder = game.size.b
 const balls = []
 window.boxes = []
-window.powers = []
 window.guns = []
 const ballN = function ballN() {
 	const newBallDiv = document.createElement('div')
