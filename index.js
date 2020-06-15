@@ -1,8 +1,9 @@
-/* globals require, Ball, */
+/* globals require*/
 ///////////////////////////////////////////////////////////////////////////////
 // Bola + alto y ancho, nave + alto y ancho , mapa(container) + borde y cajas.
 require(['game',
-		'modules/balls'], function (game, balls) {
+		'modules/balls',
+		'proto/ball'], function (game, balls, Ball) {
 window.colors = ['green', 'yellow', 'black']
 const imgBalls = 'img/ball.png'
 const $nave = document.getElementById('nave')
