@@ -2,9 +2,8 @@
 define(['modules/game',
 		'modules/nave',
 		'modules/width-types',
-		'modules/randomOf',
 		'modules/powers',
-		'modules/balls',], function (game, nave, widthTypes, randomOf, powers, balls) {
+		'modules/balls',], function (game, nave, widthTypes, powers, balls) {
 	return class PowerUp {
 		constructor(options) {
 			Object.assign(this, options)

@@ -3,13 +3,15 @@ define(['modules/game',
 		'modules/imgs-box',
 		'modules/boxes',
 		'proto/box',
-		'proto/box',
+		'modules/randomOf',
+		'modules/potenciadores',
 ], (
 	game,
 	imgsBox,
 	boxes,
 	Box,
-	randomPowerUp) => {
+	randomOf,
+	powerUps,) => {
 	let k
 	k = 0
 	let posX = game.pos.x + game.size.b * 2
@@ -36,7 +38,7 @@ define(['modules/game',
 				$div: div,
 				$img: img,
 				index: k,
-				power: randomPowerUp(),
+				power: randomOf(powerUps),
 			})
 			boxes[k].$img.src = imgsBox[boxes[k].strong]
 			document.getElementById('container').appendChild(div)
