@@ -29,6 +29,8 @@
 }
 
 #nave {
+	width: 100px;
+	height: 15px;
 	border-radius: 1em;
 }
 

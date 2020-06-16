@@ -1,7 +1,7 @@
 /* globals define*/
 define(['modules/mouse',
-	'modules/game',
-	'index'], function (mouse, game, naveWidth) {
+	'modules/game'], function (mouse, game) {
+const naveWidth = parseInt(document.getElementById('nave').style.width)
 const naveImg = document.createElement('img')
 naveImg.style.width = `100px`
 naveImg.style.height = `15px`
