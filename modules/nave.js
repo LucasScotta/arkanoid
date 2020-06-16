@@ -90,6 +90,5 @@ const nave = {
 		this.$el.style.top = `${this.pos.y}px`
 	},
 }
-
-window.naveInicial = parseInt(nave.pos.x)
+game.nave = nave
 })
