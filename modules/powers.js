@@ -1,3 +1,4 @@
-/* globals define*/
-//powers list
-define([])
+/*globals define*/
+define(function() {
+	return []
+})
