@@ -2,7 +2,7 @@
 define('modules/game',[
 		'modules/mouse',
 		'modules/new-ball',
-		'clear',
+		'modules/clear',
 		'modules/balls',
 		'mover',
 		'modules/naveInicial',
