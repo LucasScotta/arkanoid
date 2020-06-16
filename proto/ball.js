@@ -2,10 +2,10 @@
 define(['modules/mouse',
 		'modules/game',
 		'modules/nave',
-		'index',
 		'modules/balls',
-		'modules/boxes',], function (mouse, game, nave, imgBalls, balls, boxes) {
-window.Ball = class Ball {
+		'modules/boxes',], function (mouse, game, nave, balls, boxes) {
+const imgBalls = 'img/ball.png'
+return class Ball {
 	constructor (options) {
 		Object.assign(this, options)
 	}
