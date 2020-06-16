@@ -97,4 +97,5 @@ define('modules/game',[
 			console.log(`Felicitaciones, terminaste un juego en desarrollo... Manco asqueroso`)
 		}
 	}
-}})
+}
+})

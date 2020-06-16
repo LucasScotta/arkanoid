@@ -4,8 +4,7 @@ define(['modules/mouse',
 		'modules/nave',
 		'index',
 		'modules/balls',
-		'modules/boxes',
-		'index'], function (mouse, game, nave, imgBalls, balls, boxes, mapBorder) {
+		'modules/boxes',], function (mouse, game, nave, imgBalls, balls, boxes) {
 window.Ball = class Ball {
 	constructor (options) {
 		Object.assign(this, options)
@@ -57,6 +56,7 @@ window.Ball = class Ball {
 	 */
 	tocaBordeCostados(game) {
 
+		const mapBorder = game.size.b
 		const mapRight = game.pos.x + game.size.w
 		const mapLeft = game.pos.x
 		const r = this.pos.x + this.size.w
@@ -70,6 +70,7 @@ window.Ball = class Ball {
 	 */
 	tocaBordeSuperior(game) {
 
+		const mapBorder = game.size.b
 		const mapTop = game.pos.y
 		const t = this.pos.y
 
@@ -80,6 +81,7 @@ window.Ball = class Ball {
 	 */
 	tocaBordeInferior(game) {
 
+		const mapBorder = game.size.b
 		const mapBottom = game.pos.y + game.size.h
 		const b = this.pos.y + this.size.h
 
