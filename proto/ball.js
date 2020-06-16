@@ -222,7 +222,7 @@ define([
 		 * pasar de nivel, o al perder todas las vidas y reiniciar el juego del nivel 1.
 		 * Comienza el juego
 		 */
-		arrancar(x, y, game) {
+		arrancar(x, y) {
 
 			const mapTop    = game.pos.y
 			const mapRight  = game.pos.x + game.size.w

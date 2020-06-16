@@ -39,7 +39,7 @@ require(['modules/mouse',
 
 		for (let ball of balls) {
 			
-			ball.arrancar(x, y, game, nave)
+			ball.arrancar(x, y)
 		}
 		for (const gun of guns) {
 			gun.disparar()
