@@ -3,7 +3,8 @@ require(['modules/powers',
 		'modules/imgs-box',
 		'modules/boxes',
 		'proto/powerUps',
-		'modules/power-ups'], function (powers, imgsBox, boxes, PowerUp, powerUps) {
+		'modules/power-ups',
+		'modules/randomOf'], function (powers, imgsBox, boxes, PowerUp, powerUps, randomOf) {
 window.Box = class Box {
 	constructor(options) {
 		Object.assign(this, options)
