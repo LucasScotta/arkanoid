@@ -1,2 +1,4 @@
 /*globals define*/
-define([])
+define(function() {
+	return []
+})
