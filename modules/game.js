@@ -1,16 +1,16 @@
 /* globals define*/
 define('modules/game',[
 		'globals',
+		'constants',
 		'modules/new-ball',
 		'modules/clear',
 		'mover',
-		'modules/naveInicial',
 		'modules/creador-bloques'], function (
-			globals, 
+			globals,
+			constants,
 			ballN, 
 			clear, 
 			ballInicial,
-			naveInicial,
 			blocks) {
 	return {
 	pos: {
@@ -40,7 +40,7 @@ define('modules/game',[
 				ballN()
 				globals.balls[0].pos.x = ballInicial
 				globals.balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
-				this.nave.pos.x = naveInicial
+				this.nave.pos.x = constants.naveInicial
 				this.nave.$el.style.left = `${this.nave.pos.x}px`
 				this.nave.$el.style.top  = `${this.nave.pos.y}px`
 				globals.balls[0].$el.style.left = `${ball.pos.x}px`
@@ -58,7 +58,7 @@ define('modules/game',[
 					this.config.lifes = 3
 					globals.balls[0].pos.x = ballInicial
 					globals.balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
-					this.nave.pos.x = naveInicial
+					this.nave.pos.x = constants.naveInicial
 					this.nave.$el.style.left = `${this.nave.pos.x}px`
 					this.nave.$el.style.top  = `${this.nave.pos.y}px`
 					globals.balls[0].$el.style.left = `${ball.pos.x}px`

@@ -1,17 +1,15 @@
 /*globals define*/
 define(['globals',
+		'constants',
 		'modules/game',
 		'proto/box',
 		'modules/randomOf',
-		'modules/potenciadores',
-		'modules/imgs-box'
 ], (
 	globals,
+	constants,
 	game,
 	Box,
-	randomOf,
-	powerUps,
-	imgsBox) => {
+	randomOf,) => {
 	let k
 	k = 0
 	let posX = game.pos.x + game.size.b * 2
@@ -34,13 +32,13 @@ define(['globals',
 					w: 60,
 					h: 20,
 				},
-				strong: Math.floor(Math.random() * imgsBox.length),
+				strong: Math.floor(Math.random() * constants.imgsBox.length),
 				$div: div,
 				$img: img,
 				index: k,
-				power: randomOf(powerUps),
+				power: randomOf(constants.power),
 			})
-			globals.boxes[k].$img.src = imgsBox[globals.boxes[k].strong]
+			globals.boxes[k].$img.src = constants.imgsBox[globals.boxes[k].strong]
 			document.getElementById('container').appendChild(div)
 			globals.boxes[k].$div.style.left = posX + 'px'
 			globals.boxes[k].$div.style.top = posY + 'px'

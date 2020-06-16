@@ -1,7 +1,7 @@
 /* globals require*/
 require(['globals',
-		'proto/powerUps',
-		'modules/imgs-box'], function (globals, PowerUp, imgsBox) {
+		'constants',
+		'proto/powerUps',], function (globals, constants, PowerUp) {
 	return class Box {
 		constructor(options) {
 			Object.assign(this, options)
@@ -10,7 +10,7 @@ require(['globals',
 
 			if (this.strong > 0) {
 				this.strong -= 1
-				this.$img.src = imgsBox[this.strong]
+				this.$img.src = constants.imgsBox[this.strong]
 			}
 			else {
 				if (this.power) {
