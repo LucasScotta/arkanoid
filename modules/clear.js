@@ -1,3 +1,4 @@
+'use strict'
 /*globals define*/
 define(['globals',
 		'modules/nave',], function(globals, nave) {

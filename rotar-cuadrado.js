@@ -1,3 +1,4 @@
+'use strict'
 /* globals require*/
 require(['globals'], function (globals) {
 let rotacion = 0

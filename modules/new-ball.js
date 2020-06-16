@@ -1,3 +1,4 @@
+'use strict'
 /*globals define*/
 define(['globals',
 		'factory/ball'], function(globals, newBall) {

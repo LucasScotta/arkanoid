@@ -1,3 +1,4 @@
+'use strict'
 /*globals define*/
 /**
  * Retorna el index de una lista
