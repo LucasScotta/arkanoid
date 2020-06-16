@@ -4,7 +4,6 @@
 require(['modules/game',
 		'modules/balls',
 		'proto/ball'], function (game, balls, Ball) {
-window.colors = ['green', 'yellow', 'black']
 const imgBalls = 'img/ball.png'
 document.getElementById('nave').style.width = `100px`
 document.getElementById('nave').style.height = `15px`
