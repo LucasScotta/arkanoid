@@ -5,13 +5,15 @@ define('modules/game',[
 		'clear',
 		'modules/balls',
 		'mover',
-		'modules/naveInicial'], function (
+		'modules/naveInicial',
+		'modules/creador-bloques'], function (
 			mouse, 
 			ballN, 
 			clear,
 			balls, 
 			ballInicial,
-			naveInicial) {
+			naveInicial,
+			blocks) {
 	return {
 	pos: {
 		x: 0,
