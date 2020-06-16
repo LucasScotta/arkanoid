@@ -3,13 +3,11 @@
 require(['globals',
 		'modules/game',
 		'modules/nave',
-		'modules/width-types',
 		'modules/randomOf',
 		'proto/gun',
 		'modules/pintar-bola-inicial'], (globals,
 			game,
 			nave,
-			widthTypes,
 			randomOf,
 			Gun,
 			pintarBolaInicio) => {
@@ -59,13 +57,13 @@ require(['globals',
 				randomOf(globals.balls).agregarBall()
 		}
 		if (event.key === 'm') {
-			nave.setWidthType(widthTypes.L)
+			nave.setWidthType(globals.widthTypes.L)
 		}
 		if (event.key === 'n') {
-			nave.setWidthType(widthTypes.S)
+			nave.setWidthType(globals.widthTypes.S)
 		}
 		if (event.key === 'b') {
-			nave.setWidthType(widthTypes.M)
+			nave.setWidthType(globals.widthTypes.M)
 		}
 		if (event.key === 'v') {
 			if (globals.guns.length === 0) {

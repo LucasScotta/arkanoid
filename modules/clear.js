@@ -1,7 +1,6 @@
 /*globals define*/
 define(['globals',
-		'modules/nave',
-		'modules/width-types',], function(globals, nave, widthTypes) {
+		'modules/nave',], function(globals, nave) {
 
 	function clearBlocks() {
 		let i = 0
@@ -17,7 +16,7 @@ define(['globals',
 			globals.powers[i].$el.remove()
 			globals.powers.splice(i, 1)
 		}
-		nave.setWidthType(widthTypes.M)
+		nave.setWidthType(globals.widthTypes.M)
 	}
 	function clearGuns() {
 		for (let i = globals.guns.length - 1; i > -1; i -= 1) {

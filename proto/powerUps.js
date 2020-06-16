@@ -1,8 +1,7 @@
 /* globals define*/
 define(['globals',
 		'modules/game',
-		'modules/nave',
-		'modules/width-types',], function (globals, game, nave, widthTypes) {
+		'modules/nave',], function (globals, game, nave) {
 	return class PowerUp {
 		constructor(options) {
 			Object.assign(this, options)
@@ -15,7 +14,7 @@ define(['globals',
 		 */
 		agrandar() {
 
-			nave.setWidthType(widthTypes.L)
+			nave.setWidthType(globals.widthTypes.L)
 			this.despegar()
 		}
 		/**
@@ -23,7 +22,7 @@ define(['globals',
 		 */
 		achicar() {
 
-			nave.setWidthType(widthTypes.S)
+			nave.setWidthType(globals.widthTypes.S)
 			this.despegar()
 		}
 		/**
