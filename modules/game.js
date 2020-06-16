@@ -1,13 +1,13 @@
 /* globals define*/
-define(['modules/mouse',
-		'modules/nave',
-		'index.js',
+define('modules/game',[
+		'modules/mouse',
+		'index',
 		'crear-blocks',
 		'modules/balls',
 		'crear-blocks',
 		'crear-blocks',
 		'mover',
-		'modules/nave'], function (mouse, nave, ballN, clearAll,
+		'modules/naveInicial'], function (mouse, ballN, clearAll,
 								balls, clear, blocks, ballInicial, naveInicial) {
 	return {
 	pos: {
@@ -36,13 +36,13 @@ define(['modules/mouse',
 
 				ballN()
 				balls[0].pos.x = ballInicial
-				balls[0].pos.y = nave.pos.y - ball.size.w - 1
-				nave.pos.x = naveInicial
-				nave.$el.style.left = `${nave.pos.x}px`
-				nave.$el.style.top  = `${nave.pos.y}px`
+				balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
+				this.nave.pos.x = naveInicial
+				this.nave.$el.style.left = `${this.nave.pos.x}px`
+				this.nave.$el.style.top  = `${this.nave.pos.y}px`
 				balls[0].$el.style.left = `${ball.pos.x}px`
 				balls[0].$el.style.top  = `${ball.pos.y}px`
-				nave.mover(mouse.x, mouse.y)
+				this.nave.mover(mouse.x, mouse.y)
 				console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
 			}
 			else {
@@ -54,13 +54,13 @@ define(['modules/mouse',
 					ballN()
 					this.config.lifes = 3
 					balls[0].pos.x = ballInicial
-					balls[0].pos.y = nave.pos.y - ball.size.w - 1
-					nave.pos.x = naveInicial
-					nave.$el.style.left = `${nave.pos.x}px`
-					nave.$el.style.top  = `${nave.pos.y}px`
+					balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
+					this.nave.pos.x = naveInicial
+					this.nave.$el.style.left = `${this.nave.pos.x}px`
+					this.nave.$el.style.top  = `${this.nave.pos.y}px`
 					balls[0].$el.style.left = `${ball.pos.x}px`
 					balls[0].$el.style.top  = `${ball.pos.y}px`
-					nave.mover(mouse.x, mouse.y)
+					this.nave.mover(mouse.x, mouse.y)
 				}
 			}
 		}
@@ -80,14 +80,14 @@ define(['modules/mouse',
 		if (this.config.level <= 6) {
 
 			ballN()
-			balls[0].pos.x = nave.pos.x + nave.size.w / 2
-			balls[0].pos.y = nave.pos.y - ball.size.w - 1
+			balls[0].pos.x = this.nave.pos.x + this.nave.size.w / 2
+			balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
 			balls[0].$el.style.left = `${ball.pos.x}px`
 			balls[0].$el.style.top  = `${ball.pos.y}px`
 			balls[0].config.ballDirY = 0
 			balls[0].config.ballDirX = 0
 			blocks(this.config.level)
-			nave.size.w = 100
+			this.nave.size.w = 100
 
 			console.log(`Pasaste al nivel: ${this.config.level}`)
 		}
