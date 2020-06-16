@@ -4,7 +4,7 @@ require(['modules/mouse',
 		'modules/game',
 		'modules/nave',
 		'modules/width-types',
-		'proto/box',
+		'modules/randomOf',
 		'modules/balls',
 		'modules/guns',
 		'proto/gun'], function (mouse, game, nave, widthTypes, randomOf, balls, guns, Gun) {

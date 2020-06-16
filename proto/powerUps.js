@@ -2,7 +2,7 @@
 define(['modules/game',
 		'modules/nave',
 		'modules/width-types',
-		'proto/box',
+		'modules/randomOf',
 		'modules/powers',
 		'modules/balls',
 		'modules/guns',

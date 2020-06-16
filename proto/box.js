@@ -57,15 +57,6 @@ window.Box = class Box {
 }
 
 /**
- * Retorna el index de una lista
- */
-function randomOf(list) {
-
-	const ix = Math.floor(Math.random() * list.length)
-	return list[ix]
-}
-
-/**
  * retorna un powerUp random
  */
 window.randomPowerUp = function randomPowerUp() {
