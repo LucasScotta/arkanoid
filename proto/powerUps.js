@@ -1,9 +1,8 @@
 /* globals define*/
-define(['modules/game',
+define(['globals',
+		'modules/game',
 		'modules/nave',
-		'modules/width-types',
-		'modules/powers',
-		'modules/balls',], function (game, nave, widthTypes, powers, balls) {
+		'modules/width-types',], function (globals, game, nave, widthTypes) {
 	return class PowerUp {
 		constructor(options) {
 			Object.assign(this, options)
@@ -31,7 +30,7 @@ define(['modules/game',
 		 * Hace que las bolas no se peguen al tocar la nave.
 		 */
 		despegar() {
-			for (let ball of balls) {
+			for (let ball of globals.balls) {
 				ball.despegar()
 				if (ball.config.dirX === 0&& ball.config.dirY === 0) {
 
@@ -48,14 +47,14 @@ define(['modules/game',
 			if (this.tocaBordeInferior()) {
 
 				this.$el.remove()
-				powers.splice(powers.indexOf(this), 1)
+				globals.powers.splice(globals.powers.indexOf(this), 1)
 				return i - 1
 			}
 			else if (this.tocaNave()) {
 
 				this.activar()
 				this.$el.remove()
-				powers.splice(powers.indexOf(this), 1)
+				globals.powers.splice(globals.powers.indexOf(this), 1)
 				return i - 1
 			}
 			else {

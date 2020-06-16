@@ -1,6 +1,6 @@
 /* globals define*/
-define(['modules/mouse',
-		'modules/game'], function (mouse, game) {
+define(['globals',
+		'modules/game'], function (globals, game) {
 window.nNave = class nNave {
 	constructor(options) {
 		Object.assign(this, options)
@@ -71,8 +71,8 @@ window.nNave = class nNave {
 	 */
 	pintarNaveInicio() {
 
-		mouse.x = game.pos.x + game.size.b + game.size.w / 2
-		mouse.y = this.pos.y - 1
+		globals.mouse.x = game.pos.x + game.size.b + game.size.w / 2
+		globals.mouse.y = this.pos.y - 1
 		this.$el.style.left = `${this.pos.x}px`
 		this.$el.style.top = `${this.pos.y}px`
 	}

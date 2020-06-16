@@ -1,17 +1,17 @@
 /*globals define*/
-define(['modules/game',
-		'modules/imgs-box',
-		'modules/boxes',
+define(['globals',
+		'modules/game',
 		'proto/box',
 		'modules/randomOf',
 		'modules/potenciadores',
+		'modules/imgs-box'
 ], (
+	globals,
 	game,
-	imgsBox,
-	boxes,
 	Box,
 	randomOf,
-	powerUps,) => {
+	powerUps,
+	imgsBox) => {
 	let k
 	k = 0
 	let posX = game.pos.x + game.size.b * 2
@@ -25,7 +25,7 @@ define(['modules/game',
 			div.appendChild(img)
 			div.classList.add('box')
 			img.classList.add('box')
-			boxes[k] = new Box({
+			globals.boxes[k] = new Box({
 				pos: {
 					x: posX,
 					y: posY,
@@ -40,10 +40,10 @@ define(['modules/game',
 				index: k,
 				power: randomOf(powerUps),
 			})
-			boxes[k].$img.src = imgsBox[boxes[k].strong]
+			globals.boxes[k].$img.src = imgsBox[globals.boxes[k].strong]
 			document.getElementById('container').appendChild(div)
-			boxes[k].$div.style.left = posX + 'px'
-			boxes[k].$div.style.top = posY + 'px'
+			globals.boxes[k].$div.style.left = posX + 'px'
+			globals.boxes[k].$div.style.top = posY + 'px'
 			posX += 75
 			k += 1
 			if (j === 8) {

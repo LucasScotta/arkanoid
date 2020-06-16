@@ -1,16 +1,14 @@
 /* globals define*/
 define('modules/game',[
-		'modules/mouse',
+		'globals',
 		'modules/new-ball',
 		'modules/clear',
-		'modules/balls',
 		'mover',
 		'modules/naveInicial',
 		'modules/creador-bloques'], function (
-			mouse, 
+			globals, 
 			ballN, 
-			clear,
-			balls, 
+			clear, 
 			ballInicial,
 			naveInicial,
 			blocks) {
@@ -34,20 +32,20 @@ define('modules/game',[
 	 */
 	perder: function (ball, $ball) {
 
-		if (balls.length === 1) {
+		if (globals.balls.length === 1) {
 			clear.clear()
 			this.config.lifes -= 1
 			if (this.config.lifes > 0) {
 
 				ballN()
-				balls[0].pos.x = ballInicial
-				balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
+				globals.balls[0].pos.x = ballInicial
+				globals.balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
 				this.nave.pos.x = naveInicial
 				this.nave.$el.style.left = `${this.nave.pos.x}px`
 				this.nave.$el.style.top  = `${this.nave.pos.y}px`
-				balls[0].$el.style.left = `${ball.pos.x}px`
-				balls[0].$el.style.top  = `${ball.pos.y}px`
-				this.nave.mover(mouse.x, mouse.y)
+				globals.balls[0].$el.style.left = `${ball.pos.x}px`
+				globals.balls[0].$el.style.top  = `${ball.pos.y}px`
+				this.nave.mover(globals.mouse.x, globals.mouse.y)
 				console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
 			}
 			else {
@@ -58,19 +56,19 @@ define('modules/game',[
 					
 					ballN()
 					this.config.lifes = 3
-					balls[0].pos.x = ballInicial
-					balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
+					globals.balls[0].pos.x = ballInicial
+					globals.balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
 					this.nave.pos.x = naveInicial
 					this.nave.$el.style.left = `${this.nave.pos.x}px`
 					this.nave.$el.style.top  = `${this.nave.pos.y}px`
-					balls[0].$el.style.left = `${ball.pos.x}px`
-					balls[0].$el.style.top  = `${ball.pos.y}px`
-					this.nave.mover(mouse.x, mouse.y)
+					globals.balls[0].$el.style.left = `${ball.pos.x}px`
+					globals.balls[0].$el.style.top  = `${ball.pos.y}px`
+					this.nave.mover(globals.mouse.x, globals.mouse.y)
 				}
 			}
 		}
 		else {
-			balls.splice(balls.indexOf(ball), 1)
+			globals.balls.splice(globals.balls.indexOf(ball), 1)
 			$ball.remove()
 		}
 	},
@@ -85,12 +83,12 @@ define('modules/game',[
 		if (this.config.level <= 6) {
 
 			ballN()
-			balls[0].pos.x = this.nave.pos.x + this.nave.size.w / 2
-			balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
-			balls[0].$el.style.left = `${ball.pos.x}px`
-			balls[0].$el.style.top  = `${ball.pos.y}px`
-			balls[0].config.ballDirY = 0
-			balls[0].config.ballDirX = 0
+			globals.balls[0].pos.x = this.nave.pos.x + this.nave.size.w / 2
+			globals.balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
+			globals.balls[0].$el.style.left = `${ball.pos.x}px`
+			globals.balls[0].$el.style.top  = `${ball.pos.y}px`
+			globals.balls[0].config.ballDirY = 0
+			globals.balls[0].config.ballDirX = 0
 			blocks(this.config.level)
 			this.nave.size.w = 100
 

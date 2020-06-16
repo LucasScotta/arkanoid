@@ -1,6 +1,6 @@
 /* globals define*/
-define(['modules/mouse',
-	'modules/game'], function (mouse, game) {
+define(['globals',
+	'modules/game'], function (globals, game) {
 const naveWidth = parseInt(document.getElementById('nave').style.width)
 const naveImg = document.createElement('img')
 naveImg.style.width = `100px`
@@ -84,8 +84,8 @@ const nave = {
 	 */
 	pintarNaveInicio: function () {
 
-		mouse.x = game.pos.x + game.size.b + game.size.w / 2
-		mouse.y = this.pos.y - 1
+		globals.mouse.x = game.pos.x + game.size.b + game.size.w / 2
+		globals.mouse.y = this.pos.y - 1
 		this.$el.style.left = `${this.pos.x}px`
 		this.$el.style.top = `${this.pos.y}px`
 	},

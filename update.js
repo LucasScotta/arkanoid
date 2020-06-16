@@ -1,32 +1,28 @@
 /* globals require*/
-require(['modules/mouse',
+require(['globals',
 		'modules/game',
-		'modules/nave',
-		'modules/powers',
-		'modules/balls',
-		'modules/guns',
-		'modules/boxes'], function (mouse, game, nave, powers, balls, guns, boxes) {
+		'modules/nave',], function (globals, game, nave) {
 	function update() {
 		
-		for (const ball of balls) {
-			ball.moverInicio(mouse.x, mouse.y)
+		for (const ball of globals.balls) {
+			ball.moverInicio(globals.mouse.x, globals.mouse.y)
 			ball.update()
 		}
 		
-		if (mouse.b) {
-			nave.mover(mouse.x, mouse.y)
-			mouse.b = false
+		if (globals.mouse.b) {
+			nave.mover(globals.mouse.x, globals.mouse.y)
+			globals.mouse.b = false
 		}
 
 
-		for (const power of powers) {
+		for (const power of globals.powers) {
 			power.update()
 		}
 
-		if (boxes.length === 0) {
-			return game.ganar(balls[0])
+		if (globals.boxes.length === 0) {
+			return game.ganar(globals.balls[0])
 		}
-		for (const gun of guns) {
+		for (const gun of globals.guns) {
 			gun.update()
 		}
 	}

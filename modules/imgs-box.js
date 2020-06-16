@@ -1,5 +1,5 @@
-/*globals define*/
-define(function () {
+/* globals define*/
+define(function() {
 	return [
 		'img/0.png',
 		'img/1.png',

@@ -1,5 +1,5 @@
 /* globals require*/
-require(['modules/boxes'], function (boxes) {
+require(['globals'], function (globals) {
 let rotacion = 0
 
 function rotarHorario() {
@@ -16,9 +16,9 @@ function rotarAntiHorario() {
 
 function rotar(angulo) {
 
-	for (let i = 0; i < boxes.length; i += 1) {
+	for (let i = 0; i < globals.boxes.length; i += 1) {
 
-		boxes[i].style.transform = `rotate(${angulo}deg)`
+		globals.boxes[i].style.transform = `rotate(${angulo}deg)`
 	}
 }
 

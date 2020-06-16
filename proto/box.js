@@ -1,8 +1,7 @@
 /* globals require*/
-require(['modules/powers',
-		'modules/imgs-box',
-		'modules/boxes',
-		'proto/powerUps',], function (powers, imgsBox, boxes, PowerUp, ) {
+require(['globals',
+		'proto/powerUps',
+		'modules/imgs-box'], function (globals, PowerUp, imgsBox) {
 	return class Box {
 		constructor(options) {
 			Object.assign(this, options)
@@ -33,7 +32,7 @@ require(['modules/powers',
 						$el: $el,
 					}
 					Object.assign(power, this.power)
-					powers.push(new PowerUp(power))
+					globals.powers.push(new PowerUp(power))
 				}
 				this.borrar()
 			}
@@ -44,11 +43,11 @@ require(['modules/powers',
 		 */
 		borrar() {
 
-			boxes.splice(boxes.indexOf(this), 1)
+			globals.boxes.splice(globals.boxes.indexOf(this), 1)
 
-			for (let i = 0; i < boxes.length; i += 1) {
+			for (let i = 0; i < globals.boxes.length; i += 1) {
 			
-				boxes[i].index = i
+				globals.boxes[i].index = i
 			}
 
 			this.$div.remove()

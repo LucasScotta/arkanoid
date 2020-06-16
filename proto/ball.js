@@ -1,16 +1,12 @@
 /* globals define*/
 define([
-	'modules/mouse',
+	'globals',
 	'modules/game',
 	'modules/nave',
-	'modules/balls',
-	'modules/boxes',
 ], (
-	mouse,
+	globals,
 	game,
-	nave,
-	balls,
-	boxes
+	nave
 ) => {
 	const imgBalls = 'img/ball.png'
 	return class Ball {
@@ -183,7 +179,7 @@ define([
 		 */
 		moverInicio() {
 
-			let x = mouse.x
+			let x = globals.mouse.x
 			const mapWidth  = game.size.w
 			const mapHeight = game.size.h
 			const mapBorder = game.size.b
@@ -194,10 +190,10 @@ define([
 			const ballWidth = this.size.w
 
 			if (this.config.ballDirX === 0 && this.config.ballDirY === 0
-			&&  mouse.x >= mapLeft   + mapBorder + nave.size.w / 2
-			&&  mouse.x <= mapRight  - mapBorder - nave.size.w / 2
-			&&  mouse.y >= mapTop    + mapBorder
-			&&  mouse.y <= mapBottom - mapBorder
+			&&  x >= mapLeft   + mapBorder + nave.size.w / 2
+			&&  x <= mapRight  - mapBorder - nave.size.w / 2
+			&&  y >= mapTop    + mapBorder
+			&&  y <= mapBottom - mapBorder
 			&&	game.config.level < 7) {
 				this.pos.x = x - ballWidth / 2 - 0.5
 				this.$el.style.left = `${this.pos.x}px`
@@ -259,7 +255,7 @@ define([
 			newBallDiv.appendChild(newBallImg)
 			newBallImg.classList.add('ball')
 			document.getElementById('container').appendChild(newBallDiv)
-			balls.push(new Ball({
+			globals.balls.push(new Ball({
 				$el: newBallDiv,
 				$img: newBallImg,
 				pos: {
@@ -304,7 +300,7 @@ define([
 			this.goma = false
 		}
 		clearBall() {
-			balls.splice(balls.indexOf(this), 1)
+			globals.balls.splice(globals.balls.indexOf(this), 1)
 			this.$el.remove()
 		}
 		/**
@@ -331,7 +327,7 @@ define([
 			}
 
 			// Bola golpeando las cajas:
-			for (const box of boxes) {
+			for (const box of globals.boxes) {
 			// Si esta tocando de arriba/abajo en una caja, rebota verticalmente
 				const golpeV = this.estaTocandoDeArribaYAbajo(box)
 			// Si esta tocando de derecha/izquierda en una caja, rebota horizontalmente (funciona a medias)

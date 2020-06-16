@@ -1,32 +1,28 @@
 /* globals require */
 /////////////
-require(['modules/mouse',
+require(['globals',
 		'modules/game',
 		'modules/nave',
 		'modules/width-types',
 		'modules/randomOf',
-		'modules/balls',
-		'modules/guns',
 		'proto/gun',
-		'modules/pintar-bola-inicial'], (mouse,
+		'modules/pintar-bola-inicial'], (globals,
 			game,
 			nave,
 			widthTypes,
 			randomOf,
-			balls,
-			guns,
 			Gun,
 			pintarBolaInicio) => {
 	nave.pintarNaveInicio()
 	pintarBolaInicio()
-	window.ballInicial = parseInt(balls[0].pos.x)
+	window.ballInicial = parseInt(globals.balls[0].pos.x)
 	document.onmousemove = function mover(event) {
 
 		event.preventDefault()
 
-		mouse.x = event.x
-		mouse.y = event.y
-		mouse.b = true
+		globals.mouse.x = event.x
+		globals.mouse.y = event.y
+		globals.mouse.b = true
 
 	}
 
@@ -37,11 +33,11 @@ require(['modules/mouse',
 		const x = event.x
 		const y = event.y
 
-		for (let ball of balls) {
+		for (let ball of globals.balls) {
 			
 			ball.arrancar(x, y)
 		}
-		for (const gun of guns) {
+		for (const gun of globals.guns) {
 			gun.disparar()
 		}
 	}
@@ -51,16 +47,16 @@ require(['modules/mouse',
 			game.config.pause = !game.config.pause
 		}
 		if (event.code === 'Space') {
-			for (const gun of guns) {
+			for (const gun of globals.guns) {
 				gun.disparar()
 			}
-			for (let ball of balls) {
+			for (let ball of globals.balls) {
 			
-				ball.arrancar(mouse.x, mouse.y, game, nave)
+				ball.arrancar(globals.mouse.x, globals.mouse.y, game, nave)
 			}
 		}
 		if (event.key === 'l') {
-				randomOf(balls).agregarBall()
+				randomOf(globals.balls).agregarBall()
 		}
 		if (event.key === 'm') {
 			nave.setWidthType(widthTypes.L)
@@ -72,11 +68,11 @@ require(['modules/mouse',
 			nave.setWidthType(widthTypes.M)
 		}
 		if (event.key === 'v') {
-			if (guns.length === 0) {
+			if (globals.guns.length === 0) {
 				const init = nave.pos.x + 10
 				const arma = document.createElement('div')
 				arma.classList.add('gun')
-				guns.push(new Gun({
+				globals.guns.push(new Gun({
 					shots: 5,
 					pos: {
 						x: init,
@@ -91,11 +87,11 @@ require(['modules/mouse',
 					$el: arma,
 				}))
 			}
-			else if (guns.length === 1) {
+			else if (globals.guns.length === 1) {
 				const init = nave.pos.x + nave.size.w - 10
 				const arma = document.createElement('div')
 				arma.classList.add('gun')
-				guns.push(new Gun({
+				globals.guns.push(new Gun({
 					shots: 5,
 					pos: {
 						x: init,

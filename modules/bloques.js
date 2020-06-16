@@ -1,14 +1,12 @@
 /*globals define*/
 define([
+	'globals',
 	'modules/randomOf',
-	'modules/balls',
-	'modules/guns',
 	'modules/nave',
 	'proto/gun',
 	], 
-	(randomOf,
-		balls,
-		guns,
+	(globals,
+		randomOf,
 		nave,
 		Gun,) => {
 	return {
@@ -19,7 +17,7 @@ define([
 			 * Elije una bola random, toma su posicion y agrega otra bola.
 			 */
 			activar: function () {
-				randomOf(balls).agregarBall()
+				randomOf(globals.balls).agregarBall()
 				this.despegar()
 			}
 		},
@@ -30,7 +28,7 @@ define([
 			 * Hace que cuando toque la nave una bola quede pegada a ella.
 			 */
 			activar: function () {
-				for (let ball of balls) {
+				for (let ball of globals.balls) {
 
 					ball.pegar()
 				}
@@ -44,11 +42,11 @@ define([
 			 * nunca podra haber mas de 1 disparo en la pantalla.
 			 */
 			activar: function () {
-				if (guns.length === 0) {
+				if (globals.guns.length === 0) {
 					const init = nave.pos.x + 10
 					const arma = document.createElement('div')
 					arma.classList.add('gun')
-					guns.push(new Gun({
+					globals.guns.push(new Gun({
 						shots: 5,
 						pos: {
 							x: init,
@@ -63,11 +61,11 @@ define([
 						$el: arma,
 					}))
 				}
-				else if (guns.length === 1) {
+				else if (globals.guns.length === 1) {
 					const init = nave.pos.x + nave.size.w - 10
 					const arma = document.createElement('div')
 					arma.classList.add('gun')
-					guns.push(new Gun({
+					globals.guns.push(new Gun({
 						shots: 5,
 						pos: {
 							x: init,

@@ -1,8 +1,7 @@
 /* globals define*/
-define(['modules/game',
-		'modules/nave',
-		'modules/guns',
-		'modules/boxes'], function (game, nave, guns, boxes) {
+define(['globals',
+		'modules/game',
+		'modules/nave',], function (globals, game, nave) {
 window.Gun = class Gun {
 	constructor(options) {
 		Object.assign(this, options)
@@ -12,7 +11,7 @@ window.Gun = class Gun {
 	 */
 	disparar() {
 		if (this.shots > 0 && !this.activo) {
-			if (guns.indexOf(this) === 0) {
+			if (globals.guns.indexOf(this) === 0) {
 				this.pos.x = nave.pos.x + 10
 				this.pos.y = nave.pos.y
 			}
@@ -29,7 +28,7 @@ window.Gun = class Gun {
 	 */
 	clearGun() {
 		this.$el.remove()
-		guns.splice(guns.indexOf(this), 1)
+		globals.guns.splice(globals.guns.indexOf(this), 1)
 	}
 		/**
 	 * Elimina el arma al quedarse sin disparos o descuenta un disparo
@@ -69,7 +68,7 @@ window.Gun = class Gun {
 			this.$el.style.left = `${this.pos.x}px`
 			this.$el.style.top  = `${this.pos.y}px`
 			this.pos.y -= 2
-			for (const box of boxes) {
+			for (const box of globals.boxes) {
 				if (this.disparoToca(box)) {
 					box.golpear()
 					this.clearShot()
@@ -81,7 +80,7 @@ window.Gun = class Gun {
 				}
 		}
 		else {
-			if (guns.indexOf(this) === 0) {
+			if (globals.guns.indexOf(this) === 0) {
 				this.pos.x = nave.pos.x + 10
 				this.pos.y = nave.pos.y
 			}
