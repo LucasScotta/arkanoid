@@ -1,14 +1,17 @@
 /* globals define*/
 define('modules/game',[
 		'modules/mouse',
-		'index',
-		'crear-blocks',
+		'modules/new-ball',
+		'clear',
 		'modules/balls',
-		'crear-blocks',
-		'crear-blocks',
 		'mover',
-		'modules/naveInicial'], function (mouse, ballN, clearAll,
-								balls, clear, blocks, ballInicial, naveInicial) {
+		'modules/naveInicial'], function (
+			mouse, 
+			ballN, 
+			clear,
+			balls, 
+			ballInicial,
+			naveInicial) {
 	return {
 	pos: {
 		x: 0,
@@ -30,7 +33,7 @@ define('modules/game',[
 	perder: function (ball, $ball) {
 
 		if (balls.length === 1) {
-			clear()
+			clear.clear()
 			this.config.lifes -= 1
 			if (this.config.lifes > 0) {
 
@@ -49,7 +52,7 @@ define('modules/game',[
 				if (confirm('Reiniciar?')) {
 
 					this.config.level = 0
-					clearAll()
+					clear.clearAll()
 					
 					ballN()
 					this.config.lifes = 3
@@ -74,7 +77,7 @@ define('modules/game',[
 	 */
 	ganar: function (ball) {
 
-		clear()
+		clear.clear()
 		this.config.level += 1
 
 		if (this.config.level <= 6) {

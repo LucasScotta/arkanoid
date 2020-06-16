@@ -55,43 +55,4 @@ const blocks = function blocks(level) {
 }
 
 blocks(game.config.level)
-
-const clearBlocks = function clearBlocks() {
-	let i = 0
-	while (boxes.length > 0) {
-
-		boxes[i].borrar()
-	}
-}
-
-const clearPowers = function clearPowers() {
-
-	for (let i = powers.length - 1; i > -1; i -= 1) {
-		powers[i].$el.remove()
-		powers.splice(i, 1)
-	}
-	nave.setWidthType(widthTypes.M)
-}
-const clearGuns = function clearGuns() {
-	for (let i = guns.length - 1; i > -1; i -= 1) {
-		guns[i].clearGun()
-	}
-}
-const clearBalls = function clearBalls() {
-
-	for (let i = balls.length - 1; i > -1; i -= 1) {
-		balls[i].clearBall()
-	}
-}
-window.clear = function clear () {
-	clearBalls()
-	clearGuns()
-	clearPowers()
-}
-
-window.clearAll = function clearAll () {
-	clearGuns()
-	clearPowers()
-	clearBlocks()
-}
 })
