@@ -3,7 +3,7 @@
 define('modules/game',[
 		'globals',
 		'constants',
-		'modules/new-ball',
+		'factory/balls',
 		'modules/clear',], function (
 			globals,
 			constants,
