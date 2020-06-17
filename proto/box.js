@@ -2,7 +2,7 @@
 /* globals require*/
 require(['globals',
 		'constants',
-		'proto/powerUps',], function (globals, constants, PowerUp) {
+		'factory/powers'], function (globals, constants, PowerUp) {
 	return class Box {
 		constructor(options) {
 			Object.assign(this, options)
@@ -16,24 +16,10 @@ require(['globals',
 			else {
 				if (this.power) {
 
-					const $el = document.createElement('div')
-					$el.innerText = this.power.caracter
-					document.getElementById('container').appendChild($el)
-					$el.classList.add('power')
-					const power = {
-						pos: {
-							x: this.pos.x + this.size.w / 2- 15 ,
-							y: this.pos.y + this.size.h,
-						},
-						size: {
-							w: 15,
-							h: 25,
-						},
-						index: 0,
-						$el: $el,
+					const power = NewPower(this.pos.x + this.size.w / 2- 15, this.pos.y + this.size.h)
 					}
 					Object.assign(power, this.power)
-					globals.powers.push(new PowerUp(power))
+					globals.powers.push(PowerUp())
 				}
 				this.borrar()
 			}
