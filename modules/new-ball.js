@@ -1,6 +1,6 @@
 'use strict'
 /*globals define*/
 define(['globals',
-		'factory/ball'], function(globals, newBall) {
+		'factory/balls'], function(globals, newBall) {
 	globals.balls.push(newBall())
 })

@@ -1,10 +1,6 @@
 'use strict'
 /*globals define*/
 define(['proto/ball',], (Ball) => {
-	/*
-	
-	
-	*/
 	const createElement = () => {
 		const imgBalls = 'img/ball.png'
 		const $el = document.createElement('div')
@@ -15,15 +11,15 @@ define(['proto/ball',], (Ball) => {
 		document.getElementById('container').appendChild($el)
 		return $el
 	}
-	return () => new Ball({
+	return (x, y, dirX, dirY) => new Ball({
 		$el: createElement(),
 		pos: {
-			x: 0,
-			y: 0,
+			x: x,
+			y: y,
 		},
 		config: {
-			ballDirX: 0,
-			ballDirY: 0,
+			ballDirX: dirX,
+			ballDirY: dirY,
 		},
 		vel: {
 			r: 5,

@@ -4,12 +4,13 @@ define([
 	'globals',
 	'modules/game',
 	'modules/nave',
+	'modules/new-ball',
 ], (
 	globals,
 	game,
-	nave
+	nave,
+	nuevaBall,
 ) => {
-	const imgBalls = 'img/ball.png'
 	return class Ball {
 		constructor (options) {
 			Object.assign(this, options)
@@ -181,6 +182,7 @@ define([
 		moverInicio() {
 
 			let x = globals.mouse.x
+			let y = globals.mouse.y
 			const mapWidth  = game.size.w
 			const mapHeight = game.size.h
 			const mapBorder = game.size.b
@@ -250,32 +252,8 @@ define([
 		 * Agrega una bola tomando el X e Y de este objeto
 		 */
 		agregarBall() {
-			const newBallDiv = document.createElement('div')
-			const newBallImg = document.createElement('img')
-			newBallImg.src = imgBalls
-			newBallDiv.appendChild(newBallImg)
-			newBallImg.classList.add('ball')
-			document.getElementById('container').appendChild(newBallDiv)
-			globals.balls.push(new Ball({
-				$el: newBallDiv,
-				$img: newBallImg,
-				pos: {
-					x: this.pos.x,
-					y: this.pos.y,
-				},
-				vel: {
-					r: 5,
-					a: Math.PI,
-				},
-				size : {
-					w: 15,
-					h: 15,
-				},
-				config: {
-					ballDirX: this.config.ballDirX * -1,
-					ballDirY: this.config.ballDirY * -1,
-				},
-			}))
+			nuevaBall(this.pos.x, this.pos.y,
+				this.config.ballDirX * -1, this.config.ballDirY * -1)
 		}
 		/**
 		 * Hace que la bola no rebote al golpear contra la nave

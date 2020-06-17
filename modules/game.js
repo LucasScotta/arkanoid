@@ -4,15 +4,11 @@ define('modules/game',[
 		'globals',
 		'constants',
 		'modules/new-ball',
-		'modules/clear',
-		'mover',
-		'modules/creador-bloques'], function (
+		'modules/clear',], function (
 			globals,
 			constants,
-			ballN, 
-			clear, 
-			ballInicial,
-			blocks) {
+			NewBall, 
+			clear) {
 	return {
 	pos: {
 		x: 0,
@@ -38,9 +34,7 @@ define('modules/game',[
 			this.config.lifes -= 1
 			if (this.config.lifes > 0) {
 
-				ballN()
-				globals.balls[0].pos.x = ballInicial
-				globals.balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
+				NewBall(constants.ballInicial, this.nave.pos.y - ball.size.w - 1, 0, 0)
 				this.nave.pos.x = constants.naveInicial
 				this.nave.$el.style.left = `${this.nave.pos.x}px`
 				this.nave.$el.style.top  = `${this.nave.pos.y}px`
@@ -55,10 +49,8 @@ define('modules/game',[
 					this.config.level = 0
 					clear.clearAll()
 					
-					ballN()
+					NewBall(constants.ballInicial, this.nave.pos.y - ball.size.w - 1, 0, 0)
 					this.config.lifes = 3
-					globals.balls[0].pos.x = ballInicial
-					globals.balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
 					this.nave.pos.x = constants.naveInicial
 					this.nave.$el.style.left = `${this.nave.pos.x}px`
 					this.nave.$el.style.top  = `${this.nave.pos.y}px`
@@ -78,19 +70,14 @@ define('modules/game',[
 	 */
 	ganar: function (ball) {
 
-		clear.clear()
 		this.config.level += 1
 
 		if (this.config.level <= 6) {
 
-			ballN()
-			globals.balls[0].pos.x = this.nave.pos.x + this.nave.size.w / 2
-			globals.balls[0].pos.y = this.nave.pos.y - ball.size.w - 1
+			clear.clearAll()
+			NewBall(this.nave.pos.x + this.nave.size.w / 2, 0 ,0)
 			globals.balls[0].$el.style.left = `${ball.pos.x}px`
 			globals.balls[0].$el.style.top  = `${ball.pos.y}px`
-			globals.balls[0].config.ballDirY = 0
-			globals.balls[0].config.ballDirX = 0
-			blocks(this.config.level)
 			this.nave.size.w = 100
 
 			console.log(`Pasaste al nivel: ${this.config.level}`)

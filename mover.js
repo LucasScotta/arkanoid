@@ -14,7 +14,6 @@ require(['globals',
 			pintarBolaInicio) => {
 	nave.pintarNaveInicio()
 	pintarBolaInicio()
-	window.ballInicial = parseInt(globals.balls[0].pos.x)
 	document.onmousemove = function mover(event) {
 
 		event.preventDefault()
