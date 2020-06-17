@@ -1,7 +1,8 @@
 'use strict'
 /*globals define*/
-define(['modules/potenciadores',
-		'modules/nave',], (bloques, nave) => {
+define(['globals',
+		'modules/potenciadores',
+		'modules/nave',], (globals, bloques, nave) => {
 	return {
 		imgsBox: [
 		'img/0.png',
@@ -20,6 +21,7 @@ define(['modules/potenciadores',
 		bloques.agrandador,
 		bloques.achichador,
 		],
-		naveInicial: parseInt(nave.pos.x)
+		naveInicial: parseInt(nave.pos.x),
+		ballInicial: parseInt(globals.balls[0].pos.x),
 	}
 })
