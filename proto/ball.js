@@ -4,12 +4,12 @@ define([
 	'globals',
 	'modules/game',
 	'modules/nave',
-	'modules/new-ball',
+	'factory/balls',
 ], (
 	globals,
 	game,
 	nave,
-	nuevaBall,
+	NewBall,
 ) => {
 	return class Ball {
 		constructor (options) {
@@ -252,8 +252,8 @@ define([
 		 * Agrega una bola tomando el X e Y de este objeto
 		 */
 		agregarBall() {
-			nuevaBall(this.pos.x, this.pos.y,
-				this.config.ballDirX * -1, this.config.ballDirY * -1)
+			globals.balls.push(NewBall(this.pos.x, this.pos.y,
+				this.config.ballDirX * -1, this.config.ballDirY * -1))
 		}
 		/**
 		 * Hace que la bola no rebote al golpear contra la nave

@@ -1,5 +1,6 @@
 'use strict'
 /* globals require*/
-require(['modules/new-ball'], function (ballN) {
-ballN()
+require(['globals',
+		'factory_balls'], function (globals, NewBall) {
+			globals.balls.push(NewBall(0, 0, 0, 0))
 })
