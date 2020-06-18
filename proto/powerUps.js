@@ -30,7 +30,7 @@ define(['globals',
 		 * Hace que las bolas no se peguen al tocar la nave.
 		 */
 		despegar() {
-			for (let ball of globals.balls) {
+			for (let ball of globals.balls.getBalls()) {
 				ball.despegar()
 				if (ball.config.dirX === 0&& ball.config.dirY === 0) {
 

@@ -1,7 +1,7 @@
 'use strict'
 /*globals define*/
-define({
-	balls:  [],
+define(['proto/ball-manager'], (BallManager) => ({
+	balls:  new BallManager(),
 	boxes:  [],
 	guns:   [],
 	powers: [],
@@ -21,4 +21,4 @@ define({
 			w: 140,
 		},
 	},
-})
+}))

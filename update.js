@@ -5,7 +5,7 @@ require(['globals',
 		'modules/nave',], function (globals, game, nave) {
 	function update() {
 		
-		for (const ball of globals.balls) {
+		for (const ball of globals.balls.getBalls()) {
 			ball.moverInicio(globals.mouse.x, globals.mouse.y)
 			ball.update()
 		}
@@ -21,7 +21,7 @@ require(['globals',
 		}
 
 		if (globals.boxes.length === 0) {
-			return game.ganar(globals.balls[0])
+			return game.ganar(globals.balls.getFirst())
 		}
 		for (const gun of globals.guns) {
 			gun.update()

@@ -18,7 +18,7 @@ define([
 			 * Elije una bola random, toma su posicion y agrega otra bola.
 			 */
 			activar: function () {
-				randomOf(globals.balls).agregarBall()
+				globals.balls.getRandom().agregarBall()
 				this.despegar()
 			}
 		},
@@ -29,7 +29,7 @@ define([
 			 * Hace que cuando toque la nave una bola quede pegada a ella.
 			 */
 			activar: function () {
-				for (let ball of globals.balls) {
+				for (let ball of globals.balls.getBalls()) {
 
 					ball.pegar()
 				}

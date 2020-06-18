@@ -3,10 +3,10 @@
 define([
 	'globals',
 	'modules/nave'], (globals, nave) => {
+		const ball = globals.balls.getFirst()
+	ball.pos.x = nave.pos.x + nave.size.w / 2
+	ball.pos.y = nave.pos.y - ball.size.h - 1
 
-	globals.balls[0].pos.x = nave.pos.x + nave.size.w / 2
-	globals.balls[0].pos.y = nave.pos.y - globals.balls[0].size.h - 1
-
-	globals.balls[0].$el.style.left = `${globals.balls[0].pos.x}px`
-	globals.balls[0].$el.style.top  = `${globals.balls[0].pos.y}px`
+	ball.$el.style.left = `${ball.pos.x}px`
+	ball.$el.style.top  = `${ball.pos.y}px`
 })

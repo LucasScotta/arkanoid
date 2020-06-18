@@ -25,10 +25,7 @@ define(['globals',
 		}
 	}
 	function clearBalls() {
-
-		for (let i = globals.balls.length - 1; i > -1; i -= 1) {
-			globals.balls[i].clearBall()
-		}
+			globals.balls.reset()
 	}
 	function clear () {
 		clearBalls()

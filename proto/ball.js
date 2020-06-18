@@ -252,7 +252,7 @@ define([
 		 * Agrega una bola tomando el X e Y de este objeto
 		 */
 		agregarBall() {
-			globals.balls.push(NewBall(this.pos.x, this.pos.y,
+			globals.balls.agregar(NewBall(this.pos.x, this.pos.y,
 				this.config.ballDirX * -1, this.config.ballDirY * -1))
 		}
 		/**
@@ -278,8 +278,7 @@ define([
 
 			this.goma = false
 		}
-		clearBall() {
-			globals.balls.splice(globals.balls.indexOf(this), 1)
+		remove() {
 			this.$el.remove()
 		}
 		/**

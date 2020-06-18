@@ -4,12 +4,10 @@
 require(['globals',
 		'modules/game',
 		'modules/nave',
-		'modules/randomOf',
 		'proto/gun',
 		'modules/pintar-bola-inicial'], (globals,
 			game,
 			nave,
-			randomOf,
 			Gun,
 			pintarBolaInicio) => {
 	nave.pintarNaveInicio()
@@ -31,7 +29,7 @@ require(['globals',
 		const x = event.x
 		const y = event.y
 
-		for (let ball of globals.balls) {
+		for (let ball of globals.balls.getBalls()) {
 			
 			ball.arrancar(x, y)
 		}
@@ -48,13 +46,13 @@ require(['globals',
 			for (const gun of globals.guns) {
 				gun.disparar()
 			}
-			for (let ball of globals.balls) {
+			for (let ball of globals.balls.getBalls()) {
 			
 				ball.arrancar(globals.mouse.x, globals.mouse.y, game, nave)
 			}
 		}
 		if (event.key === 'l') {
-				randomOf(globals.balls).agregarBall()
+				globals.balls.getRandom().agregarBall()
 		}
 		if (event.key === 'm') {
 			nave.setWidthType(globals.widthTypes.L)
