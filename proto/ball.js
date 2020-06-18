@@ -4,12 +4,12 @@ define([
 	'globals',
 	'modules/game',
 	'modules/nave',
-	'factory/balls',
+	'modules/deep-clone'
 ], (
 	globals,
 	game,
 	nave,
-	NewBall,
+	deepClone,
 ) => {
 
 	const createElement = () => {
@@ -265,8 +265,10 @@ define([
 		 * Clona la bola tomando el X e Y de este objeto
 		 */
 		clonar() {
-			return NewBall(this.pos.x, this.pos.y,
-			this.config.ballDirX * -1, this.config.ballDirY * -1)
+			const options = deepClone(this)
+			options.config.ballDirX *= -1
+			options.config.ballDirY *= -1
+			return new Ball(options)
 		}
 		/**
 		 * Hace que la bola no rebote al golpear contra la nave
