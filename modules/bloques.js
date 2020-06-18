@@ -18,7 +18,7 @@ define([
 			 * Elije una bola random, toma su posicion y agrega otra bola.
 			 */
 			activar: function () {
-				globals.balls.getRandom().agregarBall()
+				globals.balls.clonarRandom()
 				this.despegar()
 			}
 		},

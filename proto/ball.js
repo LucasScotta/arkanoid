@@ -11,9 +11,22 @@ define([
 	nave,
 	NewBall,
 ) => {
+
+	const createElement = () => {
+		const imgBalls = 'img/ball.png'
+		const $el = document.createElement('div')
+		const newBallImg = document.createElement('img')
+		newBallImg.src = imgBalls
+		$el.appendChild(newBallImg)
+		newBallImg.classList.add('ball')
+		document.getElementById('container').appendChild($el)
+		return $el
+	}
+
 	return class Ball {
 		constructor (options) {
 			Object.assign(this, options)
+			this.$el = createElement()
 		}
 		/**
 		 * retorna si la bola golpea de arriba o abajo en una caja
@@ -249,11 +262,11 @@ define([
 			}
 		}
 		/**
-		 * Agrega una bola tomando el X e Y de este objeto
+		 * Clona la bola tomando el X e Y de este objeto
 		 */
-		agregarBall() {
-			globals.balls.agregar(NewBall(this.pos.x, this.pos.y,
-				this.config.ballDirX * -1, this.config.ballDirY * -1))
+		clonar() {
+			return NewBall(this.pos.x, this.pos.y,
+			this.config.ballDirX * -1, this.config.ballDirY * -1)
 		}
 		/**
 		 * Hace que la bola no rebote al golpear contra la nave

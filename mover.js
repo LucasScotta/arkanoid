@@ -52,7 +52,7 @@ require(['globals',
 			}
 		}
 		if (event.key === 'l') {
-				globals.balls.getRandom().agregarBall()
+			globals.balls.clonarRandom()
 		}
 		if (event.key === 'm') {
 			nave.setWidthType(globals.widthTypes.L)

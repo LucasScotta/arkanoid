@@ -26,6 +26,11 @@ define([
 		getRandom() {
 			return randomOf(this.balls)
 		}
+		clonarRandom() {
+			const ball = this.balls.getRandom()
+			const clon = ball.clonar()
+			this.balls.agregar(clon)
+		}
 		getFirst() {
 			return this.balls[0]
 		}
