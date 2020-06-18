@@ -20,7 +20,7 @@ define(['globals',
 		bloques.agrandador,
 		bloques.achichador,
 		],
-		naveInicial: parseInt(nave.pos.x),
+		naveInicial: parseInt(globals.nave.pos.x),
 		ballInicial: parseInt(globals.balls.getFirst().pos.x),
 	}
 })

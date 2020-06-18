@@ -29,7 +29,7 @@ require(['globals',
 
 		for (let ball of globals.balls.getBalls()) {
 			
-			ball.arrancar(x, y)
+			ball.arrancar(x, y, game)
 		}
 		for (const gun of globals.guns) {
 			gun.disparar()

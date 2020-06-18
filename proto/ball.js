@@ -174,7 +174,7 @@ define([
 		/**
 		 * Esta funcion hace que la bola se mueva por el mapa sumandole la direccion
 		 */
-		mover() {
+		mover(game) {
 
 			if (game.config.level < 7) {
 				this.pos.x += this.config.ballDirX
@@ -202,8 +202,8 @@ define([
 			const ballWidth = this.size.w
 
 			if (this.config.ballDirX === 0 && this.config.ballDirY === 0
-			&&  x >= mapLeft   + mapBorder + nave.size.w / 2
-			&&  x <= mapRight  - mapBorder - nave.size.w / 2
+			&&  x >= mapLeft   + mapBorder + globals.nave.size.w / 2
+			&&  x <= mapRight  - mapBorder - globals.nave.size.w / 2
 			&&  y >= mapTop    + mapBorder
 			&&  y <= mapBottom - mapBorder
 			&&	game.config.level < 7) {
@@ -230,7 +230,7 @@ define([
 		 * pasar de nivel, o al perder todas las vidas y reiniciar el juego del nivel 1.
 		 * Comienza el juego
 		 */
-		arrancar(x, y) {
+		arrancar(x, y, game) {
 
 			const mapTop    = game.pos.y
 			const mapRight  = game.pos.x + game.size.w
@@ -295,7 +295,7 @@ define([
 		/**
 		 * update...
 		 */
-		update() {
+		update(game) {
 
 			// Bola golpeando contra los bordes
 			if (this.tocaBordeCostados(game)) {
@@ -334,28 +334,28 @@ define([
 
 			//Rebotes de bola contra la nave:
 			//1 => ----[--]
-			if (this.estaTocandoDerecha(nave)) {
+			if (this.estaTocandoDerecha()) {
 
 				if (this.goma) this.noRebota()
 				else this.rebotarDerecha()
 			}
 
 			//2 => [--]----
-			if (this.estaTocandoIzquierda(nave)) {
+			if (this.estaTocandoIzquierda()) {
 
 				if (this.goma) this.noRebota()
 				else this.rebotarIzquierda()
 			}
 
 			//3 --[--]--
-			if (this.estaTocandoMedio(nave)) {
+			if (this.estaTocandoMedio()) {
 
 				if (this.goma) this.noRebota()
 				else this.rebotarMedio()
 			}
 
 			//mover la bola
-			this.mover()
+			this.mover(game)
 		}
 	}
 })
