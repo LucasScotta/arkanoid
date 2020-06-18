@@ -1,8 +1,7 @@
 'use strict'
 /* globals define*/
 define(['globals',
-		'modules/game',
-		'modules/nave',], function (globals, game, nave) {
+		'modules/game',], function (globals, game) {
 	return class PowerUp {
 		constructor(options) {
 			Object.assign(this, options)
@@ -15,7 +14,7 @@ define(['globals',
 		 */
 		agrandar() {
 
-			nave.setWidthType(globals.widthTypes.L)
+			globals.nave.setWidthType(globals.widthTypes.L)
 			this.despegar()
 		}
 		/**
@@ -23,7 +22,7 @@ define(['globals',
 		 */
 		achicar() {
 
-			nave.setWidthType(globals.widthTypes.S)
+			globals.nave.setWidthType(globals.widthTypes.S)
 			this.despegar()
 		}
 		/**
@@ -76,7 +75,7 @@ define(['globals',
 		 * Aplica el powerUp en cuestion cuando toca la nave
 		 */
 		tocaNave() {
-
+			const nave = globals.nave
 			const powerL = this.pos.x
 			const powerT = this.pos.y
 			const powerB = this.pos.y + this.size.h

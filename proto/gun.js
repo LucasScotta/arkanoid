@@ -1,8 +1,7 @@
 'use strict'
 /* globals define*/
 define(['globals',
-		'modules/game',
-		'modules/nave',], function (globals, game, nave) {
+		'modules/game',], function (globals, game) {
 window.Gun = class Gun {
 	constructor(options) {
 		Object.assign(this, options)
@@ -13,12 +12,12 @@ window.Gun = class Gun {
 	disparar() {
 		if (this.shots > 0 && !this.activo) {
 			if (globals.guns.indexOf(this) === 0) {
-				this.pos.x = nave.pos.x + 10
-				this.pos.y = nave.pos.y
+				this.pos.x = globals.nave.pos.x + 10
+				this.pos.y = globals.nave.pos.y
 			}
 			else {
-				this.pos.x = nave.pos.x + nave.size.w - 10
-				this.pos.y = nave.pos.y
+				this.pos.x = globals.nave.pos.x + globals.nave.size.w - 10
+				this.pos.y = globals.nave.pos.y
 			}
 			document.getElementById('container').appendChild(this.$el)
 			this.activo = true
@@ -82,12 +81,12 @@ window.Gun = class Gun {
 		}
 		else {
 			if (globals.guns.indexOf(this) === 0) {
-				this.pos.x = nave.pos.x + 10
-				this.pos.y = nave.pos.y
+				this.pos.x = globals.nave.pos.x + 10
+				this.pos.y = globals.nave.pos.y
 			}
 			else {
-				this.pos.x = nave.pos.x + nave.size.w - 10
-				this.pos.y = nave.pos.y
+				this.pos.x = globals.nave.pos.x + globals.nave.size.w - 10
+				this.pos.y = globals.nave.pos.y
 			}
 		}
 	}

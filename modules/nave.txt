@@ -3,14 +3,7 @@
 define(['globals',
 	'modules/game'], function (globals, game) {
 const naveWidth = parseInt(document.getElementById('nave').style.width)
-const naveImg = document.createElement('img')
-naveImg.style.width = `100px`
-naveImg.style.height = `15px`
-naveImg.style.borderRadius = '1em'
-naveImg.src = 'img/nave.png'
-document.getElementById('nave').appendChild(naveImg)
 const nave = {
-	$el: document.getElementById('nave'),
 	size: {
 		w: 100,
 		h: 15,

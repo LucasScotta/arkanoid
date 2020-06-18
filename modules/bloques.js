@@ -3,12 +3,10 @@
 define([
 	'globals',
 	'modules/randomOf',
-	'modules/nave',
 	'proto/gun',
 	], 
 	(globals,
 		randomOf,
-		nave,
 		Gun,) => {
 	return {
 		multiplicador: {
@@ -44,7 +42,7 @@ define([
 			 */
 			activar: function () {
 				if (globals.guns.length === 0) {
-					const init = nave.pos.x + 10
+					const init = globals.nave.pos.x + 10
 					const arma = document.createElement('div')
 					arma.classList.add('gun')
 					globals.guns.push(new Gun({
@@ -63,7 +61,7 @@ define([
 					}))
 				}
 				else if (globals.guns.length === 1) {
-					const init = nave.pos.x + nave.size.w - 10
+					const init = globals.nave.pos.x + globals.nave.size.w - 10
 					const arma = document.createElement('div')
 					arma.classList.add('gun')
 					globals.guns.push(new Gun({

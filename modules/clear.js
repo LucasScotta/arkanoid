@@ -1,7 +1,6 @@
 'use strict'
 /*globals define*/
-define(['globals',
-		'modules/nave',], function(globals, nave) {
+define(['globals',], function(globals) {
 
 	function clearBlocks() {
 		let i = 0
@@ -17,7 +16,7 @@ define(['globals',
 			globals.powers[i].$el.remove()
 			globals.powers.splice(i, 1)
 		}
-		nave.setWidthType(globals.widthTypes.M)
+		globals.nave.setWidthType(globals.widthTypes.M)
 	}
 	function clearGuns() {
 		for (let i = globals.guns.length - 1; i > -1; i -= 1) {

@@ -34,13 +34,13 @@ define('modules/game',[
 			this.config.lifes -= 1
 			if (this.config.lifes > 0) {
 
-				const primerBall = NewBall(constants.ballInicial, this.nave.pos.y - ball.size.w - 1, 0, 0)
-				this.nave.pos.x = constants.naveInicial
-				this.nave.$el.style.left = `${this.nave.pos.x}px`
-				this.nave.$el.style.top  = `${this.nave.pos.y}px`
+				const primerBall = NewBall(constants.ballInicial, globals.nave.pos.y - ball.size.w - 1, 0, 0)
+				globals.nave.pos.x = constants.naveInicial
+				globals.nave.$el.style.left = `${globals.nave.pos.x}px`
+				globals.nave.$el.style.top  = `${globals.nave.pos.y}px`
 				primerBall.$el.style.left = `${primerBall.pos.x}px`
 				primerBall.$el.style.top  = `${primerBall.pos.y}px`
-				this.nave.mover(globals.mouse.x, globals.mouse.y)
+				globals.nave.mover(globals.mouse.x, globals.mouse.y)
 				console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
 			}
 			else {
@@ -49,14 +49,14 @@ define('modules/game',[
 					this.config.level = 0
 					clear.clearAll()
 					
-					const primerBall = NewBall(constants.ballInicial, this.nave.pos.y - ball.size.w - 1, 0, 0)
+					const primerBall = NewBall(constants.ballInicial, globals.nave.pos.y - ball.size.w - 1, 0, 0)
 					this.config.lifes = 3
-					this.nave.pos.x = constants.naveInicial
-					this.nave.$el.style.left = `${this.nave.pos.x}px`
-					this.nave.$el.style.top  = `${this.nave.pos.y}px`
+					globals.nave.pos.x = constants.naveInicial
+					globals.nave.$el.style.left = `${globals.nave.pos.x}px`
+					globals.nave.$el.style.top  = `${globals.nave.pos.y}px`
 					primerBall.$el.style.left = `${primerBall.pos.x}px`
 					primerBall.$el.style.top  = `${primerBall.pos.y}px`
-					this.nave.mover(globals.mouse.x, globals.mouse.y)
+					globals.nave.mover(globals.mouse.x, globals.mouse.y)
 				}
 			}
 		}
@@ -67,17 +67,17 @@ define('modules/game',[
 	/**
 	 * El nombre lo dice todo
 	 */
-	ganar: function (ball) {
+	ganar: function () {
 
 		this.config.level += 1
 
 		if (this.config.level <= 6) {
 
 			clear.clearAll()
-			const primerBall = NewBall(this.nave.pos.x + this.nave.size.w / 2, 0 ,0)
+			const primerBall = NewBall(globals.nave.pos.x + globals.nave.size.w / 2, 0 ,0)
 			primerBall.$el.style.left = `${primerBall.pos.x}px`
 			primerBall.$el.style.top  = `${primerBall.pos.y}px`
-			this.nave.size.w = 100
+			globals.nave.size.w = 100
 
 			console.log(`Pasaste al nivel: ${this.config.level}`)
 		}

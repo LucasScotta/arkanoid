@@ -1,17 +1,16 @@
 'use strict'
 /* globals require*/
 require(['globals',
-		'modules/game',
-		'modules/nave',], function (globals, game, nave) {
+		'modules/game',], function (globals, game) {
 	function update() {
 		
 		for (const ball of globals.balls.getBalls()) {
-			ball.moverInicio(globals.mouse.x, globals.mouse.y)
-			ball.update()
+			ball.moverInicio(game)
+			ball.update(game)
 		}
 		
 		if (globals.mouse.b) {
-			nave.mover(globals.mouse.x, globals.mouse.y)
+			globals.nave.mover(globals.mouse.x, globals.mouse.y)
 			globals.mouse.b = false
 		}
 

@@ -1,8 +1,7 @@
 'use strict'
 /*globals define*/
 define(['globals',
-		'modules/potenciadores',
-		'modules/nave',], (globals, bloques, nave) => {
+		'modules/potenciadores',], (globals, bloques) => {
 	return {
 		imgsBox: [
 		'img/0.png',

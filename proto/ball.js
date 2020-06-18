@@ -2,13 +2,9 @@
 /* globals define*/
 define([
 	'globals',
-	'modules/game',
-	'modules/nave',
 	'modules/deep-clone'
 ], (
 	globals,
-	game,
-	nave,
 	deepClone,
 ) => {
 
@@ -109,46 +105,46 @@ define([
 		/**
 		 * retorna si la bola golpea la division izquierda de la nave
 		 */
-		estaTocandoDerecha(nave) {
+		estaTocandoDerecha() {
 
-			const naveWidth = nave.size.w
-			const naveRight = nave.pos.x + naveWidth
+			const naveWidth = globals.nave.size.w
+			const naveRight = globals.nave.pos.x + naveWidth
 			const b = this.pos.y + this.size.h
 			const r = this.pos.x + this.size.w
 			const l = this.pos.x
 
-			return  b === nave.pos.y
+			return  b === globals.nave.pos.y
 				&&	l <=  naveRight
-				&&	r >	  naveRight - nave.size.w / 3
+				&&	r >	  naveRight - globals.nave.size.w / 3
 		}
 		/**
 		 * retorna si la bola golpea la division derecha de la nave
 		 */
-		estaTocandoIzquierda(nave) {
+		estaTocandoIzquierda() {
 
-			const naveLeft = nave.pos.x
-			const naveWidth = nave.size.w
+			const naveLeft = globals.nave.pos.x
+			const naveWidth = globals.nave.size.w
 			const b = this.pos.y + this.size.h
 			const r = this.pos.x + this.size.w
 			const l = this.pos.x
 
-			return  b === nave.pos.y
+			return  b === globals.nave.pos.y
 				&&	r >=  naveLeft
 				&&	l <   naveLeft + naveWidth / 3
 		}
 		/**
 		 * retorna si la bola golpea la division del medio de la nave
 		 */
-		estaTocandoMedio(nave) {
+		estaTocandoMedio() {
 
-			const naveRight = nave.pos.x + nave.size.w
-			const naveLeft  = nave.pos.x
-			const naveWidth = nave.size.w
+			const naveRight = globals.nave.pos.x + globals.nave.size.w
+			const naveLeft  = globals.nave.pos.x
+			const naveWidth = globals.nave.size.w
 			const b = this.pos.y + this.size.h
 			const r = this.pos.x + this.size.w
 			const l = this.pos.x
 
-			return  b === nave.pos.y
+			return  b === globals.nave.pos.y
 				&&	r <=  naveRight - naveWidth / 3
 				&&	l >=  naveLeft  + naveWidth / 3
 		}
@@ -192,7 +188,7 @@ define([
 		 * Puede ser al comenzar el juego o al tener activada la propiedad 'goma' de este
 		 * objeto
 		 */
-		moverInicio() {
+		moverInicio(game) {
 
 			let x = globals.mouse.x
 			let y = globals.mouse.y
@@ -275,7 +271,7 @@ define([
 		 */
 		noRebota() {
 
-			this.pos.y = nave.pos.y - 16
+			this.pos.y = globals.nave.pos.y - 16
 			this.config.ballDirX = 0
 			this.config.ballDirY = 0
 		}

@@ -1,10 +1,12 @@
 'use strict'
 /*globals define*/
-define(['proto/ball-manager'], (BallManager) => ({
+define(['proto/ball-manager',
+	'proto/nave',], (BallManager, Nave) => ({
 	balls:  new BallManager(),
 	boxes:  [],
 	guns:   [],
 	powers: [],
+	nave: new Nave(),
 	mouse: {
 		x: 0,
 		y: 0,
