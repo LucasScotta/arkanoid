@@ -5,6 +5,9 @@ define([
 	'modules/clear',
 	'proto/ball'
 	], (globals, clear, NewBall) => {
+		/**
+		 * Clase principal del proyecto.
+		 */
 	return class Game {
 		constructor() {
 			this.pos = {

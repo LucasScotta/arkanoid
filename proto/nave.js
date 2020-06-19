@@ -1,7 +1,6 @@
 'use strict'
 /* globals define*/
-define(['globals'], function (globals) {
-	const game = globals.game
+define(function () {
 	const setupElement = () => {
 		const naveImg = document.createElement('img')
 		naveImg.style.width = `100px`
@@ -13,7 +12,7 @@ define(['globals'], function (globals) {
 		return $el
 	}
 	return class Nave {
-		constructor() {
+		constructor(game) {
 			this.$el = setupElement()
 			this.size = {
 				w: 100,
@@ -23,6 +22,7 @@ define(['globals'], function (globals) {
 				x: game.size.w / 2 - this.size.w / 2,
 				y: game.pos.y + game.size.h - 40,
 			}
+			this.game = game
 		}
 		/**
 		 * Alarga o achica la nave segun corresponda
@@ -31,11 +31,11 @@ define(['globals'], function (globals) {
 
 			this.pos.x -= (widthType.w - this.size.w) / 2
 			this.size.w = widthType.w
-			if (this.pos.x + this.size.w >= game.pos.x + game.size.w - game.size.b) {
-				this.pos.x = game.pos.x + game.size.w - game.size.b - this.size.w
+			if (this.pos.x + this.size.w >= this.game.pos.x + this.game.size.w - this.game.size.b) {
+				this.pos.x = this.game.pos.x + this.game.size.w - this.game.size.b - this.size.w
 			}
-			else if(this.pos.x <= game.pos.x + game.size.b) {
-				this.pos.x = game.pos.x + game.size.b
+			else if(this.pos.x <= this.game.pos.x + this.game.size.b) {
+				this.pos.x = this.game.pos.x + this.game.size.b
 			}
 			this.$el.style.width = `${this.size.w}px`
 			this.$el.style.left  = `${this.pos.x}px`
@@ -53,17 +53,17 @@ define(['globals'], function (globals) {
 		 */
 		mover(x, y) {
 
-			const mapTop = game.pos.y
-			const mapBorder = game.size.b
-			const mapRight = game.pos.x + game.size.w
-			const mapBottom = game.pos.y + game.size.h
-			const mapLeft = game.pos.x
+			const mapTop = this.game.pos.y
+			const mapBorder = this.game.size.b
+			const mapRight = this.game.pos.x + this.game.size.w
+			const mapBottom = this.game.pos.y + this.game.size.h
+			const mapLeft = this.game.pos.x
 
 			if (x <= mapRight  - mapBorder
 			&&	x >= mapLeft   + mapBorder
 			&&	y <= mapBottom - mapBorder
 			&&	y >= mapTop    + mapBorder
-			&& game.config.level < 7) {
+			&& this.game.config.level < 7) {
 
 				if (x >= mapRight -  mapBorder - this.size.w / 2) {
 
@@ -90,7 +90,7 @@ define(['globals'], function (globals) {
 		 */
 		pintarNaveInicio() {
 
-			this.pos.x = game.pos.x + game.size.b + game.size.w / 2
+			this.pos.x = this.game.pos.x + this.game.size.b + this.game.size.w / 2
 			this.pos.y = this.pos.y - 1
 			this.$el.style.left = `${this.pos.x}px`
 			this.$el.style.top = `${this.pos.y}px`

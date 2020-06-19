@@ -18,7 +18,9 @@ define([
 		document.getElementById('container').appendChild($el)
 		return $el
 	}
-
+	/**
+	 * Representa una bola
+	 */
 	return class Ball {
 		constructor (options) {
 			Object.assign(this, options)
