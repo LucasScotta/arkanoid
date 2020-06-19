@@ -16,7 +16,7 @@ define(['globals',], function(globals) {
 			globals.powers[i].$el.remove()
 			globals.powers.splice(i, 1)
 		}
-		globals.nave.setWidthType(globals.widthTypes.M)
+		globals.game.nave.setWidthType(globals.widthTypes.M)
 	}
 	function clearGuns() {
 		for (let i = globals.guns.length - 1; i > -1; i -= 1) {

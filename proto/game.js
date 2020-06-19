@@ -24,6 +24,7 @@ define([
 				level: 1,
 				pause: false,
 			}
+			this.nave = new Nave(this)
 		}
 		/**
 		 * El nombre lo dice todo
@@ -36,11 +37,11 @@ define([
 				if (this.config.lifes > 0) {
 
 					const primerBall = NewBall()
-					globals.nave.$el.style.left = `${globals.nave.pos.x}px`
-					globals.nave.$el.style.top  = `${globals.nave.pos.y}px`
+					this.nave.$el.style.left = `${this.nave.pos.x}px`
+					this.nave.$el.style.top  = `${this.nave.pos.y}px`
 					primerBall.$el.style.left = `${primerBall.pos.x}px`
 					primerBall.$el.style.top  = `${primerBall.pos.y}px`
-					globals.nave.mover(globals.mouse.x, globals.mouse.y)
+					this.nave.mover(globals.mouse.x, globals.mouse.y)
 					console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
 				}
 				else {
@@ -51,11 +52,11 @@ define([
 						
 						const primerBall = NewBall()
 						this.config.lifes = 3
-						globals.nave.$el.style.left = `${globals.nave.pos.x}px`
-						globals.nave.$el.style.top  = `${globals.nave.pos.y}px`
+						this.nave.$el.style.left = `${this.nave.pos.x}px`
+						this.nave.$el.style.top  = `${this.nave.pos.y}px`
 						primerBall.$el.style.left = `${primerBall.pos.x}px`
 						primerBall.$el.style.top  = `${primerBall.pos.y}px`
-						globals.nave.mover(globals.mouse.x, globals.mouse.y)
+						this.nave.mover(globals.mouse.x, globals.mouse.y)
 					}
 				}
 			}
@@ -73,10 +74,10 @@ define([
 			if (this.config.level <= 6) {
 
 				clear.clearAll()
-				const primerBall = NewBall(globals.nave.pos.x + globals.nave.size.w / 2, 0 ,0)
+				const primerBall = NewBall(this.nave.pos.x + this.nave.size.w / 2, 0 ,0)
 				primerBall.$el.style.left = `${primerBall.pos.x}px`
 				primerBall.$el.style.top  = `${primerBall.pos.y}px`
-				globals.nave.size.w = 100
+				this.nave.size.w = 100
 
 				console.log(`Pasaste al nivel: ${this.config.level}`)
 			}

@@ -109,28 +109,28 @@ define([
 		 */
 		estaTocandoDerecha() {
 
-			const naveWidth = globals.nave.size.w
-			const naveRight = globals.nave.pos.x + naveWidth
+			const naveWidth = globals.game.nave.size.w
+			const naveRight = globals.game.nave.pos.x + naveWidth
 			const b = this.pos.y + this.size.h
 			const r = this.pos.x + this.size.w
 			const l = this.pos.x
 
-			return  b === globals.nave.pos.y
+			return  b === globals.game.nave.pos.y
 				&&	l <=  naveRight
-				&&	r >	  naveRight - globals.nave.size.w / 3
+				&&	r >	  naveRight - globals.game.nave.size.w / 3
 		}
 		/**
 		 * retorna si la bola golpea la division derecha de la nave
 		 */
 		estaTocandoIzquierda() {
 
-			const naveLeft = globals.nave.pos.x
-			const naveWidth = globals.nave.size.w
+			const naveLeft = globals.game.nave.pos.x
+			const naveWidth = globals.game.nave.size.w
 			const b = this.pos.y + this.size.h
 			const r = this.pos.x + this.size.w
 			const l = this.pos.x
 
-			return  b === globals.nave.pos.y
+			return  b === globals.game.nave.pos.y
 				&&	r >=  naveLeft
 				&&	l <   naveLeft + naveWidth / 3
 		}
@@ -139,14 +139,14 @@ define([
 		 */
 		estaTocandoMedio() {
 
-			const naveRight = globals.nave.pos.x + globals.nave.size.w
-			const naveLeft  = globals.nave.pos.x
-			const naveWidth = globals.nave.size.w
+			const naveRight = globals.game.nave.pos.x + globals.game.nave.size.w
+			const naveLeft  = globals.game.nave.pos.x
+			const naveWidth = globals.game.nave.size.w
 			const b = this.pos.y + this.size.h
 			const r = this.pos.x + this.size.w
 			const l = this.pos.x
 
-			return  b === globals.nave.pos.y
+			return  b === globals.game.nave.pos.y
 				&&	r <=  naveRight - naveWidth / 3
 				&&	l >=  naveLeft  + naveWidth / 3
 		}
@@ -204,8 +204,8 @@ define([
 			const ballWidth = this.size.w
 
 			if (this.config.ballDirX === 0 && this.config.ballDirY === 0
-			&&  x >= mapLeft   + mapBorder + globals.nave.size.w / 2
-			&&  x <= mapRight  - mapBorder - globals.nave.size.w / 2
+			&&  x >= mapLeft   + mapBorder + globals.game.nave.size.w / 2
+			&&  x <= mapRight  - mapBorder - globals.game.nave.size.w / 2
 			&&  y >= mapTop    + mapBorder
 			&&  y <= mapBottom - mapBorder
 			&&	game.config.level < 7) {
@@ -273,7 +273,7 @@ define([
 		 */
 		noRebota() {
 
-			this.pos.y = globals.nave.pos.y - 16
+			this.pos.y = globals.game.nave.pos.y - 16
 			this.config.ballDirX = 0
 			this.config.ballDirY = 0
 		}

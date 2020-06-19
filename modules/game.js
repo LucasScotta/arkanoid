@@ -34,13 +34,13 @@ define('modules/game',[
 			this.config.lifes -= 1
 			if (this.config.lifes > 0) {
 
-				const primerBall = NewBall(constants.ballInicial, globals.nave.pos.y - ball.size.w - 1, 0, 0)
-				globals.nave.pos.x = constants.naveInicial
-				globals.nave.$el.style.left = `${globals.nave.pos.x}px`
-				globals.nave.$el.style.top  = `${globals.nave.pos.y}px`
+				const primerBall = NewBall(constants.ballInicial, globals.game.nave.pos.y - ball.size.w - 1, 0, 0)
+				globals.game.nave.pos.x = constants.naveInicial
+				globals.game.nave.$el.style.left = `${globals.game.nave.pos.x}px`
+				globals.game.nave.$el.style.top  = `${globals.game.nave.pos.y}px`
 				primerBall.$el.style.left = `${primerBall.pos.x}px`
 				primerBall.$el.style.top  = `${primerBall.pos.y}px`
-				globals.nave.mover(globals.mouse.x, globals.mouse.y)
+				globals.game.nave.mover(globals.mouse.x, globals.mouse.y)
 				console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
 			}
 			else {
@@ -49,14 +49,14 @@ define('modules/game',[
 					this.config.level = 0
 					clear.clearAll()
 					
-					const primerBall = NewBall(constants.ballInicial, globals.nave.pos.y - ball.size.w - 1, 0, 0)
+					const primerBall = NewBall(constants.ballInicial, globals.game.nave.pos.y - ball.size.w - 1, 0, 0)
 					this.config.lifes = 3
-					globals.nave.pos.x = constants.naveInicial
-					globals.nave.$el.style.left = `${globals.nave.pos.x}px`
-					globals.nave.$el.style.top  = `${globals.nave.pos.y}px`
+					globals.game.nave.pos.x = constants.naveInicial
+					globals.game.nave.$el.style.left = `${globals.game.nave.pos.x}px`
+					globals.game.nave.$el.style.top  = `${globals.game.nave.pos.y}px`
 					primerBall.$el.style.left = `${primerBall.pos.x}px`
 					primerBall.$el.style.top  = `${primerBall.pos.y}px`
-					globals.nave.mover(globals.mouse.x, globals.mouse.y)
+					globals.game.nave.mover(globals.mouse.x, globals.mouse.y)
 				}
 			}
 		}
@@ -74,10 +74,10 @@ define('modules/game',[
 		if (this.config.level <= 6) {
 
 			clear.clearAll()
-			const primerBall = NewBall(globals.nave.pos.x + globals.nave.size.w / 2, 0 ,0)
+			const primerBall = NewBall(globals.game.nave.pos.x + globals.game.nave.size.w / 2, 0 ,0)
 			primerBall.$el.style.left = `${primerBall.pos.x}px`
 			primerBall.$el.style.top  = `${primerBall.pos.y}px`
-			globals.nave.size.w = 100
+			globals.game.nave.size.w = 100
 
 			console.log(`Pasaste al nivel: ${this.config.level}`)
 		}

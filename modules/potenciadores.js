@@ -40,7 +40,7 @@ define([
 			 */
 			activar: function () {
 				if (globals.guns.length === 0) {
-					const init = globals.nave.pos.x + 10
+					const init = globals.game.nave.pos.x + 10
 					const arma = document.createElement('div')
 					arma.classList.add('gun')
 					globals.guns.push(new Gun({
@@ -59,7 +59,7 @@ define([
 					}))
 				}
 				else if (globals.guns.length === 1) {
-					const init = globals.nave.pos.x + globals.nave.size.w - 10
+					const init = globals.game.nave.pos.x + globals.game.nave.size.w - 10
 					const arma = document.createElement('div')
 					arma.classList.add('gun')
 					globals.guns.push(new Gun({

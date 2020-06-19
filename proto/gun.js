@@ -11,12 +11,12 @@ window.Gun = class Gun {
 	disparar() {
 		if (this.shots > 0 && !this.activo) {
 			if (globals.guns.indexOf(this) === 0) {
-				this.pos.x = globals.nave.pos.x + 10
-				this.pos.y = globals.nave.pos.y
+				this.pos.x = globals.game.nave.pos.x + 10
+				this.pos.y = globals.game.nave.pos.y
 			}
 			else {
-				this.pos.x = globals.nave.pos.x + globals.nave.size.w - 10
-				this.pos.y = globals.nave.pos.y
+				this.pos.x = globals.game.nave.pos.x + globals.game.nave.size.w - 10
+				this.pos.y = globals.game.nave.pos.y
 			}
 			document.getElementById('container').appendChild(this.$el)
 			this.activo = true
@@ -80,12 +80,12 @@ window.Gun = class Gun {
 		}
 		else {
 			if (globals.guns.indexOf(this) === 0) {
-				this.pos.x = globals.nave.pos.x + 10
-				this.pos.y = globals.nave.pos.y
+				this.pos.x = globals.game.nave.pos.x + 10
+				this.pos.y = globals.game.nave.pos.y
 			}
 			else {
-				this.pos.x = globals.nave.pos.x + globals.nave.size.w - 10
-				this.pos.y = globals.nave.pos.y
+				this.pos.x = globals.game.nave.pos.x + globals.game.nave.size.w - 10
+				this.pos.y = globals.game.nave.pos.y
 			}
 		}
 	}

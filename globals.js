@@ -11,7 +11,6 @@ define([
 		boxes:  [],
 		guns:   [],
 		powers: [],
-		nave: new Nave(game),
 		game: game,
 		mouse: {
 			x: 0,

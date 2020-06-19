@@ -9,7 +9,7 @@ require(['globals',], function (globals) {
 		}
 		
 		if (globals.mouse.b) {
-			globals.nave.mover(globals.mouse.x, globals.mouse.y)
+			globals.game.nave.mover(globals.mouse.x, globals.mouse.y)
 			globals.mouse.b = false
 		}
 
