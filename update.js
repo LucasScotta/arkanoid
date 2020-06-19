@@ -5,7 +5,7 @@ require(['globals',], function (globals) {
 		
 		for (const ball of globals.game.ballm.getBalls()) {
 			ball.moverInicio(globals)
-			ball.update(globals)
+			ball.update(ball, globals)
 		}
 		
 		if (globals.mouse.b) {
