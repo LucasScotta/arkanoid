@@ -2,14 +2,6 @@
 /*globals define*/
 define(['globals',], function(globals) {
 
-	function clearBlocks() {
-		let i = 0
-		while (globals.boxes.length > 0) {
-
-			globals.boxes[i].borrar()
-		}
-	}
-
 	function clearPowers() {
 
 		for (let i = globals.powers.length - 1; i > -1; i -= 1) {
@@ -35,7 +27,7 @@ define(['globals',], function(globals) {
 	function clearAll () {
 		clearGuns()
 		clearPowers()
-		clearBlocks()
+		globals.game.boxm.reset()
 	}
 	return {
 		clear: clear,

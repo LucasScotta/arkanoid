@@ -67,7 +67,7 @@ window.Gun = class Gun {
 			this.$el.style.left = `${this.pos.x}px`
 			this.$el.style.top  = `${this.pos.y}px`
 			this.pos.y -= 2
-			for (const box of globals.boxes) {
+			for (const box of globals.game.boxm.getItems()) {
 				if (this.disparoToca(box)) {
 					box.golpear()
 					this.clearShot()

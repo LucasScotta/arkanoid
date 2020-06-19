@@ -4,8 +4,9 @@ define([
 	'modules/clear',
 	'proto/ball',
 	'proto/ball-manager',
+	'proto/box-manager',
 	'proto/nave',
-	], (clear, NewBall, BallManager, Nave) => {
+	], (clear, NewBall, BallManager, BoxManager, Nave) => {
 		/**
 		 * Clase principal del proyecto.
 		 */
@@ -27,6 +28,7 @@ define([
 			}
 			this.nave = new Nave(this)
 			this.ballm = new BallManager()
+			this.boxm = new BoxManager()
 		}
 		/**
 		 * El nombre lo dice todo

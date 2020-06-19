@@ -17,9 +17,9 @@ function rotarAntiHorario() {
 
 function rotar(angulo) {
 
-	for (let i = 0; i < globals.boxes.length; i += 1) {
+	for (const box of globals.game.boxm.getItems()) {
 
-		globals.boxes[i].style.transform = `rotate(${angulo}deg)`
+		box.style.transform = `rotate(${angulo}deg)`
 	}
 }
 

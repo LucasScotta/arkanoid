@@ -5,7 +5,6 @@ define([
 ], (Game) => {
 	const game = new Game()
 	return {
-		boxes:  [],
 		guns:   [],
 		powers: [],
 		game: game,

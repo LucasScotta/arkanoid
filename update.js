@@ -18,7 +18,7 @@ require(['globals',], function (globals) {
 			power.update()
 		}
 
-		if (globals.boxes.length === 0) {
+		if (globals.game.boxm.estaVacio()) {
 			return globals.game.ganar(globals.game.ballm.getFirst())
 		}
 		for (const gun of globals.guns) {

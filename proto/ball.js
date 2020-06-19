@@ -317,7 +317,7 @@ define([
 			}
 
 			// Bola golpeando las cajas:
-			for (const box of globals.boxes) {
+			for (const box of globals.game.box.getItems()) {
 			// Si esta tocando de arriba/abajo en una caja, rebota verticalmente
 				const golpeV = this.estaTocandoDeArribaYAbajo(box)
 			// Si esta tocando de derecha/izquierda en una caja, rebota horizontalmente (funciona a medias)

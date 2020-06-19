@@ -23,18 +23,9 @@ require(['globals',
 			}
 		}
 		/**
-		 * Borra una caja y cambia la propiedad 'index' de las restantes para que el for del que
-		 * viene no falle.
+		 * Borra la caja
 		 */
 		borrar() {
-
-			globals.boxes.splice(globals.boxes.indexOf(this), 1)
-
-			for (let i = 0; i < globals.boxes.length; i += 1) {
-			
-				globals.boxes[i].index = i
-			}
-
 			this.$div.remove()
 		}
 	}
