@@ -1,12 +1,11 @@
 'use strict'
 /*globals define*/
 define([
-	'globals',
 	'modules/clear',
 	'proto/ball',
 	'proto/ball-manager',
 	'proto/nave',
-	], (globals, clear, NewBall, BallManager, Nave) => {
+	], (clear, NewBall, BallManager, Nave) => {
 		/**
 		 * Clase principal del proyecto.
 		 */
@@ -32,7 +31,7 @@ define([
 		/**
 		 * El nombre lo dice todo
 		 */
-		perder(ball) {
+		perder(globals) {
 
 			if (this.ballm.estaVacio()) {
 				clear.clear()

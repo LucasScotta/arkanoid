@@ -1,10 +1,8 @@
 'use strict'
 /* globals define*/
 define([
-	'globals',
 	'util/deep-clone'
 ], (
-	globals,
 	deepClone,
 ) => {
 
@@ -107,46 +105,46 @@ define([
 		/**
 		 * retorna si la bola golpea la division izquierda de la nave
 		 */
-		estaTocandoDerecha() {
+		estaTocandoDerecha(game) {
 
-			const naveWidth = globals.game.nave.size.w
-			const naveRight = globals.game.nave.pos.x + naveWidth
+			const naveWidth = game.nave.size.w
+			const naveRight = game.nave.pos.x + naveWidth
 			const b = this.pos.y + this.size.h
 			const r = this.pos.x + this.size.w
 			const l = this.pos.x
 
-			return  b === globals.game.nave.pos.y
+			return  b === game.nave.pos.y
 				&&	l <=  naveRight
-				&&	r >	  naveRight - globals.game.nave.size.w / 3
+				&&	r >	  naveRight - game.nave.size.w / 3
 		}
 		/**
 		 * retorna si la bola golpea la division derecha de la nave
 		 */
-		estaTocandoIzquierda() {
+		estaTocandoIzquierda(game) {
 
-			const naveLeft = globals.game.nave.pos.x
-			const naveWidth = globals.game.nave.size.w
+			const naveLeft = game.nave.pos.x
+			const naveWidth = game.nave.size.w
 			const b = this.pos.y + this.size.h
 			const r = this.pos.x + this.size.w
 			const l = this.pos.x
 
-			return  b === globals.game.nave.pos.y
+			return  b === game.nave.pos.y
 				&&	r >=  naveLeft
 				&&	l <   naveLeft + naveWidth / 3
 		}
 		/**
 		 * retorna si la bola golpea la division del medio de la nave
 		 */
-		estaTocandoMedio() {
+		estaTocandoMedio(game) {
 
-			const naveRight = globals.game.nave.pos.x + globals.game.nave.size.w
-			const naveLeft  = globals.game.nave.pos.x
-			const naveWidth = globals.game.nave.size.w
+			const naveRight = game.nave.pos.x + game.nave.size.w
+			const naveLeft  = game.nave.pos.x
+			const naveWidth = game.nave.size.w
 			const b = this.pos.y + this.size.h
 			const r = this.pos.x + this.size.w
 			const l = this.pos.x
 
-			return  b === globals.game.nave.pos.y
+			return  b === game.nave.pos.y
 				&&	r <=  naveRight - naveWidth / 3
 				&&	l >=  naveLeft  + naveWidth / 3
 		}
@@ -190,8 +188,9 @@ define([
 		 * Puede ser al comenzar el juego o al tener activada la propiedad 'goma' de este
 		 * objeto
 		 */
-		moverInicio(game) {
+		moverInicio(globals) {
 
+			const game = globals.game
 			let x = globals.mouse.x
 			let y = globals.mouse.y
 			const mapWidth  = game.size.w
@@ -204,8 +203,8 @@ define([
 			const ballWidth = this.size.w
 
 			if (this.config.ballDirX === 0 && this.config.ballDirY === 0
-			&&  x >= mapLeft   + mapBorder + globals.game.nave.size.w / 2
-			&&  x <= mapRight  - mapBorder - globals.game.nave.size.w / 2
+			&&  x >= mapLeft   + mapBorder + game.nave.size.w / 2
+			&&  x <= mapRight  - mapBorder - game.nave.size.w / 2
 			&&  y >= mapTop    + mapBorder
 			&&  y <= mapBottom - mapBorder
 			&&	game.config.level < 7) {
@@ -271,9 +270,9 @@ define([
 		/**
 		 * Hace que la bola no rebote al golpear contra la nave
 		 */
-		noRebota() {
+		noRebota(game) {
 
-			this.pos.y = globals.game.nave.pos.y - 16
+			this.pos.y = game.nave.pos.y - 16
 			this.config.ballDirX = 0
 			this.config.ballDirY = 0
 		}
@@ -297,8 +296,8 @@ define([
 		/**
 		 * update...
 		 */
-		update(game) {
-
+		update(globals) {
+			const game = globals.game
 			// Bola golpeando contra los bordes
 			if (this.tocaBordeCostados(game)) {
 
@@ -314,7 +313,7 @@ define([
 
 				this.config.ballDirY = 0
 				this.config.ballDirX = 0
-				return game.perder(this, this.$el)
+				return game.perder(globals)
 			}
 
 			// Bola golpeando las cajas:
@@ -336,23 +335,23 @@ define([
 
 			//Rebotes de bola contra la nave:
 			//1 => ----[--]
-			if (this.estaTocandoDerecha()) {
+			if (this.estaTocandoDerecha(game)) {
 
-				if (this.goma) this.noRebota()
+				if (this.goma) this.noRebota(game)
 				else this.rebotarDerecha()
 			}
 
 			//2 => [--]----
-			if (this.estaTocandoIzquierda()) {
+			if (this.estaTocandoIzquierda(game)) {
 
-				if (this.goma) this.noRebota()
+				if (this.goma) this.noRebota(game)
 				else this.rebotarIzquierda()
 			}
 
 			//3 --[--]--
-			if (this.estaTocandoMedio()) {
+			if (this.estaTocandoMedio(game)) {
 
-				if (this.goma) this.noRebota()
+				if (this.goma) this.noRebota(game)
 				else this.rebotarMedio()
 			}
 

@@ -4,8 +4,8 @@ require(['globals',], function (globals) {
 	function update() {
 		
 		for (const ball of globals.game.ballm.getBalls()) {
-			ball.moverInicio(globals.game)
-			ball.update(globals.game)
+			ball.moverInicio(globals)
+			ball.update(globals)
 		}
 		
 		if (globals.mouse.b) {
