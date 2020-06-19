@@ -2,7 +2,7 @@
 /* globals require*/
 require(['globals',
 		'constants',
-		'factory/powers'], function (globals, constants, PowerUp) {
+		'factory/powers'], function (globals, constants, powerUp) {
 	return class Box {
 		constructor(options) {
 			Object.assign(this, options)
@@ -16,10 +16,8 @@ require(['globals',
 			else {
 				if (this.power) {
 
-					const power = NewPower(this.pos.x + this.size.w / 2- 15, this.pos.y + this.size.h)
-					}
-					Object.assign(power, this.power)
-					globals.powers.push(PowerUp())
+					const power = powerUp(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h)
+					globals.powers.push(power)
 				}
 				this.borrar()
 			}

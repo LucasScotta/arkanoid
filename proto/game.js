@@ -31,7 +31,7 @@ define([
 		/**
 		 * El nombre lo dice todo
 		 */
-		perder(globals) {
+		perder(ball, globals) {
 
 			if (this.ballm.estaVacio()) {
 				clear.clear()
