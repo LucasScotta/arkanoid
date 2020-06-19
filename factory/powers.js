@@ -1,5 +1,5 @@
 /*globals define*/
-define(['proto/powerUps',], (Power) => {
+define(['proto/power-up',], (PowerUp) => {
 	const createElement = () => {
 		const $el = document.createElement('div')
 		$el.innerText = this.power.caracter
@@ -7,7 +7,7 @@ define(['proto/powerUps',], (Power) => {
 		document.getElementById('container').appendChild($el)
 		return $el
 	}
-	return (x, y) => new Power({
+	return (x, y) => new PowerUp({
 		pos: {
 			x: x,
 			y: y,
