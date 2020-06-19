@@ -29,7 +29,7 @@ define('modules/game',[
 	 */
 	perder: function (ball) {
 
-		if (globals.balls.estaVacio()) {
+		if (globals.game.ballm.estaVacio()) {
 			clear.clear()
 			this.config.lifes -= 1
 			if (this.config.lifes > 0) {
@@ -61,7 +61,7 @@ define('modules/game',[
 			}
 		}
 		else {
-			globals.balls.remover(ball)
+			globals.game.ballm.remover(ball)
 		}
 	},
 	/**

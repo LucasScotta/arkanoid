@@ -24,7 +24,7 @@ define(['globals',], function(globals) {
 		}
 	}
 	function clearBalls() {
-			globals.balls.reset()
+			globals.game.ballm.reset()
 	}
 	function clear () {
 		clearBalls()

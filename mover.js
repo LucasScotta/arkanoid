@@ -25,7 +25,7 @@ require(['globals',
 		const x = event.x
 		const y = event.y
 
-		for (let ball of globals.balls.getBalls()) {
+		for (let ball of globals.game.ballm.getBalls()) {
 			
 			ball.arrancar(x, y, globals.game)
 		}
@@ -42,13 +42,13 @@ require(['globals',
 			for (const gun of globals.guns) {
 				gun.disparar()
 			}
-			for (let ball of globals.balls.getBalls()) {
+			for (let ball of globals.game.ballm.getBalls()) {
 			
 				ball.arrancar(globals.mouse.x, globals.mouse.y, globals.game, globals.game.nave)
 			}
 		}
 		if (event.key === 'l') {
-			globals.balls.clonarRandom()
+			globals.game.ballm.clonarRandom()
 		}
 		if (event.key === 'm') {
 			globals.game.nave.setWidthType(globals.widthTypes.L)

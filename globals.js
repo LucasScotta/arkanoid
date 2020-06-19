@@ -1,13 +1,10 @@
 'use strict'
 /*globals define*/
 define([
-	'proto/ball-manager',
-	'proto/nave',
 	'proto/game',
-], (BallManager, Nave, Game) => {
+], (Game) => {
 	const game = new Game()
 	return {
-		balls:  new BallManager(),
 		boxes:  [],
 		guns:   [],
 		powers: [],

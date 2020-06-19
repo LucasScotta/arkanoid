@@ -3,8 +3,10 @@
 define([
 	'globals',
 	'modules/clear',
-	'proto/ball'
-	], (globals, clear, NewBall) => {
+	'proto/ball',
+	'proto/ball-manager',
+	'proto/nave',
+	], (globals, clear, NewBall, BallManager, Nave) => {
 		/**
 		 * Clase principal del proyecto.
 		 */
@@ -25,13 +27,14 @@ define([
 				pause: false,
 			}
 			this.nave = new Nave(this)
+			this.ballm = new BallManager()
 		}
 		/**
 		 * El nombre lo dice todo
 		 */
 		perder(ball) {
 
-			if (globals.balls.estaVacio()) {
+			if (this.ballm.estaVacio()) {
 				clear.clear()
 				this.config.lifes -= 1
 				if (this.config.lifes > 0) {
@@ -61,7 +64,7 @@ define([
 				}
 			}
 			else {
-				globals.balls.remover(ball)
+				this.ballm.remover(ball)
 			}
 		}
 		/**

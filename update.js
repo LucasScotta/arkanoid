@@ -3,7 +3,7 @@
 require(['globals',], function (globals) {
 	function update() {
 		
-		for (const ball of globals.balls.getBalls()) {
+		for (const ball of globals.game.ballm.getBalls()) {
 			ball.moverInicio(globals.game)
 			ball.update(globals.game)
 		}
@@ -19,7 +19,7 @@ require(['globals',], function (globals) {
 		}
 
 		if (globals.boxes.length === 0) {
-			return globals.game.ganar(globals.balls.getFirst())
+			return globals.game.ganar(globals.game.ballm.getFirst())
 		}
 		for (const gun of globals.guns) {
 			gun.update()

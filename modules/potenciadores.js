@@ -14,7 +14,7 @@ define([
 			 * Elije una bola random, toma su posicion y agrega otra bola.
 			 */
 			activar: function () {
-				globals.balls.clonarRandom()
+				globals.game.ballm.clonarRandom()
 				this.despegar()
 			}
 		},
@@ -25,7 +25,7 @@ define([
 			 * Hace que cuando toque la nave una bola quede pegada a ella.
 			 */
 			activar: function () {
-				for (let ball of globals.balls.getBalls()) {
+				for (let ball of globals.game.ballm.getBalls()) {
 
 					ball.pegar()
 				}

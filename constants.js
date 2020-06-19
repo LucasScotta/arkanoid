@@ -21,6 +21,6 @@ define(['globals',
 		bloques.achichador,
 		],
 		naveInicial: parseInt(globals.game.nave.pos.x),
-		ballInicial: parseInt(globals.balls.getFirst().pos.x),
+		ballInicial: parseInt(globals.game.ballm.getFirst().pos.x),
 	}
 })
