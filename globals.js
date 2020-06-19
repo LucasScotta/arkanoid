@@ -6,7 +6,6 @@ define([
 	const game = new Game()
 	return {
 		guns:   [],
-		powers: [],
 		game: game,
 		mouse: {
 			x: 0,

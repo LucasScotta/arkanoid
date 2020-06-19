@@ -1,12 +1,12 @@
 'use strict'
 /*globals define*/
 define([
-	'modules/clear',
 	'proto/ball',
 	'proto/ball-manager',
 	'proto/box-manager',
+	'proto/power-up-manager',
 	'proto/nave',
-	], (clear, NewBall, BallManager, BoxManager, Nave) => {
+	], (NewBall, BallManager, BoxManager, PowerUpManager, Nave) => {
 		/**
 		 * Clase principal del proyecto.
 		 */
@@ -29,6 +29,7 @@ define([
 			this.nave = new Nave(this)
 			this.ballm = new BallManager()
 			this.boxm = new BoxManager()
+			this.powerm = new PowerUpManager()
 		}
 		/**
 		 * El nombre lo dice todo

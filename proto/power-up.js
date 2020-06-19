@@ -44,15 +44,15 @@ define(['globals',], function (globals) {
 
 			if (this.tocaBordeInferior()) {
 
-				this.$el.remove()
-				globals.powers.splice(globals.powers.indexOf(this), 1)
+				this.borrar()
+				globals.game.powerm.remover(this)
 				return i - 1
 			}
 			else if (this.tocaNave()) {
 
 				this.activar()
-				this.$el.remove()
-				globals.powers.splice(globals.powers.indexOf(this), 1)
+				this.borrar()
+				globals.game.powerm.remover(this)
 				return i - 1
 			}
 			else {
@@ -60,6 +60,9 @@ define(['globals',], function (globals) {
 				this.$el.style.top  = `${this.pos.y}px`
 				this.pos.y += 2
 			}
+		}
+		borrar() {
+			this.$el.remove()
 		}
 		/**
 		 * Borra el powerUp cuando llega a la punta del mapa

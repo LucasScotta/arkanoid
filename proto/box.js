@@ -17,7 +17,7 @@ require(['globals',
 				if (this.power) {
 
 					const power = powerUp(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h)
-					globals.powers.push(power)
+					globals.game.powerm.agregar(power)
 				}
 				this.borrar()
 			}

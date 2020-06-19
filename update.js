@@ -14,7 +14,7 @@ require(['globals',], function (globals) {
 		}
 
 
-		for (const power of globals.powers) {
+		for (const power of globals.game.powerm.getItems()) {
 			power.update()
 		}
 
