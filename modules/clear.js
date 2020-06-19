@@ -26,6 +26,8 @@ define(['globals',], function(globals) {
 		clearPowers()
 		globals.game.boxm.reset()
 	}
+	globals.clear = clear
+	globals.clearAll = clearAll
 	return {
 		clear: clear,
 		clearAll: clearAll

@@ -37,7 +37,7 @@ define([
 		perder(ball, globals) {
 
 			if (this.ballm.estaVacio()) {
-				clear.clear()
+				globals.clear()
 				this.config.lifes -= 1
 				if (this.config.lifes > 0) {
 
@@ -53,7 +53,7 @@ define([
 					if (confirm('Reiniciar?')) {
 
 						this.config.level = 0
-						clear.clearAll()
+						globals.clearAll()
 						
 						const primerBall = NewBall()
 						this.config.lifes = 3
@@ -72,13 +72,13 @@ define([
 		/**
 		 * El nombre lo dice todo
 		 */
-		ganar() {
+		ganar(globals) {
 
 			this.config.level += 1
 
 			if (this.config.level <= 6) {
 
-				clear.clearAll()
+				globals.clearAll()
 				const primerBall = NewBall(this.nave.pos.x + this.nave.size.w / 2, 0 ,0)
 				primerBall.$el.style.left = `${primerBall.pos.x}px`
 				primerBall.$el.style.top  = `${primerBall.pos.y}px`

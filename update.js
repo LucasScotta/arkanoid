@@ -19,7 +19,7 @@ require(['globals',], function (globals) {
 		}
 
 		if (globals.game.boxm.estaVacio()) {
-			return globals.game.ganar(globals.game.ballm.getFirst())
+			return globals.game.ganar(globals)
 		}
 		for (const gun of globals.guns) {
 			gun.update()
