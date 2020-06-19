@@ -1,44 +1,36 @@
 'use strict'
 /*globals define*/
 define([
-	'util/randomOf',],
-	(randomOf) => {
-	return class BallManager {
+	'util/randomOf',
+	'proto/manager-base'],
+	(randomOf, ManagerBase) => {
+	return class BallManager extends ManagerBase {
 		constructor() {
-			this.balls = []
-		}
-		agregar(ball) {
-			this.balls.push(ball)
-		}
-		remover(ball) {
-			const index = this.balls.indexOf(ball)
-			if (index >= 0) {
-				this.balls.splice(index, 1)
-				ball.remove()
-			}
-		}
-		estaVacio() {
-			return this.balls.length === 0
+			super()
 		}
 		getBalls() {
-			return this.balls
+			return this.getItems()
 		}
 		getRandom() {
-			return randomOf(this.balls)
+			return randomOf(this.getItems())
 		}
 		clonarRandom() {
-			const ball = this.balls.getRandom()
+			const ball = this.getRandom()
 			const clon = ball.clonar()
-			this.balls.agregar(clon)
+			this.agregar(clon)
 		}
 		getFirst() {
-			return this.balls[0]
+			return this.getItem(0)
 		}
 		reset() {
-			for (const ball of this.balls) {
-				ball.remove()
+			for (const item of this.getItems()) {
+				item.remove()
 			}
-			this.balls.length = 0
+			super.reset()
 		}
+		remover(ball) {
+			if (super.remover(ball)) ball.remove()
+		}
+
 	}
 })
