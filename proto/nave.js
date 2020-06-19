@@ -1,6 +1,7 @@
 'use strict'
 /* globals define*/
-define(['modules/game'], function (game) {
+define(['globals'], function (globals) {
+	const game = globals.game
 	const setupElement = () => {
 		const naveImg = document.createElement('img')
 		naveImg.style.width = `100px`

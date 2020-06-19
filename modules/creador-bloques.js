@@ -2,19 +2,17 @@
 /*globals define*/
 define(['globals',
 		'constants',
-		'modules/game',
 		'factory/boxes'
 ], (
 	globals,
 	constants,
-	game,
 	newBox,) => {
 	let k
 	k = 0
-	let posX = game.pos.x + game.size.b * 2
-	let posY = game.pos.y + game.size.b * 2
+	let posX = globals.game.pos.x + globals.game.size.b * 2
+	let posY = globals.game.pos.y + globals.game.size.b * 2
 
-	for (let i = 0; i < game.config.level + 3; i += 1) {
+	for (let i = 0; i < globals.game.config.level + 3; i += 1) {
 		
 		for (let j = 0; j <= 8; j += 1) {
 			globals.boxes[k] = newBox(posX, posY)
@@ -25,7 +23,7 @@ define(['globals',
 			k += 1
 			if (j === 8) {
 
-				posX = game.pos.x + game.size.b * 2
+				posX = globals.game.pos.x + globals.game.size.b * 2
 				posY += 40
 			}
 		}

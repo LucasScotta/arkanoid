@@ -1,7 +1,6 @@
 'use strict'
 /* globals define*/
-define(['globals',
-		'modules/game',], function (globals, game) {
+define(['globals',], function (globals) {
 window.Gun = class Gun {
 	constructor(options) {
 		Object.assign(this, options)
@@ -43,7 +42,7 @@ window.Gun = class Gun {
 	 * retorna si el disparo toca el borde superior de la pantalla
 	 */
 	disparoTocaBorde() {
-		const top = game.pos.y + game.size.b
+		const top = globals.game.pos.y + globals.game.size.b
 		const disparoT = this.pos.y
 		return disparoT <= top
 	}

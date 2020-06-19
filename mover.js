@@ -2,10 +2,8 @@
 /* globals require */
 /////////////
 require(['globals',
-		'modules/game',
 		'proto/gun',
 		'modules/pintar-bola-inicial'], (globals,
-			game,
 			Gun,
 			pintarBolaInicio) => {
 	globals.nave.pintarNaveInicio()
@@ -29,7 +27,7 @@ require(['globals',
 
 		for (let ball of globals.balls.getBalls()) {
 			
-			ball.arrancar(x, y, game)
+			ball.arrancar(x, y, globals.game)
 		}
 		for (const gun of globals.guns) {
 			gun.disparar()
@@ -38,7 +36,7 @@ require(['globals',
 
 	document.onkeydown = function tecla(event) {
 		if (event.key === 'p') {
-			game.config.pause = !game.config.pause
+			globals.game.config.pause = !globals.game.config.pause
 		}
 		if (event.code === 'Space') {
 			for (const gun of globals.guns) {
@@ -46,7 +44,7 @@ require(['globals',
 			}
 			for (let ball of globals.balls.getBalls()) {
 			
-				ball.arrancar(globals.mouse.x, globals.mouse.y, game, globals.nave)
+				ball.arrancar(globals.mouse.x, globals.mouse.y, globals.game, globals.nave)
 			}
 		}
 		if (event.key === 'l') {

@@ -2,7 +2,7 @@
 /* globals define*/
 define([
 	'globals',
-	'modules/deep-clone'
+	'util/deep-clone'
 ], (
 	globals,
 	deepClone,

@@ -1,7 +1,7 @@
 'use strict'
 /*globals define*/
 define([
-	'modules/randomOf',],
+	'util/randomOf',],
 	(randomOf) => {
 	return class BallManager {
 		constructor() {

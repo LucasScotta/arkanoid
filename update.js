@@ -1,12 +1,11 @@
 'use strict'
 /* globals require*/
-require(['globals',
-		'modules/game',], function (globals, game) {
+require(['globals',], function (globals) {
 	function update() {
 		
 		for (const ball of globals.balls.getBalls()) {
-			ball.moverInicio(game)
-			ball.update(game)
+			ball.moverInicio(globals.game)
+			ball.update(globals.game)
 		}
 		
 		if (globals.mouse.b) {
@@ -20,7 +19,7 @@ require(['globals',
 		}
 
 		if (globals.boxes.length === 0) {
-			return game.ganar(globals.balls.getFirst())
+			return globals.game.ganar(globals.balls.getFirst())
 		}
 		for (const gun of globals.guns) {
 			gun.update()
@@ -29,7 +28,7 @@ require(['globals',
 
 	function loop() {
 
-		if (!game.config.pause) update()
+		if (!globals.game.config.pause) update()
 	}
 
 	let time = 5

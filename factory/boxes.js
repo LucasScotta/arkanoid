@@ -1,7 +1,7 @@
 'use strict'
 /*globals define*/
 define(['constants',
-		'modules/randomOf',
+		'util/randomOf',
 		'proto/box',], (constants, randomOf, Box) => {
 			let img
 	const createElement = () => {

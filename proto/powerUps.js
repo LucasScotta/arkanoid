@@ -1,7 +1,6 @@
 'use strict'
 /* globals define*/
-define(['globals',
-		'modules/game',], function (globals, game) {
+define(['globals',], function (globals) {
 	return class PowerUp {
 		constructor(options) {
 			Object.assign(this, options)
@@ -67,8 +66,8 @@ define(['globals',
 		 */
 		tocaBordeInferior() {
 
-			const mapBottom = game.pos.y + game.size.h
-			const mapBorder = game.size.b
+			const mapBottom = globals.game.pos.y + globals.game.size.h
+			const mapBorder = globals.game.size.b
 			return  this.pos.y + this.size.h >= mapBottom - mapBorder
 		}
 		/**

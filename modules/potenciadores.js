@@ -2,11 +2,9 @@
 /*globals define*/
 define([
 	'globals',
-	'modules/randomOf',
 	'proto/gun',
 	], 
 	(globals,
-		randomOf,
 		Gun,) => {
 	return {
 		multiplicador: {
