@@ -37,6 +37,10 @@ define(['globals',], function (globals) {
 				}
 			}
 		}
+		pintar() {
+			this.$el.style.left = `${this.pos.x}px`
+			this.$el.style.top  = `${this.pos.y}px`
+		}
 		/**
 		 * Hace caer los powerUps cuando estan en pantalla
 		 */
@@ -56,8 +60,7 @@ define(['globals',], function (globals) {
 				return i - 1
 			}
 			else {
-				this.$el.style.left = `${this.pos.x}px`
-				this.$el.style.top  = `${this.pos.y}px`
+				this.pintar()
 				this.pos.y += 2
 			}
 		}
