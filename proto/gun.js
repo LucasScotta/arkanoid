@@ -58,14 +58,16 @@ window.Gun = class Gun {
 		const boxR = box.pos.x + box.size.w
 		return disparoT === boxB && disparoR >= boxL && disparoL <= boxR
 	}
-
+	pintar() {
+		this.$el.style.left = `${this.pos.x}px`
+		this.$el.style.top  = `${this.pos.y}px`
+	}
 	/**
 	 * update...
 	 */
 	update() {
 		if (this.activo) {
-			this.$el.style.left = `${this.pos.x}px`
-			this.$el.style.top  = `${this.pos.y}px`
+			this.pintar()
 			this.pos.y -= 2
 			for (const box of globals.game.boxm.getItems()) {
 				if (this.disparoToca(box)) {
