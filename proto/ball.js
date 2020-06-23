@@ -179,9 +179,12 @@ define([
 			if (game.config.level < 7) {
 				this.pos.x += this.config.ballDirX
 				this.pos.y += this.config.ballDirY
-				this.$el.style.left = `${this.pos.x}px`
-				this.$el.style.top = `${this.pos.y}px`
+				this.pintar()
 			}
+		}
+		pintar() {
+			this.$el.style.left = `${this.pos.x}px`
+			this.$el.style.top = `${this.pos.y}px`
 		}
 		/**
 		 * Se encarga de que la bola se mueva correctamente al estar pegada a la nave.
@@ -209,7 +212,7 @@ define([
 			&&  y <= mapBottom - mapBorder
 			&&	game.config.level < 7) {
 				this.pos.x = x - ballWidth / 2 - 0.5
-				this.$el.style.left = `${this.pos.x}px`
+				this.pintar()
 			}
 		}
 		/**
