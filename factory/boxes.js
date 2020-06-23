@@ -1,8 +1,8 @@
 'use strict'
 /*globals define*/
-define(['constants',
-		'util/randomOf',
-		'proto/box',], (constants, randomOf, Box) => {
+define(['util/randomOf',
+		'proto/box',
+		'modules/bloques',], (randomOf, Box, powers) => {
 	return (posX, posY) => new Box({
 		pos: {
 			x: posX,
@@ -12,6 +12,6 @@ define(['constants',
 			w: 60,
 			h: 20,
 		},
-		power: randomOf(constants.power),
+		power: randomOf(Object.values(powers)),
 	})
 })
