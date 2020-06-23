@@ -1,11 +1,7 @@
 'use strict'
 /* globals require */
 /////////////
-require(['globals',
-		'modules/pintar-bola-inicial'], (globals,
-			pintarBolaInicio) => {
-	globals.game.nave.pintarNaveInicio()
-	pintarBolaInicio()
+require(['globals',], (globals) => {
 	document.onmousemove = function mover(event) {
 
 		event.preventDefault()
