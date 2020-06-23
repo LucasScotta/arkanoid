@@ -6,7 +6,9 @@ define([
 	'proto/box-manager',
 	'proto/power-up-manager',
 	'proto/nave',
-	], (Ball, BallManager, BoxManager, PowerUpManager, Nave) => {
+	'factory/boxes',
+	'constants',
+	], (Ball, BallManager, BoxManager, PowerUpManager, Nave, boxFactory, constants) => {
 		/**
 		 * Clase principal del proyecto.
 		 */
@@ -36,6 +38,27 @@ define([
 		 */
 		start() {
 			this.ballm.agregar(Ball(0, 0, 0, 0))
+		}
+		initLvl() {
+			let posX = this.pos.x + this.size.b * 2
+			let posY = this.pos.y + this.size.b * 2
+
+			for (let i = 0; i < this.config.level + 3; i += 1) {
+				
+				for (let j = 0; j <= 8; j += 1) {
+					const box = boxFactory(posX, posY)
+					box.$img.src = constants.imgsBox[box.strong]
+					box.$div.style.left = posX + 'px'
+					box.$div.style.top = posY + 'px'
+					this.boxm.agregar(box)
+					posX += 75
+					if (j === 8) {
+
+						posX = this.pos.x + this.size.b * 2
+						posY += 40
+					}
+				}
+			}
 		}
 		/**
 		 * El nombre lo dice todo
