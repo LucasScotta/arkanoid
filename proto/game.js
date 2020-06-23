@@ -7,8 +7,7 @@ define([
 	'proto/power-up-manager',
 	'proto/nave',
 	'factory/boxes',
-	'constants',
-	], (Ball, BallManager, BoxManager, PowerUpManager, Nave, boxFactory, constants) => {
+	], (Ball, BallManager, BoxManager, PowerUpManager, Nave, boxFactory) => {
 		/**
 		 * Clase principal del proyecto.
 		 */
@@ -47,9 +46,6 @@ define([
 				
 				for (let j = 0; j <= 8; j += 1) {
 					const box = boxFactory(posX, posY)
-					box.$img.src = constants.imgsBox[box.strong]
-					box.$div.style.left = posX + 'px'
-					box.$div.style.top = posY + 'px'
 					this.boxm.agregar(box)
 					posX += 75
 					if (j === 8) {
