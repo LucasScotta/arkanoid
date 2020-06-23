@@ -1,6 +1,8 @@
 'use strict'
 /* globals define*/
-define(function () {
+define(['proto/gun',
+	],
+	(Gun) => {
 	const setupElement = () => {
 		const naveImg = document.createElement('img')
 		naveImg.style.width = `100px`
@@ -23,6 +25,7 @@ define(function () {
 				y: game.pos.y + game.size.h - 40,
 			}
 			this.game = game
+			this.gun = new Gun()
 		}
 		pintar() {
 			this.$el.style.left  = `${this.pos.x}px`

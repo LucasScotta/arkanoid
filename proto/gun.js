@@ -1,95 +1,98 @@
 'use strict'
 /* globals define*/
-define(['globals',], function (globals) {
-window.Gun = class Gun {
-	constructor(options) {
-		Object.assign(this, options)
+define([],
+	() => {
+	const setUp = () => {
+		const arma = document.createElement('div')
+		arma.classList.add('gun')
+		return arma
 	}
-	/**
-	 * Hace pum
-	 */
-	disparar() {
-		if (this.shots > 0 && !this.activo) {
-			if (globals.guns.indexOf(this) === 0) {
-				this.pos.x = globals.game.nave.pos.x + 10
-				this.pos.y = globals.game.nave.pos.y
-			}
-			else {
-				this.pos.x = globals.game.nave.pos.x + globals.game.nave.size.w - 10
-				this.pos.y = globals.game.nave.pos.y
-			}
-			document.getElementById('container').appendChild(this.$el)
-			this.activo = true
+	return class Gun {
+		constructor(options) {
+			Object.assign(this, options)
+			this.$el = setUp()
 		}
-	}
-	/**
-	 * Saca los disparos del juego y los lleva a 0
-	 */
-	clearGun() {
-		this.$el.remove()
-		globals.guns.splice(globals.guns.indexOf(this), 1)
-	}
 		/**
-	 * Elimina el arma al quedarse sin disparos o descuenta un disparo
-	 */
-	clearShot() {
-		this.shots -= 1
-		this.activo = false
-		this.$el.remove()
-		if (this.shots === 0) this.clearGun()
-	}
-	/**
-	 * retorna si el disparo toca el borde superior de la pantalla
-	 */
-	disparoTocaBorde() {
-		const top = globals.game.pos.y + globals.game.size.b
-		const disparoT = this.pos.y
-		return disparoT <= top
-	}
-	/**
-	 * retorna si el disparo toca una caja
-	 */
-	disparoToca(box) {
-		const disparoT = this.pos.y
-		const disparoR = this.pos.x + this.size.w
-		const disparoL = this.pos.x
-		const boxB = box.pos.y + box.size.h
-		const boxL = box.pos.x
-		const boxR = box.pos.x + box.size.w
-		return disparoT === boxB && disparoR >= boxL && disparoL <= boxR
-	}
-	pintar() {
-		this.$el.style.left = `${this.pos.x}px`
-		this.$el.style.top  = `${this.pos.y}px`
-	}
-	/**
-	 * update...
-	 */
-	update() {
-		if (this.activo) {
-			this.pintar()
-			this.pos.y -= 2
-			for (const box of globals.game.boxm.getItems()) {
-				if (this.disparoToca(box)) {
-					box.golpear()
-					this.clearShot()
-				}
+		 * Hace pum
+		 */
+		disparar(game) {
+			if (this.shots > 0 && !this.activo) {
+				this.pos.x = game.nave.pos.x + game.nave.size.w / 2
+				this.pos.y = game.nave.pos.y
+				document.getElementById('container').appendChild(this.$el)
+				this.activo = true
 			}
-
-			if (this.disparoTocaBorde()) {
-					this.clearShot()
-				}
 		}
-		else {
-			if (globals.guns.indexOf(this) === 0) {
-				this.pos.x = globals.game.nave.pos.x + 10
-				this.pos.y = globals.game.nave.pos.y
+		addShots() {
+			this.shots += 5
+		}
+		restartGun() {
+			this.shots = 0
+			this.clearGun()
+		}
+		/**
+		 * Saca los disparos del juego y los lleva a 0
+		 */
+		clearGun() {
+			this.$el.remove()
+		}
+		/**
+		 * Elimina el arma al quedarse sin disparos o descuenta un disparo
+		 */
+		clearShot() {
+			this.shots -= 1
+			this.activo = false
+			this.clearGun()
+		}
+		/**
+		 * retorna si el disparo toca el borde superior de la pantalla
+		 */
+		shotHitBorder(game) {
+			const top = game.pos.y + game.size.b
+			const disparoT = this.pos.y
+			return disparoT <= top
+		}
+		/**
+		 * retorna si el disparo toca una caja
+		 */
+		shotHit(box) {
+			const disparoT = this.pos.y
+			const disparoR = this.pos.x + this.size.w
+			const disparoL = this.pos.x
+			const boxB = box.pos.y + box.size.h
+			const boxL = box.pos.x
+			const boxR = box.pos.x + box.size.w
+			return disparoT === boxB && disparoR >= boxL && disparoL <= boxR
+		}
+		pintar() {
+			this.$el.style.left = `${this.pos.x}px`
+			this.$el.style.top  = `${this.pos.y}px`
+		}
+		reiniciarPosicion(game) {
+			this.pos.x = game.nave.pos.x + game.nave.size.w / 2
+			this.pos.y = game.nave.pos.y
+		}
+		/**
+		 * update...
+		 */
+		update(game) {
+			if (this.activo) {
+				this.pintar()
+				this.pos.y -= 2
+				for (const box of game.boxm.getItems()) {
+					if (this.shotHit(box)) {
+						box.golpear()
+						this.clearShot()
+					}
+				}
+
+				if (this.shotHitBorder(game)) {
+						this.clearShot()
+					}
 			}
 			else {
-				this.pos.x = globals.game.nave.pos.x + globals.game.nave.size.w - 10
-				this.pos.y = globals.game.nave.pos.y
+				this.reiniciarPosicion(game)
 			}
 		}
 	}
-}
 })

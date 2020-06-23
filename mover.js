@@ -2,9 +2,7 @@
 /* globals require */
 /////////////
 require(['globals',
-		'proto/gun',
 		'modules/pintar-bola-inicial'], (globals,
-			Gun,
 			pintarBolaInicio) => {
 	globals.game.nave.pintarNaveInicio()
 	pintarBolaInicio()
@@ -29,9 +27,7 @@ require(['globals',
 			
 			ball.arrancar(x, y, globals.game)
 		}
-		for (const gun of globals.guns) {
-			gun.disparar()
-		}
+			globals.game.nave.gun.disparar(globals.game)
 	}
 
 	document.onkeydown = function tecla(event) {
@@ -39,9 +35,9 @@ require(['globals',
 			globals.game.config.pause = !globals.game.config.pause
 		}
 		if (event.code === 'Space') {
-			for (const gun of globals.guns) {
-				gun.disparar()
-			}
+
+			globals.game.nave.gun.disparar(globals.game)
+			
 			for (let ball of globals.game.ballm.getBalls()) {
 			
 				ball.arrancar(globals.mouse.x, globals.mouse.y, globals.game, globals.game.nave)
@@ -60,44 +56,7 @@ require(['globals',
 			globals.game.nave.setWidthType(globals.widthTypes.M)
 		}
 		if (event.key === 'v') {
-			if (globals.guns.length === 0) {
-				const init = globals.game.nave.pos.x + 10
-				const arma = document.createElement('div')
-				arma.classList.add('gun')
-				globals.guns.push(new Gun({
-					shots: 5,
-					pos: {
-						x: init,
-						y: 0,
-						init: init,
-					},
-					size: {
-						w: 5,
-						h: 20,
-					},
-					activo: false,
-					$el: arma,
-				}))
-			}
-			else if (globals.guns.length === 1) {
-				const init = globals.game.nave.pos.x + globals.game.nave.size.w - 10
-				const arma = document.createElement('div')
-				arma.classList.add('gun')
-				globals.guns.push(new Gun({
-					shots: 5,
-					pos: {
-						x: init,
-						y: 0,
-						init: init,
-					},
-					size: {
-						w: 5,
-						h: 20,
-					},
-					activo: false,
-					$el: arma,
-				}))
-			}
+			globals.game.nave.gun.shots += 5
 		}
 	}
 })

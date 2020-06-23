@@ -2,10 +2,8 @@
 /*globals define*/
 define([
 	'globals',
-	'proto/gun',
 	], 
-	(globals,
-		Gun,) => {
+	(globals) => {
 	return {
 		multiplicador: {
 			tipo: 2,
@@ -39,44 +37,7 @@ define([
 			 * nunca podra haber mas de 1 disparo en la pantalla.
 			 */
 			activar: function () {
-				if (globals.guns.length === 0) {
-					const init = globals.game.nave.pos.x + 10
-					const arma = document.createElement('div')
-					arma.classList.add('gun')
-					globals.guns.push(new Gun({
-						shots: 5,
-						pos: {
-							x: init,
-							y: 0,
-							init: init,
-						},
-						size: {
-							w: 5,
-							h: 20,
-						},
-						activo: false,
-						$el: arma,
-					}))
-				}
-				else if (globals.guns.length === 1) {
-					const init = globals.game.nave.pos.x + globals.game.nave.size.w - 10
-					const arma = document.createElement('div')
-					arma.classList.add('gun')
-					globals.guns.push(new Gun({
-						shots: 5,
-						pos: {
-							x: init,
-							y: 0,
-							init: init,
-						},
-						size: {
-							w: 5,
-							h: 20,
-						},
-						activo: false,
-						$el: arma,
-					}))
-				}
+				globals.game.nave.gun.shots += 5
 				this.despegar()
 			}
 		},

@@ -8,12 +8,10 @@ define(['globals',], function(globals) {
 		globals.game.nave.setWidthType(globals.widthTypes.M)
 	}
 	function clearGuns() {
-		for (let i = globals.guns.length - 1; i > -1; i -= 1) {
-			globals.guns[i].clearGun()
-		}
+		globals.game.nave.gun.restartGun()
 	}
 	function clearBalls() {
-			globals.game.ballm.reset()
+		globals.game.ballm.reset()
 	}
 	function clear () {
 		clearBalls()

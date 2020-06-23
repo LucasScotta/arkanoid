@@ -21,9 +21,7 @@ require(['globals',], function (globals) {
 		if (globals.game.boxm.estaVacio()) {
 			return globals.game.ganar(globals)
 		}
-		for (const gun of globals.guns) {
-			gun.update()
-		}
+		globals.game.nave.gun.update(globals.game)
 	}
 
 	function loop() {
