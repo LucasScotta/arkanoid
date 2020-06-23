@@ -32,6 +32,12 @@ define([
 			this.powerm = new PowerUpManager()
 		}
 		/**
+		 *
+		 */
+		start() {
+			this.ballm.agregar(Ball(0, 0, 0, 0))
+		}
+		/**
 		 * El nombre lo dice todo
 		 */
 		perder(ball, globals) {
