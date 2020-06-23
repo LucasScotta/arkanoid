@@ -1,13 +1,13 @@
 'use strict'
 /*globals define*/
 define([
-	'proto/ball',
+	'factory/balls',
 	'proto/ball-manager',
 	'proto/box-manager',
 	'proto/power-up-manager',
 	'proto/nave',
 	'factory/boxes',
-	], (Ball, BallManager, BoxManager, PowerUpManager, Nave, boxFactory) => {
+	], (ballFactory, BallManager, BoxManager, PowerUpManager, Nave, boxFactory) => {
 		/**
 		 * Clase principal del proyecto.
 		 */
@@ -36,7 +36,7 @@ define([
 		 *
 		 */
 		start() {
-			this.ballm.agregar(Ball(0, 0, 0, 0))
+			this.ballm.agregar(ballFactory(0, 0, 0, 0))
 		}
 		initLvl() {
 			let posX = this.pos.x + this.size.b * 2
@@ -66,7 +66,7 @@ define([
 				this.config.lifes -= 1
 				if (this.config.lifes > 0) {
 
-					const primerBall = Ball()
+					const primerBall = ballFactory(0, 0, 0, 0)
 					this.nave.pintar()
 					primerBall.pintar()
 					this.nave.mover(globals.mouse.x, globals.mouse.y)
@@ -78,7 +78,7 @@ define([
 						this.config.level = 0
 						globals.clearAll()
 						
-						const primerBall = Ball()
+						const primerBall = ballFactory(0, 0, 0, 0)
 						this.config.lifes = 3
 						this.nave.pintar()
 						primerBall.pintar()
@@ -100,7 +100,7 @@ define([
 			if (this.config.level <= 6) {
 
 				globals.clearAll()
-				const primerBall = Ball(this.nave.pos.x + this.nave.size.w / 2, 0 ,0)
+				const primerBall = ballFactory(this.nave.pos.x + this.nave.size.w / 2, 0 ,0)
 				primerBall.pintar()
 				this.nave.size.w = 100
 
