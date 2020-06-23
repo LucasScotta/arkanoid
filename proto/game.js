@@ -42,8 +42,7 @@ define([
 				if (this.config.lifes > 0) {
 
 					const primerBall = Ball()
-					this.nave.$el.style.left = `${this.nave.pos.x}px`
-					this.nave.$el.style.top  = `${this.nave.pos.y}px`
+					this.nave.pintar()
 					primerBall.pintar()
 					this.nave.mover(globals.mouse.x, globals.mouse.y)
 					console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
@@ -56,8 +55,7 @@ define([
 						
 						const primerBall = Ball()
 						this.config.lifes = 3
-						this.nave.$el.style.left = `${this.nave.pos.x}px`
-						this.nave.$el.style.top  = `${this.nave.pos.y}px`
+						this.nave.pintar()
 						primerBall.pintar()
 						this.nave.mover(globals.mouse.x, globals.mouse.y)
 					}

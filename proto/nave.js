@@ -24,6 +24,10 @@ define(function () {
 			}
 			this.game = game
 		}
+		pintar() {
+			this.$el.style.left  = `${this.pos.x}px`
+			this.$el.style.top = `${this.size.y}px`
+		}
 		/**
 		 * Alarga o achica la nave segun corresponda
 		 */
@@ -38,7 +42,7 @@ define(function () {
 				this.pos.x = this.game.pos.x + this.game.size.b
 			}
 			this.$el.style.width = `${this.size.w}px`
-			this.$el.style.left  = `${this.pos.x}px`
+			this.pintar()
 		}
 		/**
 		 * Reinicia los powerUps de la nave
@@ -69,19 +73,19 @@ define(function () {
 
 					x = mapRight - this.size.w - mapBorder
 					this.pos.x = x
-					this.$el.style.left = `${x}px`
+					this.pintar()
 				}
 				else if (x <= mapLeft + this.size.w / 2 + mapBorder) {
 
 					x = mapLeft + mapBorder
 					this.pos.x = x
-					this.$el.style.left = `${x}px`
+					this.pintar()
 				}
 				else {
 
 					x -= this.size.w / 2
 					this.pos.x = x
-					this.$el.style.left = `${x}px`
+					this.pintar()
 				}
 			}
 		}
@@ -92,8 +96,7 @@ define(function () {
 
 			this.pos.x = this.game.pos.x + this.game.size.b + this.game.size.w / 2
 			this.pos.y = this.pos.y - 1
-			this.$el.style.left = `${this.pos.x}px`
-			this.$el.style.top = `${this.pos.y}px`
+			this.pintar()
 		}
 	}
 })

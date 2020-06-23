@@ -1,7 +1,7 @@
 'use strict'
 /* globals require*/
-require(['modules/game',
-		'modules/creador-bloques'], function (game, blocks) {
+require(['globals',
+	'modules/creador-bloques'], function (globals, blocks) {
 
-blocks(game.config.level)
+blocks(globals.game.config.level)
 })
