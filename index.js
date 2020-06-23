@@ -11,7 +11,7 @@ define('img/box', [
 	'img/7.png',
 	])
 
-require(['globals',], function (globals) {
-	window.globals = globals
-	globals.game.start()
+require(['proto/game'], function (Game) {
+	const game = new Game()
+	game.start()
 })
