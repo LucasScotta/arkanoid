@@ -13,7 +13,7 @@ define('img/box', () => [
 
 require(['proto/game',
 		'globals',
-		'mover',], function (Game, globals, cord) {
+		'mover',], function (Game, globals, coord) {
 	let mouse = {
 		x: 0,
 		y: 0,
@@ -23,16 +23,16 @@ require(['proto/game',
 	const game = new Game()
 
 	window.juego = game
-	game.start()
+	game.addBall()
 
-	document.onmousemove = () => {
-		cord.mover(mouse)
+	document.onmousemove = (event) => {
+		coord.mover(mouse, event)
 	}
 	document.onclick = () => {
-		cord.click(game, mouse)
+		coord.click(game, mouse)
 	}
-	document.onkeydown = () => {
-		cord.tecla(game, mouse)
+	document.onkeypress = (event) => {
+		coord.tecla(game, event)
 	}
 
 	function update() {
