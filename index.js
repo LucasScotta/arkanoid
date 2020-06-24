@@ -69,7 +69,7 @@ require(['proto/game',
 		}
 		
 		if (mouse.b) {
-			game.nave.mover(mouse)
+			game.nave.mover(mouse, game)
 			globals.mouse.b = false
 		}
 

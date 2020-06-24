@@ -67,13 +67,13 @@ define(['proto/gun',
 		 * Mueve la nave al mover el mouse y guarda las coordenadas de la misma en X/Y de este
 		 * mismo objeto
 		 */
-		mover(mouse) {
+		mover(mouse, game) {
 			let x = mouse.x
-			const mapBorder = this.game.size.b
-			const mapRight = this.game.pos.x + this.game.size.w
-			const mapLeft = this.game.pos.x
+			const mapBorder = game.size.b
+			const mapRight = game.pos.x + game.size.w
+			const mapLeft = game.pos.x
 
-			if (this.game.config.level < 7) {
+			if (game.config.level < 7) {
 
 				if (x >= mapRight -  mapBorder - this.size.w / 2) {
 
@@ -98,9 +98,9 @@ define(['proto/gun',
 		/**
 		 * Pinta la nave al inicio del juego, despues de ganar y al perder una vida
 		 */
-		pintarNaveInicio() {
+		pintarNaveInicio(game) {
 
-			this.pos.x = this.game.pos.x + this.game.size.b + this.game.size.w / 2
+			this.pos.x = game.pos.x + game.size.b + game.size.w / 2
 			this.pos.y = this.pos.y - 1
 			this.pintar()
 		}
