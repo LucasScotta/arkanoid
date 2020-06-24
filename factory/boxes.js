@@ -3,12 +3,12 @@
 define(['util/randomOf',
 		'proto/box',
 		'modules/bloques',], (randomOf, Box, powers) => {
-	return (posX, posY) => new Box({
+	return (x, y) => new Box({
 		pos: {
-			x: posX,
-			y: posY,
+			x: x,
+			y: y,
 		},
-		size: {
+		size : {
 			w: 60,
 			h: 20,
 		},

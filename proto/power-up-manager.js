@@ -1,3 +1,4 @@
+'use strict'
 /*globals define*/
 define(['proto/manager-base'],(ManagerBase) => {
 	return class PowerUpManager extends ManagerBase {

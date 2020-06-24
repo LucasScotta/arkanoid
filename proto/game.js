@@ -31,6 +31,7 @@ define([
 			this.ballm = new BallManager()
 			this.boxm = new BoxManager()
 			this.powerm = new PowerUpManager()
+			this.initLvl(this.config.level)
 		}
 		/**
 		 *
@@ -41,11 +42,11 @@ define([
 			this.ballm.agregar(ball)
 
 		}
-		initLvl() {
+		initLvl(level) {
 			let posX = this.pos.x + this.size.b * 2
 			let posY = this.pos.y + this.size.b * 2
 
-			for (let i = 0; i < this.config.level + 3; i += 1) {
+			for (let i = 0; i < level + 3; i += 1) {
 				
 				for (let j = 0; j <= 8; j += 1) {
 					const box = boxFactory(posX, posY)
