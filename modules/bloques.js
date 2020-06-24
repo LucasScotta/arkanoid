@@ -1,9 +1,7 @@
 'use strict'
 /*globals define*/
-define([
-	'globals',
-	], 
-	(globals) => {
+define([], 
+	() => {
 	return {
 		multiplicador: {
 			tipo: 2,
@@ -12,7 +10,7 @@ define([
 			 * Elije una bola random, toma su posicion y agrega otra bola.
 			 */
 			activar: function () {
-				globals.game.ballm.clonarRandom()
+				game.ballm.clonarRandom()
 				this.despegar()
 			}
 		},
@@ -23,7 +21,7 @@ define([
 			 * Hace que cuando toque la nave una bola quede pegada a ella.
 			 */
 			activar: function () {
-				for (let ball of globals.game.ballm.getBalls()) {
+				for (let ball of game.ballm.getBalls()) {
 
 					ball.pegar()
 				}
@@ -37,7 +35,7 @@ define([
 			 * nunca podra haber mas de 1 disparo en la pantalla.
 			 */
 			activar: function () {
-				globals.game.nave.gun.shots += 5
+				game.nave.gun.shots += 5
 				this.despegar()
 			}
 		},

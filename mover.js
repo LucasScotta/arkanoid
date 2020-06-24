@@ -19,40 +19,40 @@ require(['globals',], (globals) => {
 		const x = event.x
 		const y = event.y
 
-		for (let ball of globals.game.ballm.getBalls()) {
+		for (let ball of game.ballm.getBalls()) {
 			
-			ball.arrancar(x, y, globals.game)
+			ball.arrancar(x, y, game)
 		}
-			globals.game.nave.gun.disparar(globals.game)
+			game.nave.gun.disparar(game)
 	}
 
 	document.onkeydown = function tecla(event) {
 		if (event.key === 'p') {
-			globals.game.config.pause = !globals.game.config.pause
+			game.config.pause = !game.config.pause
 		}
 		if (event.code === 'Space') {
 
-			globals.game.nave.gun.disparar(globals.game)
+			game.nave.gun.disparar(game)
 			
-			for (let ball of globals.game.ballm.getBalls()) {
+			for (let ball of game.ballm.getBalls()) {
 			
-				ball.arrancar(globals.mouse.x, globals.mouse.y, globals.game, globals.game.nave)
+				ball.arrancar(globals.mouse.x, globals.mouse.y, game, game.nave)
 			}
 		}
 		if (event.key === 'l') {
-			globals.game.ballm.clonarRandom()
+			game.ballm.clonarRandom()
 		}
 		if (event.key === 'm') {
-			globals.game.nave.setWidthType(globals.widthTypes.L)
+			game.nave.setWidthType(widthTypes.L)
 		}
 		if (event.key === 'n') {
-			globals.game.nave.setWidthType(globals.widthTypes.S)
+			game.nave.setWidthType(widthTypes.S)
 		}
 		if (event.key === 'b') {
-			globals.game.nave.setWidthType(globals.widthTypes.M)
+			game.nave.setWidthType(globals.widthTypes.M)
 		}
 		if (event.key === 'v') {
-			globals.game.nave.gun.shots += 5
+			game.nave.gun.shots += 5
 		}
 	}
 })

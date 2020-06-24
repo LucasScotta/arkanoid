@@ -299,7 +299,7 @@ define([
 		/**
 		 * update...
 		 */
-		update(game) {
+		update(game, globals) {
 			// Bola golpeando contra los bordes
 			if (this.tocaBordeCostados(game)) {
 
@@ -315,7 +315,7 @@ define([
 
 				this.config.ballDirY = 0
 				this.config.ballDirX = 0
-				return game.perder(globals)
+				return game.perder(this, globals)
 			}
 
 			// Bola golpeando las cajas:
@@ -332,7 +332,7 @@ define([
 					this.rebotarHorizontalmente()
 					this.pos.x += this.config.ballDirX
 				}
-				if (golpeV || golpeH) box.golpear()
+				if (golpeV || golpeH) box.golpear(game)
 			}
 
 			//Rebotes de bola contra la nave:

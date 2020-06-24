@@ -23,7 +23,7 @@ define(['globals',
 			this.$el.style.left = `${this.pos.x}px`
 			this.$el.style.top = `${this.pos.y}px`
 		}
-		golpear() {
+		golpear(game) {
 
 			if (this.strong > 0) {
 				this.strong -= 1
@@ -32,8 +32,8 @@ define(['globals',
 			else {
 				if (this.power) {
 
-					const power = powerUp(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h)
-					globals.game.powerm.agregar(power)
+					const power = powerUp(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h, this.power.caracter)
+					game.powerm.agregar(power)
 				}
 				this.borrar()
 			}

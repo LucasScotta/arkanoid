@@ -3,15 +3,15 @@
 define(['globals',], function(globals) {
 
 	function clearPowers() {
-		globals.game.powerm.reset()
+		game.powerm.reset()
 		
-		globals.game.nave.setWidthType(globals.widthTypes.M)
+		game.nave.setWidthType(globals.widthTypes.M)
 	}
 	function clearGuns() {
-		globals.game.nave.gun.restartGun()
+		game.nave.gun.restartGun()
 	}
 	function clearBalls() {
-		globals.game.ballm.reset()
+		game.ballm.reset()
 	}
 	function clear () {
 		clearBalls()
@@ -22,7 +22,7 @@ define(['globals',], function(globals) {
 	function clearAll () {
 		clearGuns()
 		clearPowers()
-		globals.game.boxm.reset()
+		game.boxm.reset()
 	}
 	globals.clear = clear
 	globals.clearAll = clearAll

@@ -13,13 +13,15 @@ define('img/box', () => [
 
 require(['proto/game',
 		'globals',], function (Game, globals) {
-	window.game = new Game()
+	const game = new Game()
+	window.juego = game
 	game.start()
+	
 	function update() {
 		
 		for (const ball of game.ballm.getBalls()) {
 			ball.moverInicio(game, globals)
-			ball.update(game)
+			ball.update(game, globals)
 		}
 		
 		if (globals.mouse.b) {
@@ -29,13 +31,14 @@ require(['proto/game',
 
 
 		for (const power of game.powerm.getItems()) {
-			power.update()
+			power.update(game, game.nave)
 		}
 
 		if (game.boxm.estaVacio()) {
 			return game.ganar(globals)
 		}
-		game.nave.gun.update(globals.game)
+		game.nave.gun.update(game)
+		window.juego = game
 	}
 
 	function loop() {
