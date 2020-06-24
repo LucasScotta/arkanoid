@@ -12,11 +12,43 @@ define('img/box', () => [
 	])
 
 require(['proto/game',
-		'globals',], function (Game, globals) {
+		'globals',
+		'mover',], function (Game, globals, cord) {
 	const game = new Game()
+	function clearPowers(game) {
+		game.powerm.reset()
+		
+		game.nave.setWidthType(globals.widthTypes.M)
+	}
+	function clearGuns(game) {
+		game.nave.gun.restartGun()
+	}
+	function clearBalls(game) {
+		game.ballm.reset()
+	}
+	function clearAll (game) {
+		clearBalls(game)
+		clearGuns(game)
+		clearPowers(game)
+	}
+
+	function clearCheat (game) {
+		clearGuns(game)
+		clearPowers(game)
+		game.boxm.reset(game)
+	}
+
+	const clear = {
+		clearAll: clearAll,
+		clearCheat: clearCheat,
+	}
 	window.juego = game
-	game.start()
-	
+	game.start(clear)
+
+	document.onmousemove = cord.mover(game)
+	document.onclick = cord.click(game)
+	document.onkeydown = cord.tecla(game)
+
 	function update() {
 		
 		for (const ball of game.ballm.getBalls()) {
