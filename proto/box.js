@@ -1,7 +1,6 @@
 'use strict'
 /* globals define*/
-define(['img/box',
-		'factory/powers'], function (imgsBox, powerUpFactory) {
+define(['factory/powers'], function (powerUpFactory) {
 
 	const setUp = () => {
 		const $el = document.createElement('div')
@@ -9,16 +8,16 @@ define(['img/box',
 		document.getElementById('container').appendChild($el)
 		return $el
 	}
-
+	const MAX_TIPO = 8
 	return class Box {
 		constructor(options) {
 			Object.assign(this, options)
 			this.$el = setUp()
-			this.strong = Math.floor(Math.random() * imgsBox.length)
+			this.strong = Math.floor(Math.random() * MAX_TIPO)
 			this.pintar()
 		}
 		pintar() {
-			this.$el.style.backgroundImage = `url(${imgsBox[this.strong]})`
+			this.$el.setAttribute('data-tipo', this.strong)
 			this.$el.style.left = `${this.pos.x}px`
 			this.$el.style.top = `${this.pos.y}px`
 		}

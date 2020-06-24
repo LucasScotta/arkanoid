@@ -1,13 +1,22 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
 .box {
 	width: 60px;
 	height: 20px;
 	box-shadow: -3px -4px gray;
 }
 
-* {
-	margin: 0;
-	padding: 0;
-}
+.box[data-tipo="0"] { background-image: url(img/0.png);}
+.box[data-tipo="1"] { background-image: url(img/1.png);}
+.box[data-tipo="2"] { background-image: url(img/2.png);}
+.box[data-tipo="3"] { background-image: url(img/3.png);}
+.box[data-tipo="4"] { background-image: url(img/4.png);}
+.box[data-tipo="5"] { background-image: url(img/5.png);}
+.box[data-tipo="6"] { background-image: url(img/6.png);}
+.box[data-tipo="7"] { background-image: url(img/7.png);}
 
 .power {
 	width: 20px;
