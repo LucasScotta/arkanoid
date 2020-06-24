@@ -1,8 +1,7 @@
 'use strict'
 /* globals define*/
-define(['globals',
-		'img/box',
-		'factory/powers'], function (globals, imgsBox, powerUpFactory) {
+define(['img/box',
+		'factory/powers'], function (imgsBox, powerUpFactory) {
 
 	const setUp = () => {
 		const $el = document.createElement('div')

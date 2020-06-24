@@ -66,7 +66,7 @@ define([
 		perder(ball, mouse, clear) {
 
 			if (this.ballm.estaVacio()) {
-				globals.clear()
+				clear.all()
 				this.config.lifes -= 1
 				if (this.config.lifes > 0) {
 
@@ -80,7 +80,7 @@ define([
 					if (confirm('Reiniciar?')) {
 
 						this.config.level = 0
-						globals.clearAll()
+						clear.all()
 						
 						const primerBall = ballFactory(0, 0, 0, 0)
 						this.config.lifes = 3
@@ -97,13 +97,13 @@ define([
 		/**
 		 * El nombre lo dice todo
 		 */
-		ganar(globals) {
+		ganar(clear) {
 
 			this.config.level += 1
 
 			if (this.config.level <= 6) {
 
-				globals.clearAll()
+				clear.all()
 				const primerBall = ballFactory(this.nave.pos.x + this.nave.size.w / 2, 0 ,0)
 				primerBall.pintar()
 				this.nave.size.w = 100
