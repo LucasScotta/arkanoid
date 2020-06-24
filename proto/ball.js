@@ -192,9 +192,8 @@ define([
 		 * Puede ser al comenzar el juego o al tener activada la propiedad 'goma' de este
 		 * objeto
 		 */
-		moverInicio(globals) {
+		moverInicio(game, globals) {
 
-			const game = globals.game
 			let x = globals.mouse.x
 			let y = globals.mouse.y
 			const mapWidth  = game.size.w
@@ -300,8 +299,7 @@ define([
 		/**
 		 * update...
 		 */
-		update(globals) {
-			const game = globals.game
+		update(game) {
 			// Bola golpeando contra los bordes
 			if (this.tocaBordeCostados(game)) {
 
@@ -321,7 +319,7 @@ define([
 			}
 
 			// Bola golpeando las cajas:
-			for (const box of globals.game.box.getItems()) {
+			for (const box of game.boxm.getItems()) {
 			// Si esta tocando de arriba/abajo en una caja, rebota verticalmente
 				const golpeV = this.estaTocandoDeArribaYAbajo(box)
 			// Si esta tocando de derecha/izquierda en una caja, rebota horizontalmente (funciona a medias)
