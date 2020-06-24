@@ -322,7 +322,7 @@ define([
 
 				this.config.ballDirY = 0
 				this.config.ballDirX = 0
-				return game.perder(this, mouse, clear, globals)
+				return game.perder(this, mouse, globals)
 			}
 
 			// Bola golpeando las cajas:
