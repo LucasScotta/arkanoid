@@ -2,7 +2,7 @@
 /* globals define*/
 define(['globals',
 		'img/box',
-		'factory/powers'], function (globals, imgsBox, powerUp) {
+		'factory/powers'], function (globals, imgsBox, powerUpFactory) {
 
 	const setUp = () => {
 		const $el = document.createElement('div')
@@ -32,7 +32,7 @@ define(['globals',
 			else {
 				if (this.power) {
 
-					const power = powerUp(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h, this.power.caracter)
+					const power = powerUpFactory(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h, this.power.caracter, game)
 					game.powerm.agregar(power)
 				}
 				this.borrar()

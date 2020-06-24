@@ -1,46 +1,10 @@
 'use strict'
 /* globals define*/
-define(['globals',], function (globals) {
+define([], function () {
 	return class PowerUp {
 		constructor(options) {
 			Object.assign(this, options)
 			this.pintar()
-		}
-		activar() {
-			throw new Error('falta implementar')
-		}
-		/**
-		 * Agranda la nave y no deja que las bolas se peguen a ella.
-		 */
-		agrandar() {
-
-			game.nave.setWidthType(globals.widthTypes.L)
-			this.despegar()
-		}
-		/**
-		 * Achica la nave y no deja que las bolas se peguen a ella.
-		 */
-		achicar() {
-
-			game.nave.setWidthType(globals.widthTypes.S)
-			this.despegar()
-		}
-		/**
-		 * Hace que las bolas no se peguen al tocar la nave.
-		 */
-		despegar() {
-			for (let ball of game.ballm.getBalls()) {
-				ball.despegar()
-				if (ball.config.dirX === 0 && ball.config.dirY === 0) {
-
-					ball.config.dirX = 1
-					ball.config.dirY = -1
-				}
-			}
-		}
-		pintar() {
-			this.$el.style.left = `${this.pos.x}px`
-			this.$el.style.top  = `${this.pos.y}px`
 		}
 		/**
 		 * Hace caer los powerUps cuando estan en pantalla

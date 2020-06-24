@@ -2,7 +2,7 @@
 /*globals define*/
 define(['util/randomOf',
 		'proto/box',], (randomOf, Box) => {
-	return function(x, y, game) {
+	return (x, y, game) => {
 		const powers = {
 			multiplicador: {
 				tipo: 2,
@@ -61,7 +61,7 @@ define(['util/randomOf',
 				}
 			},
 		}
-		new Box({
+		return new Box({
 			pos: {
 				x: x,
 				y: y,
