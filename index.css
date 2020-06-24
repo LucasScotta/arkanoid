@@ -29,6 +29,9 @@
 }
 
 #nave {
+	background-image: url(img/nave.png);
+	background-size: 100px;
+	background-position: 0 50px;
 	width: 100px;
 	height: 15px;
 	border-radius: 1em;
@@ -36,7 +39,7 @@
 
 .ball {
 	background-image: url(img/ball.png);
-	background-size: contain;
+	background-size: 14px;
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;

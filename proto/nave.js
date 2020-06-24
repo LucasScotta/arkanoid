@@ -4,13 +4,7 @@ define(['proto/gun',
 	],
 	(Gun) => {
 	const setupElement = () => {
-		const naveImg = document.createElement('img')
-		naveImg.style.width = `100px`
-		naveImg.style.height = `15px`
-		naveImg.style.borderRadius = '1em'
-		naveImg.src = 'img/nave.png'
 		const $el = document.getElementById('nave')
-		$el.appendChild(naveImg)
 		return $el
 	}
 	return class Nave {

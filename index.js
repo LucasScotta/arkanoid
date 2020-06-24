@@ -1,6 +1,6 @@
 'use strict'
 /* globals require, define*/
-define('img/box', [
+define('img/box', () => [
 	'img/0.png',
 	'img/1.png',
 	'img/2.png',
