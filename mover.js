@@ -12,7 +12,7 @@ define(['proto/nave-width-types'], (NAVE_WIDHT_TYPES) => {
 
 	// 
 
-	const click = (game, mouse) => {
+	const click = (game) => {
 		for (let ball of game.ballm.getBalls()) {
 			ball.arrancar(game)
 		}

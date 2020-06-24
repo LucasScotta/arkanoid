@@ -3,22 +3,22 @@
 require(['proto/game',
 		'globals',
 		'mover',], function (Game, globals, coord) {
-	let mouse = {
+	const mouse = {
 		x: 0,
 		y: 0,
 		b: false,
 	}
-	window.raton = mouse
+	window.mouse = mouse
 	const game = new Game()
 
-	window.juego = game
+	window.game = game
 	game.addBall()
 
 	document.onmousemove = (event) => {
 		coord.mover(mouse, event)
 	}
 	document.onclick = () => {
-		coord.click(game, mouse)
+		coord.click(game)
 	}
 	document.onkeypress = (event) => {
 		coord.tecla(game, event)
