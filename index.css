@@ -1,6 +1,7 @@
 .box {
 	width: 60px;
 	height: 20px;
+	box-shadow: -3px -4px gray;
 }
 
 * {
