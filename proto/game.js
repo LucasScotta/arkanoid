@@ -73,9 +73,9 @@ define([
 				if (this.config.lifes > 0) {
 
 					const primerBall = ballFactory(0, 0, 0, 0)
-					this.nave.pintar()
-					primerBall.pintar()
+					this.nave.pintarInicio(this)
 					this.nave.mover(mouse.x, mouse.y, this)
+					primerBall.pintarInicio(this.nave)
 					console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
 				}
 				else {

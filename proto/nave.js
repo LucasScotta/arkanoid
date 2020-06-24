@@ -105,7 +105,7 @@ define(['proto/gun',
 		/**
 		 * Pinta la nave al inicio del juego, despues de ganar y al perder una vida
 		 */
-		pintarNaveInicio(game) {
+		pintarInicio(game) {
 
 			this.pos.x = game.pos.x + game.size.b + game.size.w / 2
 			this.pos.y = this.pos.y - 1
