@@ -63,7 +63,7 @@ define([
 		/**
 		 * El nombre lo dice todo
 		 */
-		perder(ball, globals) {
+		perder(ball, mouse, clear) {
 
 			if (this.ballm.estaVacio()) {
 				globals.clear()
@@ -73,7 +73,7 @@ define([
 					const primerBall = ballFactory(0, 0, 0, 0)
 					this.nave.pintar()
 					primerBall.pintar()
-					this.nave.mover(globals.mouse.x, globals.mouse.y)
+					this.nave.mover(mouse.x, mouse.y)
 					console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
 				}
 				else {
@@ -86,7 +86,7 @@ define([
 						this.config.lifes = 3
 						this.nave.pintar()
 						primerBall.pintar()
-						this.nave.mover(globals.mouse.x, globals.mouse.y)
+						this.nave.mover(mouse.x, mouse.y)
 					}
 				}
 			}

@@ -1,58 +1,63 @@
 'use strict'
-/* globals require */
+/* globals define */
 /////////////
-require(['globals',], (globals) => {
-	document.onmousemove = function mover(event) {
+define(['globals',], (globals) => {
 
-		event.preventDefault()
+	const mover = (mouse) => {
+		document.onmousemove = (event) => {
 
-		globals.mouse.x = event.x
-		globals.mouse.y = event.y
-		globals.mouse.b = true
-
+			mouse.x = event.x
+			mouse.y = event.y
+			mouse.b = true
+			return mouse
+		}
 	}
 
 	// 
 
-	document.onclick = function(event) {
-
-		const x = event.x
-		const y = event.y
-
+	const click = (game, mouse) => {
 		for (let ball of game.ballm.getBalls()) {
-			
-			ball.arrancar(x, y, game)
+			ball.arrancar(mouse, game)
 		}
-			game.nave.gun.disparar(game)
+		game.nave.gun.disparar(game)
 	}
 
-	document.onkeydown = function tecla(event) {
-		if (event.key === 'p') {
-			game.config.pause = !game.config.pause
-		}
-		if (event.code === 'Space') {
+	const tecla = (game) => {
+		document.onkeypress = () => {
+			(event) => {
+				if (event.key === 'p') {
+					return game.config.pause = !game.config.pause
+				}
+				if (event.code === 'Space') {
 
-			game.nave.gun.disparar(game)
-			
-			for (let ball of game.ballm.getBalls()) {
-			
-				ball.arrancar(globals.mouse.x, globals.mouse.y, game, game.nave)
+					game.nave.gun.disparar(game)
+					
+					for (let ball of game.ballm.getBalls()) {
+					
+						ball.arrancar(mouse.x, mouse.y, game, game.nave)
+					}
+				}
+				if (event.key === 'l') {
+					return game.ballm.clonarRandom()
+				}
+				if (event.key === 'm') {
+					return game.nave.setWidthType(globals.widthTypes.L)
+				}
+				if (event.key === 'n') {
+					return game.nave.setWidthType(globals.widthTypes.S)
+				}
+				if (event.key === 'b') {
+					return game.nave.setWidthType(globals.widthTypes.M)
+				}
+				if (event.key === 'v') {
+					return game.nave.gun.shots += 5
+				}
 			}
 		}
-		if (event.key === 'l') {
-			game.ballm.clonarRandom()
-		}
-		if (event.key === 'm') {
-			game.nave.setWidthType(widthTypes.L)
-		}
-		if (event.key === 'n') {
-			game.nave.setWidthType(widthTypes.S)
-		}
-		if (event.key === 'b') {
-			game.nave.setWidthType(globals.widthTypes.M)
-		}
-		if (event.key === 'v') {
-			game.nave.gun.shots += 5
-		}
+	}
+	return {
+		mover: mover,
+		click: click,
+		tecla: tecla,
 	}
 })

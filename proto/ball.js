@@ -192,10 +192,10 @@ define([
 		 * Puede ser al comenzar el juego o al tener activada la propiedad 'goma' de este
 		 * objeto
 		 */
-		moverInicio(game, globals) {
+		moverInicio(game, mouse) {
 
-			let x = globals.mouse.x
-			let y = globals.mouse.y
+			let x = mouse.x
+			let y = mouse.y
 			const mapWidth  = game.size.w
 			const mapHeight = game.size.h
 			const mapBorder = game.size.b
@@ -234,8 +234,9 @@ define([
 		 * pasar de nivel, o al perder todas las vidas y reiniciar el juego del nivel 1.
 		 * Comienza el juego
 		 */
-		arrancar(x, y, game) {
-
+		arrancar(mouse, game) {
+			let x = mouse.x
+			let y = mouse.y
 			const mapTop    = game.pos.y
 			const mapRight  = game.pos.x + game.size.w
 			const mapBottom = game.pos.y + game.size.h
@@ -299,7 +300,7 @@ define([
 		/**
 		 * update...
 		 */
-		update(game, globals) {
+		update(game, mouse, clear) {
 			// Bola golpeando contra los bordes
 			if (this.tocaBordeCostados(game)) {
 
@@ -315,7 +316,7 @@ define([
 
 				this.config.ballDirY = 0
 				this.config.ballDirX = 0
-				return game.perder(this, globals)
+				return game.perder(this, mouse, clear)
 			}
 
 			// Bola golpeando las cajas:

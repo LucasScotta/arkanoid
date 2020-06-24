@@ -14,6 +14,12 @@ define('img/box', () => [
 require(['proto/game',
 		'globals',
 		'mover',], function (Game, globals, cord) {
+	let mouse = {
+		x: 0,
+		y: 0,
+		b: true,
+	}
+	window.raton = mouse
 	const game = new Game()
 	function clearPowers(game) {
 		game.powerm.reset()
@@ -39,25 +45,31 @@ require(['proto/game',
 	}
 
 	const clear = {
-		clearAll: clearAll,
-		clearCheat: clearCheat,
+		All: clearAll,
+		Cheat: clearCheat,
 	}
 	window.juego = game
 	game.start(clear)
 
-	document.onmousemove = cord.mover(game)
-	document.onclick = cord.click(game)
-	document.onkeydown = cord.tecla(game)
+	document.onmousemove = () => {
+		cord.mover(mouse)
+	}
+	document.onclick = () => {
+		cord.click(game, mouse)
+	}
+	document.onkeydown = () => {
+		cord.tecla(game)
+	}
 
 	function update() {
 		
 		for (const ball of game.ballm.getBalls()) {
-			ball.moverInicio(game, globals)
-			ball.update(game, globals)
+			ball.moverInicio(game, mouse)
+			ball.update(game, mouse, clear, globals)
 		}
 		
-		if (globals.mouse.b) {
-			game.nave.mover(globals.mouse.x, globals.mouse.y)
+		if (mouse.b) {
+			game.nave.mover(mouse)
 			globals.mouse.b = false
 		}
 

@@ -67,19 +67,13 @@ define(['proto/gun',
 		 * Mueve la nave al mover el mouse y guarda las coordenadas de la misma en X/Y de este
 		 * mismo objeto
 		 */
-		mover(x, y) {
-
-			const mapTop = this.game.pos.y
+		mover(mouse) {
+			let x = mouse.x
 			const mapBorder = this.game.size.b
 			const mapRight = this.game.pos.x + this.game.size.w
-			const mapBottom = this.game.pos.y + this.game.size.h
 			const mapLeft = this.game.pos.x
 
-			if (x <= mapRight  - mapBorder
-			&&	x >= mapLeft   + mapBorder
-			&&	y <= mapBottom - mapBorder
-			&&	y >= mapTop    + mapBorder
-			&& this.game.config.level < 7) {
+			if (this.game.config.level < 7) {
 
 				if (x >= mapRight -  mapBorder - this.size.w / 2) {
 
