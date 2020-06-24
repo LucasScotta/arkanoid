@@ -69,11 +69,18 @@ define(['proto/gun',
 		 */
 		mover(mouse, game) {
 			let x = mouse.x
+			let y = mouse.y
+			const mapTop = game.pos.y
 			const mapBorder = game.size.b
 			const mapRight = game.pos.x + game.size.w
+			const mapBottom = game.pos.y + game.size.h
 			const mapLeft = game.pos.x
 
-			if (game.config.level < 7) {
+			if (x >= mapLeft
+			&&  x <= mapRight
+			&&	y >= mapTop
+			&&	y <= mapBottom
+			&&	game.config.level < 7) {
 
 				if (x >= mapRight -  mapBorder - this.size.w / 2) {
 

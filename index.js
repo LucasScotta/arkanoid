@@ -17,7 +17,7 @@ require(['proto/game',
 	let mouse = {
 		x: 0,
 		y: 0,
-		b: true,
+		b: false,
 	}
 	window.raton = mouse
 	const game = new Game()
