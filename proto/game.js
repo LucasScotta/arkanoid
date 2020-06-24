@@ -49,7 +49,7 @@ define([
 			for (let i = 0; i < level + 3; i += 1) {
 				
 				for (let j = 0; j <= 8; j += 1) {
-					const box = boxFactory(posX, posY)
+					const box = boxFactory(posX, posY, this)
 					this.boxm.agregar(box)
 					posX += 75
 					if (j === 8) {

@@ -19,7 +19,16 @@ define(['proto/gun',
 				y: game.pos.y + game.size.h - 40,
 			}
 			this.game = game
-			this.gun = new Gun()
+			this.gun = new Gun({
+				pos: {
+					x: this.pos.x,
+					y: this.pos.y,
+				},
+				size: {
+					w: 5,
+					h: 20,
+				},
+			})
 			this.pintar()
 		}
 		pintar() {
