@@ -1,6 +1,6 @@
 'use strict'
-/* globals require*/
-require(['globals',
+/* globals define*/
+define(['globals',
 		'img/box',
 		'factory/powers'], function (globals, imgsBox, powerUp) {
 
@@ -19,7 +19,7 @@ require(['globals',
 			this.pintar()
 		}
 		pintar() {
-			this.$el.backgroundImage = imgsBox[this.strong]
+			this.$el.style.backgroundImage = `url(${imgsBox[this.strong]})`
 			this.$el.style.left = `${this.pos.x}px`
 			this.$el.style.top = `${this.pos.y}px`
 		}
