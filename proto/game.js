@@ -63,10 +63,12 @@ define([
 		/**
 		 * El nombre lo dice todo
 		 */
-		perder(ball, mouse, clear) {
+		perder(ball, mouse, globals) {
+
+			this.ballm.remover(ball)
 
 			if (this.ballm.estaVacio()) {
-				clear.all()
+				this.clearAll(globals)
 				this.config.lifes -= 1
 				if (this.config.lifes > 0) {
 
@@ -80,7 +82,7 @@ define([
 					if (confirm('Reiniciar?')) {
 
 						this.config.level = 0
-						clear.all()
+						this.clearAll(globals)
 						
 						const primerBall = ballFactory(0, 0, 0, 0)
 						this.config.lifes = 3
@@ -90,20 +92,20 @@ define([
 					}
 				}
 			}
-			else {
-				this.ballm.remover(ball)
-			}
+			// else {
+				
+			// }
 		}
 		/**
 		 * El nombre lo dice todo
 		 */
-		ganar(clear) {
+		ganar(globals) {
 
 			this.config.level += 1
 
 			if (this.config.level <= 6) {
 
-				clear.all()
+				this.clearAll(globals)
 				const primerBall = ballFactory(this.nave.pos.x + this.nave.size.w / 2, 0 ,0)
 				primerBall.pintar()
 				this.nave.size.w = 100
@@ -115,6 +117,26 @@ define([
 				this.config.level += 1
 				console.log(`Felicitaciones, terminaste un juego en desarrollo... Manco asqueroso`)
 			}
+		}
+		clearPowers(globals) {
+			this.powerm.reset()
+			this.nave.setWidthType(globals.widthTypes.M)
+		}
+		clearGuns() {
+			this.nave.gun.restartGun()
+		}
+		clearBalls() {
+			this.ballm.reset()
+		}
+		clearAll (globals) {
+			this.clearBalls()
+			this.clearGuns()
+			this.clearPowers(globals)
+		}
+		clearCheat (globals) {
+			this.clearGuns()
+			this.clearPowers(globals)
+			this.boxm.reset()
 		}
 	}
 })

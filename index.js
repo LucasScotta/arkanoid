@@ -21,35 +21,9 @@ require(['proto/game',
 	}
 	window.raton = mouse
 	const game = new Game()
-	function clearPowers(game) {
-		game.powerm.reset()
-		
-		game.nave.setWidthType(globals.widthTypes.M)
-	}
-	function clearGuns(game) {
-		game.nave.gun.restartGun()
-	}
-	function clearBalls(game) {
-		game.ballm.reset()
-	}
-	function clearAll (game) {
-		clearBalls(game)
-		clearGuns(game)
-		clearPowers(game)
-	}
 
-	function clearCheat (game) {
-		clearGuns(game)
-		clearPowers(game)
-		game.boxm.reset(game)
-	}
-
-	const clear = {
-		All: clearAll,
-		Cheat: clearCheat,
-	}
 	window.juego = game
-	game.start(clear)
+	game.start()
 
 	document.onmousemove = () => {
 		cord.mover(mouse)
@@ -65,12 +39,12 @@ require(['proto/game',
 		
 		for (const ball of game.ballm.getBalls()) {
 			ball.moverInicio(game, mouse)
-			ball.update(game, mouse, clear, globals)
+			ball.update(game, mouse, globals)
 		}
 		
 		if (mouse.b) {
 			game.nave.mover(mouse, game)
-			globals.mouse.b = false
+			mouse.b = false
 		}
 
 
