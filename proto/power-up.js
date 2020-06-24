@@ -4,6 +4,7 @@ define(['globals',], function (globals) {
 	return class PowerUp {
 		constructor(options) {
 			Object.assign(this, options)
+			this.pintar()
 		}
 		activar() {
 			throw new Error('falta implementar')

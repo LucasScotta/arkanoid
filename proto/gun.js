@@ -81,7 +81,7 @@ define([],
 				this.pos.y -= 2
 				for (const box of game.boxm.getItems()) {
 					if (this.shotHit(box)) {
-						box.golpear()
+						box.golpear(game)
 						this.clearShot()
 					}
 				}
