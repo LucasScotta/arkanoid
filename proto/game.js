@@ -36,7 +36,10 @@ define([
 		 *
 		 */
 		start() {
-			this.ballm.agregar(ballFactory(0, 0, 0, 0))
+			const ball = ballFactory(0, 0, 0, 0)
+			this.nave.addBall(ball)
+			this.ballm.agregar(ball)
+
 		}
 		initLvl() {
 			let posX = this.pos.x + this.size.b * 2

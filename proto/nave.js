@@ -26,10 +26,11 @@ define(['proto/gun',
 			}
 			this.game = game
 			this.gun = new Gun()
+			this.pintar()
 		}
 		pintar() {
 			this.$el.style.left  = `${this.pos.x}px`
-			this.$el.style.top = `${this.size.y}px`
+			this.$el.style.top = `${this.pos.y}px`
 		}
 		/**
 		 * Alarga o achica la nave segun corresponda
@@ -53,6 +54,11 @@ define(['proto/gun',
 		reiniciar() {
 
 			return this.size.w = 100
+		}
+		addBall(ball) {
+			const x = this.pos.x + this.size.w / 2
+			const y = this.pos.y - 2
+			ball.setPoss(x, y)
 		}
 		/**
 		 * Mueve la nave al mover el mouse y guarda las coordenadas de la misma en X/Y de este

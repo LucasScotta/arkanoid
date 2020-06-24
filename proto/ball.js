@@ -7,12 +7,8 @@ define([
 ) => {
 
 	const createElement = () => {
-		const imgBalls = 'img/ball.png'
 		const $el = document.createElement('div')
-		const newBallImg = document.createElement('img')
-		newBallImg.src = imgBalls
-		$el.appendChild(newBallImg)
-		newBallImg.classList.add('ball')
+		$el.classList.add('ball')
 		document.getElementById('container').appendChild($el)
 		return $el
 	}
@@ -186,6 +182,11 @@ define([
 			this.$el.style.left = `${this.pos.x}px`
 			this.$el.style.top = `${this.pos.y}px`
 		}
+		setPoss(x, y) {
+			this.pos.x = x
+			this.pos.y = y - this.size.h
+			this.pintar()
+		} 
 		/**
 		 * Se encarga de que la bola se mueva correctamente al estar pegada a la nave.
 		 * Puede ser al comenzar el juego o al tener activada la propiedad 'goma' de este
