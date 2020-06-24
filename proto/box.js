@@ -34,13 +34,14 @@ define(['img/box',
 					const power = powerUpFactory(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h, this.power.caracter, game)
 					game.powerm.agregar(power)
 				}
-				this.borrar()
+				this.borrar(game)
 			}
 		}
 		/**
 		 * Borra la caja
 		 */
-		borrar() {
+		borrar(game) {
+			game.boxm.remover(this)
 			this.$el.remove()
 		}
 	}
