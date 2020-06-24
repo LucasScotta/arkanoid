@@ -289,16 +289,16 @@ define([
 		remove() {
 			this.$el.remove()
 		}
-		pintarInicio(nave) {
+		reset(nave) {
 
 			this.pos.x = nave.pos.x + nave.size.w / 2
-			this.pos.y = nave.pos.y + nave.size.h - 1
+			this.pos.y = nave.pos.y - nave.size.h - 1
 			this.pintar()
 		}
 		/**
 		 * update...
 		 */
-		update(game, mouse, clear, globals) {
+		update(game, mouse, globals) {
 			// Bola golpeando contra los bordes
 			if (this.tocaBordeCostados(game)) {
 

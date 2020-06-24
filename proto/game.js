@@ -36,11 +36,10 @@ define([
 		/**
 		 *
 		 */
-		start() {
+		addBall() {
 			const ball = ballFactory(0, 0, 0, 0)
 			this.nave.addBall(ball)
 			this.ballm.agregar(ball)
-
 		}
 		initLvl(level) {
 			let posX = this.pos.x + this.size.b * 2
@@ -72,10 +71,9 @@ define([
 				this.config.lifes -= 1
 				if (this.config.lifes > 0) {
 
-					const primerBall = ballFactory(0, 0, 0, 0)
-					this.nave.pintarInicio(this)
-					this.nave.mover(mouse.x, mouse.y, this)
-					primerBall.pintarInicio(this.nave)
+					this.nave.reset(this)
+					this.nave.mover(mouse, this)
+					this.addBall()
 					console.log(`Perdiste una vida, quedan ${this.config.lifes}`)
 				}
 				else {
@@ -83,11 +81,9 @@ define([
 
 						this.config.level = 0
 						this.clearAll(globals)
-						
-						const primerBall = ballFactory(0, 0, 0, 0)
+						this.addBall()
 						this.config.lifes = 3
 						this.nave.pintar()
-						primerBall.pintar()
 						this.nave.mover(mouse.x, mouse.y, this)
 					}
 				}
@@ -106,8 +102,7 @@ define([
 			if (this.config.level <= 6) {
 
 				this.clearAll(globals)
-				const primerBall = ballFactory(this.nave.pos.x + this.nave.size.w / 2, 0 ,0)
-				primerBall.pintar()
+				this.addBall()
 				this.nave.size.w = 100
 
 				console.log(`Pasaste al nivel: ${this.config.level}`)
