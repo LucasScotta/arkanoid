@@ -14,7 +14,7 @@ define(['globals',], (globals) => {
 
 	const click = (game, mouse) => {
 		for (let ball of game.ballm.getBalls()) {
-			ball.arrancar(game, mouse)
+			ball.arrancar(game)
 		}
 		game.nave.gun.disparar(game)
 	}
