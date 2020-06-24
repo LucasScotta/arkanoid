@@ -58,7 +58,7 @@ require(['proto/game',
 		cord.click(game, mouse)
 	}
 	document.onkeydown = () => {
-		cord.tecla(game)
+		cord.tecla(game, mouse)
 	}
 
 	function update() {

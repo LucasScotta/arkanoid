@@ -22,7 +22,7 @@ define(['globals',], (globals) => {
 		game.nave.gun.disparar(game)
 	}
 
-	const tecla = (game) => {
+	const tecla = (game, mouse) => {
 		document.onkeypress = () => {
 			(event) => {
 				if (event.key === 'p') {
