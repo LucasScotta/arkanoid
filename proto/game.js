@@ -7,7 +7,8 @@ define([
 	'proto/power-up-manager',
 	'proto/nave',
 	'factory/boxes',
-	], (ballFactory, BallManager, BoxManager, PowerUpManager, Nave, boxFactory) => {
+	'proto/nave-width-types',
+	], (ballFactory, BallManager, BoxManager, PowerUpManager, Nave, boxFactory, NAVE_WIDTH_TYPES) => {
 		/**
 		 * Clase principal del proyecto.
 		 */
@@ -115,7 +116,7 @@ define([
 		}
 		clearPowers(globals) {
 			this.powerm.reset()
-			this.nave.setWidthType(globals.widthTypes.M)
+			this.nave.setWidthType(NAVE_WIDTH_TYPES.M)
 		}
 		clearGuns() {
 			this.nave.gun.restartGun()

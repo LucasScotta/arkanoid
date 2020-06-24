@@ -1,6 +1,7 @@
 'use strict'
 /*globals define*/
-define(['proto/power-up',], (PowerUp) => {
+define(['proto/power-up',
+		'proto/nave-width-types'], (PowerUp, NAVE_WIDTH_TYPES) => {
 	const createElement = (caracter) => {
 		const $el = document.createElement('div')
 		$el.innerText = caracter
@@ -8,7 +9,7 @@ define(['proto/power-up',], (PowerUp) => {
 		document.getElementById('container').appendChild($el)
 		return $el
 	}
-	return (x, y, caracter, game, globals) => {
+	return (x, y, caracter, game) => {
 		const power = {
 			pos: {
 				x: x,
@@ -27,15 +28,7 @@ define(['proto/power-up',], (PowerUp) => {
 			 */
 			agrandar: function() {
 
-				game.nave.setWidthType(globals.widthTypes.L)
-				this.despegar()
-			},
-			/**
-			 * Achica la nave y no deja que las bolas se peguen a ella.
-			 */
-			achicar: function() {
-
-				game.nave.setWidthType(globals.widthTypes.S)
+				game.nave.setWidthType(NAVE_WIDTH_TYPES.L)
 				this.despegar()
 			},
 			/**

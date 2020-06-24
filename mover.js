@@ -1,7 +1,7 @@
 'use strict'
 /* globals define */
 /////////////
-define(['globals',], (globals) => {
+define(['proto/nave-width-types'], (NAVE_WIDHT_TYPES) => {
 
 	const mover = (mouse, event) => {
 		mouse.x = event.x
@@ -36,13 +36,13 @@ define(['globals',], (globals) => {
 			return game.ballm.clonarRandom()
 		}
 		if (event.key === 'm') {
-			return game.nave.setWidthType(globals.widthTypes.L)
+			return game.nave.setWidthType(NAVE_WIDHT_TYPES.L)
 		}
 		if (event.key === 'n') {
-			return game.nave.setWidthType(globals.widthTypes.S)
+			return game.nave.setWidthType(NAVE_WIDHT_TYPES.S)
 		}
 		if (event.key === 'b') {
-			return game.nave.setWidthType(globals.widthTypes.M)
+			return game.nave.setWidthType(NAVE_WIDHT_TYPES.M)
 		}
 		if (event.key === 'v') {
 			return game.nave.gun.shots += 5

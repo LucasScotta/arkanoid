@@ -1,7 +1,8 @@
 'use strict'
 /*globals define*/
 define(['util/randomOf',
-		'proto/box',], (randomOf, Box) => {
+		'proto/box',
+		'proto/nave-width-types'], (randomOf, Box, NAVE_WIDTH_TYPES) => {
 	return (x, y, game) => {
 		const powers = {
 			multiplicador: {
@@ -57,8 +58,12 @@ define(['util/randomOf',
 				 * Achica la nave a 50px.
 				 */
 				activar: function () {
-					this.achicar()
-				}
+					/**
+					* Achica la nave y no deja que las bolas se peguen a ella.
+					*/
+					game.nave.setWidthType(NAVE_WIDTH_TYPES.S)
+					this.despegar()
+				},
 			},
 		}
 		return new Box({
