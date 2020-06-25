@@ -103,13 +103,14 @@ define([
 			if (this.config.level <= 6) {
 
 				this.clearAll()
+				this.initLvl(this.config.level)
 				this.addBall()
 				this.nave.size.w = 100
 
 				console.log(`Pasaste al nivel: ${this.config.level}`)
 			}
 			if (this.config.level === 7) {
-
+				this.clearAll()
 				this.config.level += 1
 				console.log(`Felicitaciones, terminaste un juego en desarrollo... Manco asqueroso`)
 			}
