@@ -298,7 +298,7 @@ define([
 		/**
 		 * update...
 		 */
-		update(game, mouse, globals) {
+		update(game, mouse) {
 			// Bola golpeando contra los bordes
 			if (this.tocaBordeCostados(game)) {
 
@@ -314,7 +314,7 @@ define([
 
 				this.config.ballDirY = 0
 				this.config.ballDirX = 0
-				return game.perder(this, mouse, globals)
+				return game.perder(this, mouse)
 			}
 
 			// Bola golpeando las cajas:

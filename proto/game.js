@@ -63,12 +63,12 @@ define([
 		/**
 		 * El nombre lo dice todo
 		 */
-		perder(ball, mouse, globals) {
+		perder(ball, mouse) {
 
 			this.ballm.remover(ball)
 
 			if (this.ballm.estaVacio()) {
-				this.clearAll(globals)
+				this.clearAll()
 				this.config.lifes -= 1
 				if (this.config.lifes > 0) {
 
@@ -81,7 +81,7 @@ define([
 					if (confirm('Reiniciar?')) {
 
 						this.config.level = 0
-						this.clearAll(globals)
+						this.clearAll()
 						this.addBall()
 						this.config.lifes = 3
 						this.nave.pintar()
@@ -96,13 +96,13 @@ define([
 		/**
 		 * El nombre lo dice todo
 		 */
-		ganar(globals) {
+		ganar() {
 
 			this.config.level += 1
 
 			if (this.config.level <= 6) {
 
-				this.clearAll(globals)
+				this.clearAll()
 				this.addBall()
 				this.nave.size.w = 100
 

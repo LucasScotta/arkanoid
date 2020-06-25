@@ -1,8 +1,7 @@
 'use strict'
 /* globals require*/
 require(['proto/game',
-		'globals',
-		'mover',], function (Game, globals, coord) {
+		'mover',], function (Game, coord) {
 	const mouse = {
 		x: 0,
 		y: 0,
@@ -28,7 +27,7 @@ require(['proto/game',
 		
 		for (const ball of game.ballm.getBalls()) {
 			ball.moverInicio(game, mouse)
-			ball.update(game, mouse, globals)
+			ball.update(game, mouse)
 		}
 		
 		if (mouse.b) {
@@ -42,7 +41,7 @@ require(['proto/game',
 		}
 
 		if (game.boxm.estaVacio()) {
-			return game.ganar(globals)
+			return game.ganar()
 		}
 		game.nave.gun.update(game)
 		window.juego = game
