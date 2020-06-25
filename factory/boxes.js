@@ -1,9 +1,8 @@
 'use strict'
 /*globals define*/
 define(['util/randomOf',
-		'proto/box',
-		'proto/nave-width-types'], (randomOf, Box, NAVE_WIDTH_TYPES) => {
-	return (x, y, game) => {
+		'proto/box',], (randomOf, Box) => {
+	return (x, y, game, NAVE_WIDTH_TYPES) => {
 		const powers = {
 			multiplicador: {
 				tipo: 2,

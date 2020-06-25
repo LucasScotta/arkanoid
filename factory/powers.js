@@ -1,7 +1,6 @@
 'use strict'
 /*globals define*/
-define(['proto/power-up',
-		'proto/nave-width-types'], (PowerUp) => {
+define(['proto/power-up',], (PowerUp) => {
 	
 	return (x, y, power) => {
 		const options = {

@@ -39,7 +39,8 @@ define(['proto/gun',
 		 * Alarga o achica la nave segun corresponda
 		 */
 		setWidthType(widthType) {
-
+			
+			this.setImg(widthType)
 			this.pos.x -= (widthType.w - this.size.w) / 2
 			this.size.w = widthType.w
 			if (this.pos.x + this.size.w >= this.game.pos.x + this.game.size.w - this.game.size.b) {
@@ -50,6 +51,21 @@ define(['proto/gun',
 			}
 			this.$el.style.width = `${this.size.w}px`
 			this.pintar()
+		}
+		setImg(n) {
+			
+			if (n === 140) {
+				this.$el.style.backgroundImage = 'url(img/nave2.png'
+				this.$el.style.backgroundSize = 'cover'
+				this.pintar()
+				return
+			}
+			else {
+				this.$el.style.backgroundImage = 'url(img/nave.png'
+				this.$el.style.backgroundSize = '100px'
+				this.pintar()
+				return
+			}
 		}
 		/**
 		 * Reinicia los powerUps de la nave
