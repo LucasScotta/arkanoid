@@ -33,14 +33,14 @@ define(['factory/powers'], function (powerUpFactory) {
 					const power = powerUpFactory(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h,this.power, game)
 					game.powerm.agregar(power)
 				}
-				this.borrar(game)
+				this.borrar()
+				game.boxm.remover(this)
 			}
 		}
 		/**
 		 * Borra la caja
 		 */
-		borrar(game) {
-			game.boxm.remover(this)
+		borrar() {
 			this.$el.remove()
 		}
 	}

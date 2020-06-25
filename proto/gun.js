@@ -11,6 +11,7 @@ define([],
 		constructor(options) {
 			Object.assign(this, options)
 			this.$el = setUp()
+			this.shots = 0
 		}
 		/**
 		 * Hace pum

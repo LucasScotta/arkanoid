@@ -114,7 +114,7 @@ define([
 				console.log(`Felicitaciones, terminaste un juego en desarrollo... Manco asqueroso`)
 			}
 		}
-		clearPowers(globals) {
+		clearPowers() {
 			this.powerm.reset()
 			this.nave.setWidthType(NAVE_WIDTH_TYPES.M)
 		}
@@ -124,14 +124,14 @@ define([
 		clearBalls() {
 			this.ballm.reset()
 		}
-		clearAll (globals) {
+		clearAll () {
 			this.clearBalls()
 			this.clearGuns()
-			this.clearPowers(globals)
+			this.clearPowers()
 		}
-		clearCheat (globals) {
+		clearCheat () {
 			this.clearGuns()
-			this.clearPowers(globals)
+			this.clearPowers()
 			this.boxm.reset()
 		}
 	}
