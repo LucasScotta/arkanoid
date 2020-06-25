@@ -47,6 +47,9 @@ define(['proto/nave-width-types'], (NAVE_WIDHT_TYPES) => {
 		if (event.key === 'v') {
 			return game.nave.gun.shots += 5
 		}
+		if (event.key === 'q') {
+			return game.ballm.items[0].pos.y = 20
+		}
 	}
 	return {
 		mover: mover,
