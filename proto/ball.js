@@ -203,15 +203,14 @@ define([
 			const mapTop    = game.pos.y
 			const mapRight  = game.pos.x + mapWidth
 			const mapBottom = game.pos.y + mapHeight
-			const ballWidth = this.size.w
 
 			if (this.config.ballDirX === 0 && this.config.ballDirY === 0
-			&&  x >= mapLeft   + mapBorder + game.nave.size.w / 2
-			&&  x <= mapRight  - mapBorder - game.nave.size.w / 2
+			&&  x >= mapLeft   + mapBorder
+			&&  x <= mapRight  - mapBorder
 			&&  y >= mapTop    + mapBorder
 			&&  y <= mapBottom - mapBorder
 			&&	game.config.level < 7) {
-				this.pos.x = x - ballWidth / 2 - 0.5
+				this.pos.x = game.nave.pos.x + game.nave.size.w / 2 - this.size.w / 2 - 0.5
 				this.pintar()
 			}
 		}
