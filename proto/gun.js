@@ -60,10 +60,11 @@ define([],
 			const disparoT = this.pos.y
 			const disparoR = this.pos.x + this.size.w
 			const disparoL = this.pos.x
+			const boxT = box.pos.y
 			const boxB = box.pos.y + box.size.h
 			const boxL = box.pos.x
 			const boxR = box.pos.x + box.size.w
-			return disparoT === boxB && disparoR >= boxL && disparoL <= boxR
+			return disparoT <= boxB && disparoT >= boxT && disparoR >= boxL && disparoL <= boxR
 		}
 		pintar() {
 			this.$el.style.left = `${this.pos.x}px`
@@ -79,7 +80,7 @@ define([],
 		update(game) {
 			if (this.activo) {
 				this.pintar()
-				this.pos.y -= 2
+				this.pos.y -= 4
 				for (const box of game.boxm.getItems()) {
 					if (this.shotHit(box)) {
 						box.golpear(game)
