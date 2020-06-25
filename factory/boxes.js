@@ -13,7 +13,10 @@ define(['util/randomOf',
 				 */
 				activar: function () {
 					game.ballm.clonarRandom()
-					this.despegar()
+					for (let ball of game.ballm.getBalls()) {
+
+						ball.despegar()
+					}
 				}
 			},
 			goma: {
@@ -38,7 +41,10 @@ define(['util/randomOf',
 				 */
 				activar: function () {
 					game.nave.gun.shots += 5
-					this.despegar()
+					for (let ball of game.ballm.getBalls()) {
+
+						ball.despegar()
+					}
 				}
 			},
 			agrandador: {
@@ -48,7 +54,11 @@ define(['util/randomOf',
 				 * Agranda la nave a 150px.
 				 */
 				activar: function () {
-					this.agrandar()
+					game.nave.setWidthType(NAVE_WIDTH_TYPES.L)
+					for (let ball of game.ballm.getBalls()) {
+
+						ball.despegar()
+					}
 				}
 			},
 			achichador: {
@@ -62,7 +72,10 @@ define(['util/randomOf',
 					* Achica la nave y no deja que las bolas se peguen a ella.
 					*/
 					game.nave.setWidthType(NAVE_WIDTH_TYPES.S)
-					this.despegar()
+					for (let ball of game.ballm.getBalls()) {
+
+						ball.despegar()
+					}
 				},
 			},
 		}

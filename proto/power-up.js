@@ -1,10 +1,27 @@
 'use strict'
 /* globals define*/
 define([], function () {
+	const createElement = (caracter) => {
+		const $el = document.createElement('div')
+		$el.innerText = caracter
+		$el.classList.add('power')
+		document.getElementById('container').appendChild($el)
+		return $el
+	}
 	return class PowerUp {
 		constructor(options) {
+			if (typeof options.power !== 'object') {
+				throw new Error('Esperaba un Power y me diste caramelos')
+			}
+			if (typeof options.power.activar !== 'function') {
+				throw new Error('Esperaba una funcion')
+			}
 			Object.assign(this, options)
+			this.$el = createElement(options.power.caracter)
 			this.pintar()
+		}
+		activar() {
+			return this.power.activar()
 		}
 		/**
 		 * Hace caer los powerUps cuando estan en pantalla
@@ -17,7 +34,6 @@ define([], function () {
 				return game.powerm.remover(this)
 			}
 			else if (this.toca(nave)) {
-
 				this.activar()
 				this.borrar()
 				return game.powerm.remover(this)
@@ -26,6 +42,10 @@ define([], function () {
 				this.pintar()
 				this.pos.y += 2
 			}
+		}
+		pintar() {
+			this.$el.style.left = `${this.pos.x}px`
+			this.$el.style.top  = `${this.pos.y}px`
 		}
 		borrar() {
 			this.$el.remove()

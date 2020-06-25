@@ -30,7 +30,7 @@ define(['factory/powers'], function (powerUpFactory) {
 			else {
 				if (this.power) {
 
-					const power = powerUpFactory(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h, this.power.caracter, game)
+					const power = powerUpFactory(this.pos.x + this.size.w / 2 - 15, this.pos.y + this.size.h,this.power, game)
 					game.powerm.agregar(power)
 				}
 				this.borrar(game)
