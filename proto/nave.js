@@ -5,6 +5,8 @@ define(['proto/gun',
 	(Gun) => {
 	const setupElement = () => {
 		const $el = document.getElementById('nave')
+		$el.style.backgroundImage = 'url(img/nave.png)'
+		$el.style.backgroundSize = 'cover'
 		return $el
 	}
 	return class Nave {
