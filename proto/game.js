@@ -81,11 +81,11 @@ define([
 					if (confirm('Reiniciar?')) {
 
 						this.config.level = 0
-						this.clearAll()
+						this.clearCheat()
 						this.addBall()
 						this.config.lifes = 3
 						this.nave.pintar()
-						this.nave.mover(mouse.x, mouse.y, this)
+						this.nave.mover(mouse, this)
 					}
 				}
 			}

@@ -80,7 +80,7 @@ define([],
 		update(game) {
 			if (this.activo) {
 				this.pintar()
-				this.pos.y -= 4
+				this.pos.y -= 6
 				for (const box of game.boxm.getItems()) {
 					if (this.shotHit(box)) {
 						box.golpear(game)
