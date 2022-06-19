@@ -32,7 +32,7 @@ define([],
 			this.clearGun()
 		}
 		/**
-		 * Saca los disparos del juego y los lleva a 0
+		 * Saca los disparos del juego
 		 */
 		clearGun() {
 			this.$el.remove()

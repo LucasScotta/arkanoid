@@ -11,7 +11,7 @@ define([], function () {
 	return class PowerUp {
 		constructor(options) {
 			if (typeof options.power !== 'object') {
-				throw new Error('Esperaba un Power y me diste caramelos')
+				throw new Error(`Esperaba un Power y me diste ${typeof options.power}`)
 			}
 			if (typeof options.power.activar !== 'function') {
 				throw new Error('Esperaba una funcion')

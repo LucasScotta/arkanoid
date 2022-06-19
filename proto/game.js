@@ -88,11 +88,7 @@ define([
 						this.nave.mover(mouse, this)
 					}
 				}
-			}
-			// else {
-				
-			// }
-		}
+			}		}
 		/**
 		 * El nombre lo dice todo
 		 */
